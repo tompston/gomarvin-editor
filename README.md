@@ -6,11 +6,21 @@ Editor for gomarvin configs
 
 <!--
 
+
+// 
 git add .
 git commit -m "next"
 git push 
 
 
+# delete
+git branch -d gh-pages
+
+# create
+
+
+
+https://youtu.be/2hM5viLMJpA
 https://javascript.plainenglish.io/deploying-any-app-to-github-pages-1e8e946bf890
 
 <script setup lang="ts">

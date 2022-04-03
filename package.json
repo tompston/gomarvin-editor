@@ -1,13 +1,13 @@
 {
-    "name": "frontend",
+    "homepage": "https://tompston.github.io/gomarvin-editor",
+    "name": "gomarvin-editor",
     "private": true,
     "version": "0.0.0",
-    "homepage": "https://tompston.github.io/gomarvin-editor",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
         "preview": "vite preview",
-        "deploy": "npm run build && gh-pages -d dist"
+        "deploy": "npm run build && gh-pages -d dist -b gh-pages"
     },
     "dependencies": {
         "vue": "^3.2.25",
