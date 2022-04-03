@@ -1,27 +1,28 @@
-# Gomarvin UI
+# Editor for gomarvin configs
 
-Editor for gomarvin configs
+If the frontend crashes for some reason, open DevTools, run
 
-**If the frontend crashes for some reason, open DevTools, run `localStorage.clear();` and reload the page.**
+```
+localStorage.clear();
+```
+and reload the page
+
 
 <!--
 
 
-// 
+"postbuild": "purgecss --css dist/assets/*.css --content dist/assets/*.js -o dist/assets/  --safelist html body"
+
 git add .
 git commit -m "next"
-git push 
+git push
 
 
-# delete
+# delete branch 
 git branch -d gh-pages
 
 # create
 
-
-
-https://youtu.be/2hM5viLMJpA
-https://javascript.plainenglish.io/deploying-any-app-to-github-pages-1e8e946bf890
 
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -31,9 +32,6 @@ import { ref } from 'vue'
 
 <style>
 </style>
-
-
-
 
 <div class="flex-center">
     <div class="max-width-1">content</div>

@@ -6,7 +6,7 @@
         "dev": "vite",
         "init-build": "vue-tsc --noEmit && vite build",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "npm run build && serve dist -p 8282"
     },
     "dependencies": {
         "vue": "^3.2.25",
