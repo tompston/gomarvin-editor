@@ -6,6 +6,11 @@ Editor for gomarvin configs
 
 <!--
 
+git add .
+git commit -m "next"
+git push 
+
+
 https://javascript.plainenglish.io/deploying-any-app-to-github-pages-1e8e946bf890
 
 <script setup lang="ts">
