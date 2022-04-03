@@ -1,13 +1,11 @@
 {
-    "homepage": "https://tompston.github.io/gomarvin-editor",
     "name": "gomarvin-editor",
     "private": true,
     "version": "0.0.0",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
-        "preview": "vite preview",
-        "deploy": "npm run build && gh-pages -d dist -b gh-pages"
+        "preview": "vite preview"
     },
     "dependencies": {
         "vue": "^3.2.25",
@@ -15,8 +13,6 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^2.2.0",
-        "gh-pages": "^3.2.3",
-        "prettier": "^2.6.1",
         "typescript": "^4.5.4",
         "vite": "^2.8.0",
         "vue-tsc": "^0.29.8"
