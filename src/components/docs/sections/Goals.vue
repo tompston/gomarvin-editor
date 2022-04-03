@@ -1,0 +1,63 @@
+
+<template>
+    <h1 class="doc-section-header mb-10" id="goals">Goals</h1>
+
+    <h2 id="agnostic-about-orms" class="italic">Agnostic about ORMs</h2>
+    <p>
+        The generated controllers include everything that is commonly written before executing the
+        actual query. So you can use any ORM / no-ORM tool you want ( like SQLC, Ent, SQLBoiler,
+        GORM, etc etc), as that is the part that will change based on the project. Once the project
+        is generated the first time, only the
+        <code>controllers.gen.go</code> will be updated on the
+        next runs. (+ more on options later)
+    </p>
+    <p>
+        <br />
+    </p>
+    <h2 id="flexible-by-design" class="italic">Flexible by design</h2>
+    <p>
+        Flexibility is one of the main concerns, when it comes to codegen tools. So we fix it in the
+        following way:
+    </p>
+    <ul>
+        <li>
+            The generated controllers are meant to be copied to a new file and customized to run the
+            functions that query the data. Thus, while we rely on the codegen to generate the
+            boilerpate, we are not dependent on it if we want to edit it.
+            <ul>
+                <li>
+                    Need a custom field for the generated Body struct?
+                    <ul>
+                        <li>Copy that struct, replace the prefix and edit it in the new file.</li>
+                    </ul>
+                </li>
+                <li>
+                    Need to validate a custom type url param?
+                    <ul>
+                        <li>write a new function that does that and use it in the controller</li>
+                    </ul>
+                </li>
+                <li>
+                    Want to use a different db driver?
+                    <ul>
+                        <li>install it and change it</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            The generated server won't be touched on the next runs. This means that you can
+            customize most of it to your needs + add more functionality as you go
+        </li>
+    </ul>
+
+    <p>
+        <br />
+    </p>
+
+    <h2 id="no-dependencies" class="italic">No Dependencies</h2>
+    <p>As this is a codegen tool that is responsible for generating boilerplate, you can stop using it at any time. If this project gets yoinked out of existence, the previously generated servers would still be valid.</p>
+    <p>
+        <br />
+    </p>
+</template>

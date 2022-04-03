@@ -1,0 +1,89 @@
+button {
+  transition: var(--transition-1);
+}
+button:disabled,
+button[disabled] {
+  opacity: 0.37;
+}
+
+.debug__btn {
+  border: 1px solid white;
+  padding: 3px;
+}
+
+/*  */
+.endpoint__method_selected {
+  background: #000;
+  color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  font-size: var(--fs-9);
+  font-weight: 700;
+}
+.endpoint_method_GET {
+  background: var(--http-method-get-bg);
+}
+.endpoint_method_POST {
+  background: var(--http-method-post-bg);
+}
+.endpoint_method_PUT {
+  background: var(--http-method-put-bg);
+}
+.endpoint_method_DELETE {
+  background: var(--http-method-delete-bg);
+}
+.endpoint__expander {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-8);
+  margin: 5px;
+}
+.endpoint__add_btn {
+  border-radius: var(--border-rad-5);
+  background: rgb(17, 155, 17);
+  background: var(--bg-col-create-1);
+  color: white;
+}
+
+.create_project_btn {
+  background: #000;
+  color: white;
+}
+
+.create_new_project_btn {
+  width: 100%;
+  height: 100%;
+  padding: 6px 0px;
+  border: var(--border-1-1);
+  border-radius: var(--border-rad-5);
+}
+
+/*  */
+.settings__multiple_choices_grid_option {
+  /* border: var(--border-1-2); */
+  border-radius: var(--border-rad-5);
+  background: var(--selected-bg-col-2);
+  font-size: var(--fs-9);
+  padding: 5px 18px;
+  /* font-weight: 600; */
+}
+.currently_selected_multiple_choices_option {
+  background-color: var(--selected-bg-col-1);
+  color: var(--selected-text-col-1);
+}
+
+.module__toolbar_option {
+  font-size: var(--fs-10);
+  border: var(--border-1-2);
+  border-radius: var(--border-rad-5);
+  padding: 10px 15px;
+  background: black;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+.module__toolbar_tool_btn {
+  align-items: flex-start;
+}
