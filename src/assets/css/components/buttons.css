@@ -21,18 +21,6 @@ button[disabled] {
   font-size: var(--fs-9);
   font-weight: 700;
 }
-.endpoint_method_GET {
-  background: var(--http-method-get-bg);
-}
-.endpoint_method_POST {
-  background: var(--http-method-post-bg);
-}
-.endpoint_method_PUT {
-  background: var(--http-method-put-bg);
-}
-.endpoint_method_DELETE {
-  background: var(--http-method-delete-bg);
-}
 .endpoint__expander {
   display: flex;
   align-items: center;
@@ -65,8 +53,8 @@ button[disabled] {
   /* border: var(--border-1-2); */
   border-radius: var(--border-rad-5);
   background: var(--selected-bg-col-2);
-  font-size: var(--fs-9);
-  padding: 5px 18px;
+  font-size: var(--fs-8);
+  padding: 4px 17px;
   /* font-weight: 600; */
 }
 .currently_selected_multiple_choices_option {

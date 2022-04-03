@@ -35,8 +35,6 @@ const sections = {
 </script>
 
 <style>
-
-
 </style>
 
 
@@ -194,6 +192,11 @@ const sections = {
                                 <p>
                                     The project is in early stage, this means that there will be breaking changes
                                     later.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Gin router has some bugs with url params. So that should be fixed manually
                                 </p>
                             </li>
                             <li>

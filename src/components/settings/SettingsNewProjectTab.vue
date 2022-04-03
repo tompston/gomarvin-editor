@@ -30,9 +30,9 @@ const wantsToCreateNewProject = ref(false)
   <ProjectSettingsGrid :project_info="new_project_settings" :new_project="true" />
 
   <!--  -->
-  <div class="flex width-100">
+  <div class="flex-center width-100 mt-30">
     <button
-      class="create_project_btn py-10 width-100 fw-700 border-rad-4 fs-10"
+      class="create_project_btn py-10 px-12 fw-700 border-rad-4 fs-10"
       @click="wantsToCreateNewProject = !wantsToCreateNewProject"
     >CREATE NEW PROJECT</button>
   </div>

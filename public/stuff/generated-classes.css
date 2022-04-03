@@ -1,0 +1,12 @@
+.endpoint_method_GET {
+    background: var(--http-method-get-bg);
+}
+.endpoint_method_POST {
+    background: var(--http-method-post-bg);
+}
+.endpoint_method_PUT {
+    background: var(--http-method-put-bg);
+}
+.endpoint_method_DELETE {
+    background: var(--http-method-delete-bg);
+}
