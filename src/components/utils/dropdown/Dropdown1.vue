@@ -11,7 +11,7 @@ defineEmits(['switch'])
           <div v-for="option in options" v-bind:key="option">
             <div
               @click="$emit('switch', option)"
-              class="method__option_btn disable-text-select"
+              class="method__option_btn disable-text-select hover-pointer"
               :class="value == option ? 'method__option_btn--selected' : ''"
             >{{ option }}</div>
           </div>
@@ -63,16 +63,17 @@ defineEmits(['switch'])
   height: 100%;
 }
 .method__option_btn {
-  border: 1px solid rgba(255, 255, 255, 0.705);
+  /* border: 1px solid rgba(255, 255, 255, 0.705); */
+  border: var(--border-1-3);
   border-radius: var(--border-rad-5);
-  padding: 4px 4px;
-  gap: 10px;
+  padding: 5px 4px;
   font-weight: 500;
   font-size: var(--fs-9);
   transition: var(--transition-1);
 }
 .method__option_btn:hover {
   border: 1px solid rgba(107, 107, 107, 0.4);
+  border: var(--border-1-1);
 }
 
 .method__option_btn--selected {

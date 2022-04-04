@@ -9,9 +9,9 @@
     gap: 36px;
 }
 .docs h1 {
-    font-size: var(--fs-3);
+    font-size: var(--fs-4);
     line-height: var(--lh-1);
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 6px;
 }
 .docs h2 {

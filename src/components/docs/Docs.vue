@@ -66,7 +66,7 @@ const sections = {
 
                         <br />
 
-                        <h1 id="caution">CAUTION!</h1>
+                        <h1 id="caution">Caution!</h1>
                         <ul>
                             <li>
                                 <p>
@@ -155,7 +155,12 @@ const sections = {
                             <code>include_sql</code> is a thing you toggle to be true when you want to create the example files for new modules and then turn it off, so that the text files could be deleted.
                         </p>
 
-                        <h3 id="include_ts_fetch">include_ts_fetch (WIP)</h3>
+                        <h3 id="include_ts_fetch">include_ts_fetch</h3>
+
+                        <p>
+                            Currently won't do anything, work in progress
+                        </p>
+                        <br>
                         <p>
                             If set to true,
                             <code>main.gen.ts</code> will be created at the root of the project and

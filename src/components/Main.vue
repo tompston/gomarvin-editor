@@ -69,41 +69,40 @@ watchEffect(() => {
 							<div class="navigation--section">
 								<div class="navigation--header">Modules</div>
 								<div class="navigation--options">
-									<div v-for="module in config.modules" v-bind:key="module">
+									<div v-for="module in config.modules" v-bind:key="module" class="navigation--option">
 										<button
 											@click="currentlySelectedModule = module.name"
 											class="module__name_btn"
 											:class="currentlySelectedModule == module.name ? 'module__name_btn--selected' : ''"
 										>{{ module.name }}</button>
 									</div>
-								</div>
-
-								<div>
-									<button
-										class="module__name_btn"
-										@click="createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown"
-									>+</button>
-								</div>
-								<div>
-									<div v-if="createNewModuleDropdownIsShown">
-										<div class="flex flex-column my-10 temp-main-col-3-- max-w-120">
-											<input
-												type="text"
-												class="mevi max-w-full"
-												placeholder="Singular Module"
-												v-model="newModuleName"
-												@input="newModuleName = utils.ConvertToValidValue($event, utils.ValidModuleName)"
-											/>
-											<div class="flex-center">
-												<button
-													@click="
-														editor.createNewModule(config.modules, newModuleName),
-														(newModuleName = ''),
-														(createNewModuleDropdownIsShown = false)
-													"
-													class="fs-10 fw-700 flex-center both-100 mt-6 py-6 add_new_module_btn"
-													:disabled="!editor.module_name_is_valid(config.modules, newModuleName)"
-												>ADD</button>
+									<div class="navigation--option">
+										<button
+											class="module__name_btn"
+											@click="createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown"
+										>+</button>
+									</div>
+									<div>
+										<div v-if="createNewModuleDropdownIsShown">
+											<div class="flex flex-column my-10 max-w-120 create-new-module-grid">
+												<input
+													type="text"
+													class="mevi max-w-full"
+													placeholder="Singular Module"
+													v-model="newModuleName"
+													@input="newModuleName = utils.ConvertToValidValue($event, utils.ValidModuleName)"
+												/>
+												<div class="flex-center">
+													<button
+														@click="
+															editor.createNewModule(config.modules, newModuleName),
+															(newModuleName = ''),
+															(createNewModuleDropdownIsShown = false)
+														"
+														class="fs-10 fw-700 flex-center both-100 mt-6 py-6 add_new_module_btn"
+														:disabled="!editor.module_name_is_valid(config.modules, newModuleName)"
+													>ADD</button>
+												</div>
 											</div>
 										</div>
 									</div>
