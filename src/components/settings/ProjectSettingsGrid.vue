@@ -212,7 +212,7 @@ const framework_dropdown_is_shown = ref(false)
 } */
 .settings__project_info_label {
   font-size: var(--fs-8);
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   opacity: 0.6;
 }
 

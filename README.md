@@ -10,8 +10,30 @@ and reload the page
 
 <!--
 
+/* 
+  --- Centering content + full width backgrounds in html
+      <div class="flex-center">
+          <div class="max-width-1">content</div>
+      </div>
+  
+  --- importing fonts example
+    @font-face {
+      font-family: "Poppins-Bold";
+      src: url(../fonts/Poppins-Bold.ttf);
+    }
+  
+  --- Automatic grid example
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
-"postbuild": "purgecss --css dist/assets/*.css --content dist/assets/*.js -o dist/assets/  --safelist html body"
+<a
+  href="qwe"
+  rel="noreferrer"
+  target="_blank"
+  style="text-decoration: none"
+  >qweqwe</a
+>
+*/
+
 
 git add .
 git commit -m "next"

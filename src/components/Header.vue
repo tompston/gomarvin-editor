@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { latest_gomarvin_version } from "../assets/ts/gomarvin/predefined"
+import ThemeSwitcher from './utils/ThemeSwitcher.vue'
 const GH_REPO = 'https://github.com/tompston/gomarvin'
 const navigationIsShown = ref(false)
 
@@ -33,6 +34,8 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 							<a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
 						</div>
 
+						<ThemeSwitcher />
+
 						<div class>{{ latest_gomarvin_version }}</div>
 					</div>
 				</div>
@@ -45,9 +48,9 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
 					>
-						<path d="M0 1H23" stroke="black" stroke-width="2.5" />
-						<path d="M0 9H23" stroke="black" stroke-width="2.5" />
-						<path d="M0 18H23" stroke="black" stroke-width="2.5" />
+						<path d="M0 1H23" stroke="var(--svg-fill)" stroke-width="2.5" />
+						<path d="M0 9H23" stroke="var(--svg-fill)" stroke-width="2.5" />
+						<path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
 					</svg>
 				</div>
 

@@ -36,7 +36,7 @@ const wants_to_delete_module = ref(false)
         @click="edit_options_are_shown = !edit_options_are_shown"
       >
         <div class="flex-center border-rad-5 border-1-1">
-          <ToolSvg dims="15" fill="black" class="p-8 op-80" />
+          <ToolSvg dims="15" fill="var(--svg-fill)" class="p-8 op-80" />
         </div>
       </button>
     </div>

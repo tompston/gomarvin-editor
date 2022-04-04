@@ -1,24 +1,24 @@
 /* ---- Fixed debug grid */
 .debug__box {
-  font-family: Roboto Mono, Menlo, monospace;
-  position: fixed;
-  padding: 6px 13px;
-  border-radius: var(--border-rad-4);
-  bottom: 20px;
-  right: 20px;
-  background: rgb(0, 0, 0);
-  color: white;
-  font-size: var(--fs-9);
-  font-size: 11px;
-  display: grid;
-  gap: 4px;
-  max-width: 440px;
+    font-family: Roboto Mono, Menlo, monospace;
+    position: fixed;
+    padding: 6px 13px;
+    border-radius: var(--border-rad-4);
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    color: white;
+    font-size: var(--fs-9);
+    font-size: 11px;
+    display: grid;
+    gap: 4px;
+    max-width: 440px;
 }
 .debug__label_value {
-  grid-template-columns: 150px auto;
-  gap: 10px;
+    grid-template-columns: 150px auto;
+    gap: 10px;
 }
 .debug__config_box {
-  max-height: 100px;
-  overflow-y: scroll;
+    max-height: 100px;
+    overflow-y: scroll;
 }

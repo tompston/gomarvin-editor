@@ -33,7 +33,9 @@ defineEmits(['switch'])
   height: 100%;
 }
 .dropdown__1_content {
-  background: rgb(255, 255, 255);
+  /* background: rgb(255, 255, 255); */
+  z-index: 20;
+  background-color: var(--main-bg-col);
   border: var(--border-1-2);
   /* box-shadow: var(--shadow-4); */
   display: block;

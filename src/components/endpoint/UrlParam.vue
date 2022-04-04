@@ -53,7 +53,7 @@ const dropdownIsShown = ref(false)
                         <button
                             @click="editor.deleteValueFromArray(endpoint.url_params, url_param)"
                         >
-                            <DeleteSvg dims="15" fill="black" class="qwe" />
+                            <DeleteSvg dims="15" fill="var(--svg-fill)" class="qwe" />
                         </button>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ const wantsToCreateNewProject = ref(false)
       <div class="modal__overlay" @click="wantsToCreateNewProject = false"></div>
       <div class="modal__content max-w-450">
         <div class="p-26 both-100">
-          <div class="fs-4">Really want to create new project?</div>
+          <div class="fs-4">Really want to create a new project?</div>
           <div
             class="fs-7 py-14"
           >Note that this will delete the previous project and all progress will be lost</div>

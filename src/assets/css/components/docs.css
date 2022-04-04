@@ -1,34 +1,33 @@
 .docs .text-2 {
-  font-size: var(--fs-8);
-  opacity: 0.9;
+    font-size: var(--fs-8);
+    opacity: 0.9;
 }
-
 .docs {
-  margin-top: 10px;
-  grid-template-columns: 141px auto;
-  display: grid;
-  gap: 36px;
+    margin-top: 10px;
+    grid-template-columns: 141px auto;
+    display: grid;
+    gap: 36px;
 }
 .docs h1 {
-  font-size: var(--fs-3);
-  line-height: var(--lh-1);
-  font-weight: 400;
-  margin-bottom: 6px;
+    font-size: var(--fs-3);
+    line-height: var(--lh-1);
+    font-weight: 400;
+    margin-bottom: 6px;
 }
 .docs h2 {
-  font-size: var(--fs-5);
-  line-height: var(--lh-1);
-  font-weight: 400;
+    font-size: var(--fs-5);
+    line-height: var(--lh-1);
+    font-weight: 400;
 }
 .docs h3 {
-  margin-top: 20px;
-  font-weight: 700;
+    margin-top: 20px;
+    font-weight: 700;
 }
 .docs ul li {
-  margin-bottom: 14px;
+    margin-bottom: 14px;
 }
 .docs-sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 14px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 14px;
 }

@@ -122,7 +122,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M2 1L12.5 15L23 1" stroke="black" stroke-width="3.2" />
+          <path d="M2 1L12.5 15L23 1" stroke="var(--svg-fill)" stroke-width="3.2" />
         </svg>
       </div>
     </button>
@@ -178,7 +178,9 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
                     @click="$emit('delete_event')"
                     class="flex temp-main-col-1 flex-center px-16 py-6 border-rad-5"
                   >
-                    <div class="text-col-6 fs-10 fw-700">Delete {{ endpoint.controller_name }} endpoint</div>
+                    <div
+                      class="text-col-6 fs-10 fw-700"
+                    >Delete {{ endpoint.controller_name }} endpoint</div>
                   </button>
                 </div>
               </transition>
