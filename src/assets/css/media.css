@@ -19,7 +19,7 @@
     }
     .max-width-1,
     .max-width-2 {
-        padding: 0px 20px;
+        padding: 0px 17px;
     }
 
     .editor,
@@ -54,7 +54,7 @@
         --fs-1: 34px;
         --fs-2: 29px;
         --fs-3: 24px;
-        --fs-4: 22px;
+        --fs-4: 28px;
         --fs-5: 20px;
         --fs-6: 20px;
         --fs-7: 18px;

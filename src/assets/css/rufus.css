@@ -27,13 +27,13 @@
     /* -- init */
     --main-bg-col: #ffffff;
     --main-text-col: #000000;
-    --main-col-danger: rgb(255, 0, 0);
+    --main-col-danger: rgb(203, 19, 19);
 
     /* font-size */
     --fs-1: 78px;
     --fs-2: 64px;
     --fs-3: 44px;
-    --fs-4: 34px;
+    --fs-4: 32px;
     --fs-5: 28px;
     --fs-6: 20px;
     --fs-7: 18px;

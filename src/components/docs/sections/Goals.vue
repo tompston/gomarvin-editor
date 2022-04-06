@@ -1,6 +1,6 @@
 
 <template>
-    <h1 class="doc-section-header mb-10" id="goals">Goals</h1>
+    <h1 class="doc-section-header" id="goals">Goals</h1>
 
     <h3 id="agnostic-about-orms" class="doc-subheader-1">Agnostic about ORMs</h3>
     <p>

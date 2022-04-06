@@ -12,7 +12,8 @@
     font-size: var(--fs-4);
     line-height: var(--lh-1);
     font-weight: 700;
-    margin-bottom: 6px;
+
+    /* margin-bottom: 6px; */
 }
 .docs h2 {
     font-size: var(--fs-5);
@@ -28,6 +29,7 @@
 }
 .docs .doc-subheader-1 {
     font-size: var(--fs-6);
+    opacity: 0.74;
 }
 
 .docs-sticky {
