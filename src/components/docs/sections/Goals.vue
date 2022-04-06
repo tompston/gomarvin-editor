@@ -2,9 +2,11 @@
 <template>
     <h1 class="doc-section-header mb-10" id="goals">Goals</h1>
 
-    <h2 id="agnostic-about-orms" class="italic">Agnostic about ORMs</h2>
+    <h3 id="agnostic-about-orms" class="doc-subheader-1">Agnostic about ORMs</h3>
     <p>
-        The generated controllers include everything that is commonly written before executing the
+        It seems like the chosen ORM of the project defines it to the same degree as the backend framework. So picking the ORM tool should be left to the user.
+        <br />
+        <br />The generated controllers include everything that is commonly written before executing the
         actual query. So you can use any ORM / no-ORM tool you want ( like SQLC, Ent, SQLBoiler,
         GORM, etc etc), as that is the part that will change based on the project. Once the project
         is generated the first time, only the
@@ -14,7 +16,7 @@
     <p>
         <br />
     </p>
-    <h2 id="flexible-by-design" class="italic">Flexible by design</h2>
+    <h3 id="flexible-by-design" class="doc-subheader-1">Flexible by design</h3>
     <p>
         Flexibility is one of the main concerns, when it comes to codegen tools. So we fix it in the
         following way:
@@ -26,7 +28,7 @@
             boilerpate, we are not dependent on it if we want to edit it.
             <ul>
                 <li>
-                    Need a custom field for the generated Body struct?
+                    Need a custom field for the generated endpoint Body struct?
                     <ul>
                         <li>Copy that struct, replace the prefix and edit it in the new file.</li>
                     </ul>
@@ -49,14 +51,29 @@
             The generated server won't be touched on the next runs. This means that you can
             customize most of it to your needs + add more functionality as you go
         </li>
+        <li>
+            The sent payload ( Body ) is an automatically generated struct that is passed to the controller function. As we use the
+            <a
+                href="https://pkg.go.dev/github.com/go-playground/validator/v10"
+                target="_blank"
+                rel="noopener noreferrer"
+            >go validator</a> package for validating that payload, during the codegen we can inject custom validate fields into the struct. So the third column of the Body input is a string that will be passed to the
+            <code>validate</code> field in the go struct.
+        </li>
     </ul>
 
     <p>
         <br />
     </p>
 
-    <h2 id="no-dependencies" class="italic">No Dependencies</h2>
+    <h3 id="no-dependencies" class="doc-subheader-1">No Dependencies</h3>
     <p>As this is a codegen tool that is responsible for generating boilerplate, you can stop using it at any time. If this project gets yoinked out of existence, the previously generated servers would still be valid.</p>
+    <p>
+        <br />
+    </p>
+
+    <h3 id="no-magic" class="doc-subheader-1">No Magic</h3>
+    <p>Don't hide away anything that is generated. Everything can be inspected and understood, so that it would be easier to tweak the functions for personal needs later.</p>
     <p>
         <br />
     </p>

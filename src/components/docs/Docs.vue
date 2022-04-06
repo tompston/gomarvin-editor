@@ -48,8 +48,7 @@ const sections = {
                 <!-- Docs navigation -->
                 <div class="docs--nav">
                     <div
-                        class="pl-12 py-20 flex flex-column gap-12 fs-8 docs-sticky temp-main-col-2 text-col-6"
-                    >
+                        class="pl-12 py-20 flex flex-column gap-10 fs-8 docs-sticky main-col-1- text-col-6- border-1-1">
                         <div v-for="section in sections">
                             <a :href="section.href">{{ section.label }}</a>
                         </div>
@@ -57,7 +56,7 @@ const sections = {
                 </div>
 
                 <div class="docs--content">
-                    <div class="fs-1 fw-300 mb-20">Gomarvin explained</div>
+                    <div class="fs-1 fw-300-- fw-700 mb-30">Gomarvin explained</div>
 
                     <div class="text-2 fw-400 mb-110 max-w-620">
                         <DocIntro />
@@ -96,13 +95,42 @@ const sections = {
                         <p>
                             Controllers aren't the only thing that we can automatically generate from the config
                             file. As the goal of this project is to automate out the boring parts of writing rest
-                            servers, we can also generate
+                            servers, we can also generate:
                         </p>
                         <ul>
                             <li>Typescript functions that fetch the generated endpoints (WIP)</li>
                             <li>SQL files that hold placeholder tables and queries for the module endpoints</li>
                         </ul>
-                        <h3 id="include_sql">include_sql</h3>
+
+                        <h3 id="include_ts_fetch" class="doc-subheader-1">include_ts_fetch</h3>
+
+                        <p>Currently won't do anything, work in progress</p>
+                        <br />
+                        <p>
+                            If set to true,
+                            <code>main.gen.ts</code>
+                            will be created at the root of the project and
+                            populated with util functions for fetching the data. Everything is in a single file, so
+                            that it's easier to import the code into frontend.
+                            <br />
+                            <br />To stay agnostic about frontend frameworks, the generated util functions return only
+                            the promise of the response.
+                            That way, you can implement custom loading / error states in the framework of your choice.
+
+                            <br>
+                            <br>
+                            Typescript is used because:
+                        <ul>
+                            <li>strict types are great</li>
+                            <li>Typescript can be compiled down to valid javascript. Javascript can't be compiled up to be valid Typescript</li>
+                        </ul>
+
+                        </p>
+
+                        <!-- <br /> -->
+
+                        <br />
+                        <h3 id="include_sql" class="doc-subheader-1">include_sql</h3>
                         <p>
                             if set to true,
                             <code>/db/sql/</code> dirs will be created and populated with
@@ -142,6 +170,10 @@ const sections = {
                                     from the module_name.sql file.
                                 </ul>
                             </li>
+                            <!-- <li>
+                                Ideally
+                                <code>include_sql</code> is a thing you toggle to be true when you want to create the example files for new modules and then turn it off, so that the text files could be deleted.
+                            </li> -->
                         </ul>
                         <p>
                             As sqlc uses sql files for codegen, we create placeholder
@@ -150,25 +182,6 @@ const sections = {
                         </p>
 
                         <div class="mt-10"></div>
-                        <p>
-                            Ideally
-                            <code>include_sql</code> is a thing you toggle to be true when you want to create the example files for new modules and then turn it off, so that the text files could be deleted.
-                        </p>
-
-                        <h3 id="include_ts_fetch">include_ts_fetch</h3>
-
-                        <p>
-                            Currently won't do anything, work in progress
-                        </p>
-                        <br>
-                        <p>
-                            If set to true,
-                            <code>main.gen.ts</code> will be created at the root of the project and
-                            populated with util functions for fetching the data. Everything is in a single file, so
-                            that it's easier to import the code into frontend.
-                        </p>
-
-                        <br />
 
                         <h1 id="notes">Notes</h1>
                         <ul>
@@ -179,10 +192,7 @@ const sections = {
                                     <code>__</code> prefix. This is done for 3 reasons:
                                 </p>
                                 <ul>
-                                    <li>
-                                        so thay you would know which code is generated and will be regenerated on
-                                        each run
-                                    </li>
+                                    <li>easier to identify what code is regenerated on eah run</li>
                                     <li>
                                         as these values will be regenerated, the prefix removes the option of
                                         exporting them from the package
@@ -200,9 +210,7 @@ const sections = {
                                 </p>
                             </li>
                             <li>
-                                <p>
-                                    Gin router has some bugs with url params. So that should be fixed manually
-                                </p>
+                                <p>Gin router has some bugs with url params. So that should be fixed manually</p>
                             </li>
                             <li>
                                 Routers for the modules will be automatically imported and available only on the
@@ -234,9 +242,7 @@ const sections = {
                             </li>
                             <li>
                                 My first attempt at fixing this problem was
-                                <a
-                                    href="https://github.com/tompston/gomakeme"
-                                >gomakeme</a>. gomakeme was written
+                                <a href="https://github.com/tompston/gomakeme">gomakeme</a>. gomakeme was written
                                 because i wanted to see how far i can push codegen that could make my life easier.
                                 So this is a continuation of that. The motivation to do so is based on the problem
                                 stated at the start. So the absolute goal of this is project is to minimize time

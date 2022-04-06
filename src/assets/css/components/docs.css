@@ -11,7 +11,7 @@
 .docs h1 {
     font-size: var(--fs-4);
     line-height: var(--lh-1);
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 6px;
 }
 .docs h2 {
@@ -20,14 +20,28 @@
     font-weight: 400;
 }
 .docs h3 {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-weight: 700;
 }
-.docs ul li {
-    margin-bottom: 14px;
+.docs:first-child ul li {
+    margin-bottom: 11px;
 }
+.docs .doc-subheader-1 {
+    font-size: var(--fs-6);
+}
+
 .docs-sticky {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 14px;
+}
+.docs-quote {
+    background: var(--selected-bg-col-2);
+    font-family: Roboto Mono, Menlo, monospace;
+    padding: 7px 20px;
+    font-size: var(--fs-9);
+    border-radius: var(--border-rad-4);
+
+    margin: 10px 0px;
+    /* box-shadow: var(--shadow-3); */
 }

@@ -1,8 +1,9 @@
 <template>
     <div id="intro">
         One of the main tasks of backend REST APIs is really simple in theory:
-        <div>
-            <code>"Run this SQL query and return the data"</code>
+        <div class="docs-quote">
+            <!-- <code></code> -->
+            > "Run this SQL query and return the data"
         </div>
 
         <!-- <br> -->
@@ -30,11 +31,12 @@
 
         <div class="mt-20"></div>
         <h2 id="-install-steps-can-be-found-here-https-github-com-tompston-gomarvin-install-">
-            
-            <div class="flex-center gap-6 my-16">
+            <div class="flex-center gap-6 mt-80 mb-40">
                 Install steps can be found
                 <a
                     href="https://github.com/tompston/gomarvin#install"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >here</a>
             </div>
         </h2>
