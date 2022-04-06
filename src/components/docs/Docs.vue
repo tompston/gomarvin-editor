@@ -43,7 +43,7 @@ const sections = {
     <Header />
 
     <div class="flex-center">
-        <div class="max-width-1">
+        <div class="max-width-2">
             <div class="docs">
                 <!-- Docs navigation -->
                 <div class="docs--nav">
@@ -80,14 +80,12 @@ const sections = {
                         </ul>
 
                         <div>
-                            <p class="text-center my-50 fw-500">
+                            <p class="text-center my-30 fw-600 main-col-danger text-col-white py-16 px-10 border-rad-3">
                                 If a file has
                                 <code>.gen</code> in the name, that means it will be regenerated on
-                                each run. So editing them is a bad idea if you want to save changes. Either create a
-                                copy of the file and remove
-                                <code>.gen</code>
-                                to save changes or copy the generated
-                                dir to another place
+                                each run. So editing them is a bad idea if you want to save changes. Either rename the
+                                file or move it somewhere else to edit it.
+
                             </p>
                         </div>
 
@@ -122,7 +120,8 @@ const sections = {
                             Typescript is used because:
                         <ul>
                             <li>strict types are great</li>
-                            <li>Typescript can be compiled down to valid javascript. Javascript can't be compiled up to be valid Typescript</li>
+                            <li>Typescript can be compiled down to valid javascript. Javascript can't be compiled up to
+                                be valid Typescript</li>
                         </ul>
 
                         </p>

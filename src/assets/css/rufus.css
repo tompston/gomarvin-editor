@@ -3,7 +3,7 @@
 :root {
     /* max-width for the main content, check comments to see example snippet */
     --max-width-1: 1355px;
-    --max-width-2: 905px;
+    --max-width-2: 1005px;
     --max-width-3: 505px;
     /* font-family */
     --font-fam-1: sans-serif;
@@ -23,9 +23,12 @@
     --main-col-7: #ffffff;
     --main-col-8: #ffffff;
     --main-col-9: #ffffff;
+
     /* -- init */
     --main-bg-col: #ffffff;
     --main-text-col: #000000;
+    --main-col-danger: rgb(255, 0, 0);
+
     /* font-size */
     --fs-1: 78px;
     --fs-2: 64px;
@@ -114,8 +117,6 @@
     --module-name-btn-txt-col: rgb(82, 82, 82);
 }
 
-
-
 html {
     scroll-behavior: smooth;
     height: 100%;
@@ -179,4 +180,14 @@ code,
     font-size: 14px;
     padding: 5px 10px;
     border-radius: 6px;
+}
+.main-col-danger {
+    background: var(--main-col-danger);
+}
+
+.bg-col-white {
+    background: white;
+}
+.text-col-white {
+    color: white;
 }

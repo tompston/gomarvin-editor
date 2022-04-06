@@ -6,7 +6,7 @@
     margin-top: 10px;
     grid-template-columns: 141px auto;
     display: grid;
-    gap: 36px;
+    gap: 24px;
 }
 .docs h1 {
     font-size: var(--fs-4);
