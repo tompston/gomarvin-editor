@@ -113,14 +113,14 @@ const sections = {
                             servers, we can also generate:
                         </p>
                         <ul>
-                            <li>Typescript functions that fetch the generated endpoints (WIP)</li>
+                            <li>Typescript functions that fetch the generated endpoints</li>
                             <li>SQL files that hold placeholder tables and queries for the module endpoints</li>
                         </ul>
 
                         <h3 id="include_ts_fetch" class="doc-subheader-1">include_ts_fetch</h3>
 
-                        <p>Currently won't do anything, work in progress</p>
-                        <br />
+                        <!-- <p>Currently won't do anything, work in progress</p> -->
+                        <!-- <br /> -->
                         <p>
                             If set to true,
                             <code>main.gen.ts</code>
@@ -137,9 +137,25 @@ const sections = {
                             Typescript is used because:
                         <ul>
                             <li>strict types are great</li>
-                            <li>Typescript can be compiled down to valid javascript. Javascript can't be compiled up to
-                                be valid Typescript</li>
+                            <li>Typescript can be compiled down to be valid javascript</li>
                         </ul>
+
+
+                        <!-- <div class="fs-6 mt-40 fw-700">Example of usage for the generated typescript fetch functions
+                        </div>
+                        <div>
+                            <div class="docs-code-block both-100">
+                                <div class="op-50">// some-file.ts</div>
+                                <div class="op-70">// import the generated file</div>
+                                <div>import * as F from "../../build/fiber_with_modules/main.gen";</div>
+                                <div>async function FetchUserById(){</div>
+                                <div> let res = await F.GetUserById(1)</div>
+                                <div> let data = await res.json()</div>
+
+                            </div>
+                            <pre><code>// some-<span class="hljs-keyword">file</span>.<span class="hljs-keyword">ts</span>
+</code></pre>
+                        </div> -->
 
                         </p>
 
@@ -231,6 +247,10 @@ const sections = {
                             <li>
                                 Routers for the modules will be automatically imported and available only on the
                                 first run
+                            </li>
+                            <li>
+                                Codegen is not tested on the oldest go versions shown under options. So don't known
+                                which stuff is compatible.
                             </li>
                             <li>
                                 Go has some great benefits for writing backends. On of them is that switching

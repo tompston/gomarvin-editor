@@ -47,3 +47,12 @@
     margin: 10px 0px;
     /* box-shadow: var(--shadow-3); */
 }
+.docs-code-block {
+    background: var(--selected-bg-col-2);
+    font-family: Roboto Mono, Menlo, monospace;
+    padding: 7px 20px;
+    font-size: var(--fs-9);
+    border-radius: var(--border-rad-4);
+    margin: 10px 0px;
+    /* box-shadow: var(--shadow-3); */
+}
