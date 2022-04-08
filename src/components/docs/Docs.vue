@@ -135,7 +135,8 @@ const sections = {
                             <br>
                             <br>
 
-                            The name of the generated typescript fetch function is the same as the defined controller name.
+                            The name of the generated typescript fetch function is the same as the defined controller
+                            name.
                             The same applies to the body.
                             <br>
                             <br>
@@ -269,17 +270,18 @@ async function FetchCreateUserEndpoint(){
                                 first run
                             </li>
                             <li>
-                                Codegen is not tested on the oldest go versions shown under options. So don't known
-                                which stuff is compatible.
+                                Codegen is not tested on the older go versions shown under options. So picking them may
+                                not work.
                             </li>
                             <li>
                                 Go has some great benefits for writing backends. On of them is that switching
-                                framewoks is relativley easy. So this project supports Gin and Fiber currently. The
+                                framewoks is relativley easy. So this project supports Gin, Fiber and Echo currently.
+                                The
                                 goal is to support 4 frameworks at most.
                             </li>
                             <li>
-                                The
-                                <a>frontend editor</a> does all of the validation for the config file.
+                                The current frontend editor
+                                does all of the validation for the config file.
                                 If there are errors shown in the UI, the codegen won't be able to generate
                                 everything correctly.
                             </li>
