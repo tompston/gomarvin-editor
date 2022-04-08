@@ -134,30 +134,50 @@ const sections = {
 
                             <br>
                             <br>
+
+                            The name of the generated typescript fetch function is the same as the defined controller name.
+                            The same applies to the body.
+                            <br>
+                            <br>
+
+
                             Typescript is used because:
                         <ul>
                             <li>strict types are great</li>
                             <li>Typescript can be compiled down to be valid javascript</li>
                         </ul>
 
-
-                        <!-- <div class="fs-6 mt-40 fw-700">Example of usage for the generated typescript fetch functions
-                        </div>
-                        <div>
-                            <div class="docs-code-block both-100">
-                                <div class="op-50">// some-file.ts</div>
-                                <div class="op-70">// import the generated file</div>
-                                <div>import * as F from "../../build/fiber_with_modules/main.gen";</div>
-                                <div>async function FetchUserById(){</div>
-                                <div> let res = await F.GetUserById(1)</div>
-                                <div> let data = await res.json()</div>
-
-                            </div>
-                            <pre><code>// some-<span class="hljs-keyword">file</span>.<span class="hljs-keyword">ts</span>
-</code></pre>
-                        </div> -->
-
                         </p>
+
+
+                        <h3 id="include_ts_fetch-example" class="doc-subheader-1">Example using generated fetch
+                            functions</h3>
+                        <pre>
+                            <code>
+<span class="op-60">// import the generated file</span>
+import * as F from "../../build/fiber_with_modules/main.gen";
+
+async function FetchGetUserByIdEndpoint() {
+    let res = await F.GetUserById(1);
+    let users = await res.json();
+    console.log(users);
+}
+
+
+async function FetchCreateUserEndpoint(){
+    let res = await F.CreateUser({
+          username: "qweqwe",
+          email: "qwe@qwe.com",
+          age: 20,
+          password: "very-long-and-good-password",
+    })
+
+    let users = await res.json()
+    console.log(users)
+}
+                            </code>
+                        </pre>
+
 
                         <!-- <br /> -->
 
