@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const currentTheme = ref(localStorage.getItem('theme'))
 
@@ -17,7 +17,7 @@ function switchTheme() {
 function setTheme() {
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.body.dataset.theme = currentTheme;
-    console.log(`Swithced to ${currentTheme}`)
+    // console.log(`Swithced to ${currentTheme}`)
 }
 
 onMounted(() => {

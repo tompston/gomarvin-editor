@@ -8,7 +8,7 @@
 
 .code {
     font-size: 11px;
-    background: rgb(246, 246, 246);
+    background: rgb(249, 249, 249);
     border: 1px solid rgba(0, 0, 0, 0);
 }
 code {
@@ -79,15 +79,15 @@ input {
     position: absolute;
     right: 0;
     top: 0;
-    border-radius: 3px;
-    font-size: var(--fs-9);
+    border-radius: 2px;
+    font-size: 13px;
     padding: 2px 6px;
     /*  */
     opacity: 0.7;
     background: var(--selected-bg-col-1);
     color: var(--selected-text-col-1);
-    margin-top: 2px;
-    margin-right: 2px;
+    margin-top: 3px;
+    margin-right: 3px;
 }
 .tab--header {
     font-size: var(--fs-3);
