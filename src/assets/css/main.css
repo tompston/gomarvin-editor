@@ -51,6 +51,7 @@ input {
 
 .endpoint {
     border: var(--border-1-2);
+    /* background: rgb(215, 255, 182); */
     display: grid;
     grid-template-columns: auto var(--endpoint-btn-width);
     border-radius: 6px;
@@ -59,6 +60,7 @@ input {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
     gap: 9px;
+    gap: 7px;
     padding: 5px;
     width: 100%;
 }
@@ -90,8 +92,10 @@ input {
     margin-right: 3px;
 }
 .tab--header {
-    font-size: var(--fs-3);
+    font-size: var(--fs-4);
+    font-weight: 500;
     margin-bottom: 10px;
+    font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
 }
 .project-settings-header {
     font-size: var(--fs-6);
@@ -107,4 +111,3 @@ input {
     padding: 15px !important;
     box-sizing: border-box;
 }
-

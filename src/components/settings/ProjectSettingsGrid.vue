@@ -159,7 +159,7 @@ const framework_dropdown_is_shown = ref(false)
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 10px;
 }
 
 /* .settings__project_info_value_label_grid {

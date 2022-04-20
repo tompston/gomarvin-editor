@@ -3,7 +3,7 @@ button {
 }
 button:disabled,
 button[disabled] {
-  opacity: 0.37;
+  opacity: 0.3;
 }
 
 .debug__btn {
@@ -28,10 +28,12 @@ button[disabled] {
   margin: 5px;
 }
 .endpoint__add_btn {
+  /* background: var(--http-method-post-bg);
+  color: white; */
+  
   border-radius: var(--border-rad-5);
-  background: rgb(17, 155, 17);
-  background: var(--bg-col-create-1);
-  color: white;
+  color: var(--selected-text-col-1);
+  background: var(--selected-bg-col-1);
 }
 
 .create_project_btn {

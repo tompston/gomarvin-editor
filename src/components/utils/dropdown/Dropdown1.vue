@@ -11,7 +11,7 @@ defineEmits(['switch'])
           <div v-for="option in options" v-bind:key="option">
             <div
               @click="$emit('switch', option)"
-              class="method__option_btn disable-text-select hover-pointer"
+              class="method__option_btn disable-text-select hover-pointer--"
               :class="value == option ? 'method__option_btn--selected' : ''"
             >{{ option }}</div>
           </div>

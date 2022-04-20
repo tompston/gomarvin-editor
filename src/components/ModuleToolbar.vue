@@ -13,8 +13,8 @@ const wants_to_delete_module = ref(false)
 </script>
 
 <template>
-  <div class="grid gtc-1-auto mb-8-- module__toolbar tab--header">
-    <div class="tab--header--">{{ module.name }}</div>
+  <div class="grid gtc-1-auto module__toolbar tab--header">
+    <div class="">{{ module.name }}</div>
     <div class="flex">
       <!-- <div></div> -->
       <transition name="fade">

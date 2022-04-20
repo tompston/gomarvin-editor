@@ -55,10 +55,14 @@
     --code-txt: #e9e9e9;
     --svg-fill: #ffffff;
     /*  */
-    --http-method-get-bg: rgb(35, 83, 180);
+
+
+    /* --http-method-get-bg: rgb(35, 83, 180);
     --http-method-post-bg: rgb(81, 149, 35);
     --http-method-put-bg: rgb(219, 216, 57);
-    --http-method-delete-bg: rgb(144, 56, 56);
+    --http-method-delete-bg: rgb(144, 56, 56); */
+
+
     /*  */
     --module-name-btn-txt-col: rgb(180, 174, 164);
 }
