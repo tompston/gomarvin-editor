@@ -92,7 +92,8 @@ const sections = {
                 </p>
               </li>
 
-              <li>changing framework in the config file after the first generation will break things.</li>
+              <li>Bugs caused by url params and routing should be fixed manually.</li>
+
             </ul>
 
             <div>

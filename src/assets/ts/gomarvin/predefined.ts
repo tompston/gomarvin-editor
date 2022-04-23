@@ -38,11 +38,12 @@ export const Frameworks = {
     gin: 'gin',
     fiber: 'fiber',
     echo: 'echo',
+    chi: 'chi',
 }
 
 /** Not tested locally. Don't know if there will be erros with some older go versions */
 export const GoVersions = [1.15, 1.16, 1.17, 1.18]
-export const GomarvinVersions = ['v0.1.0', 'v0.2.0']
+export const GomarvinVersions = ['v0.1.0', 'v0.2.0', 'v0.3.0']
 
 // test if this works
 export const latest_gomarvin_version = GomarvinVersions[GomarvinVersions.length - 1]
