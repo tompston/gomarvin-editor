@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, watchEffect, onMounted } from 'vue'
-import { saveConfigToLocalStorage, getConfig } from '../assets/ts/utils/utils'
+import { saveConfigToLocalStorage, getConfig, publicConfigExists } from '../assets/ts/utils/utils'
 import { debug_mode, debug_grid_shown } from '../assets/ts/main'
 import { SETTINGS_TABS } from '../assets/ts/gomarvin/predefined'
 import * as gomarvin_config from '../assets/ts/gomarvin/interfaces'
@@ -40,11 +40,14 @@ function module_name(): string {
 function c(x: any) {
   console.log(x)
 }
-function debug() { }
+function debug() {
+  // console.log(publicConfigExists())
+}
 
 
-onMounted(() => {
+onMounted(async () => {
   console.log(getConfig())
+  // console.log((await publicConfigExists()))
 })
 
 //  Save config to localstorage when it is changed
@@ -72,7 +75,7 @@ watchEffect(() => {
                   <div v-for="module in config.modules" v-bind:key="module" class="navigation--option">
                     <button @click="currentlySelectedModule = module.name" class="module__name_btn"
                       :class="currentlySelectedModule == module.name ? 'module__name_btn--selected' : ''">{{
-                        module.name
+                          module.name
                       }}</button>
                   </div>
                   <div class="navigation--option">
@@ -105,7 +108,7 @@ watchEffect(() => {
                   <div v-for="SETTINGS_TAB in SETTINGS_TABS" v-bind:key="SETTINGS_TAB.id">
                     <button @click="currentlySelectedModule = SETTINGS_TAB.id" class="module__name_btn"
                       :class="currentlySelectedModule == SETTINGS_TAB.id ? 'module__name_btn--selected' : ''">{{
-                        SETTINGS_TAB.label
+                          SETTINGS_TAB.label
                       }}</button>
                   </div>
 
