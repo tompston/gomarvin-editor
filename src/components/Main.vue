@@ -112,11 +112,10 @@ watchEffect(() => {
                       }}</button>
                   </div>
 
-                  <div>
+                  <!-- <div>
                     <button class="module__name_btn" @click="utils.saveDataToJsonFile(config)">Save</button>
-                  </div>
+                  </div> -->
 
-                  <!-- SETTINGS_TABS -->
                 </div>
               </div>
             </div>

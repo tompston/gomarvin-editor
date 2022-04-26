@@ -8,9 +8,10 @@ import { ref, reactive } from 'vue'
 
 // settings tabs components
 import { SETTINGS_TABS } from '../assets/ts/gomarvin/predefined'
-import SettingsProjectTab from '../components/settings/SettingsProjectTab.vue'
-import SettingsNewProjectTab from '../components/settings/SettingsNewProjectTab.vue'
-import SettingsImportConfigTab from '../components/settings/SettingsImportConfigTab.vue'
+import SettingsProjectTab from '../components/settings/ProjectCurrent.vue'
+import SettingsNewProjectTab from '../components/settings/ProjectNew.vue'
+import SettingsImportConfigTab from '../components/settings/Import.vue'
+import Export from '../components/settings/Export.vue'
 
 defineProps<{ config: any; currentlySelectedModule: string }>()
 
@@ -32,27 +33,16 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
 
         <div class="grid gap-6">
           <!-- Grid of endpoints -->
-          <div
-            v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)"
-            v-bind:key="endpoint"
-          >
-            <Endpoint
-              :existing_controllers="editor.existing_controllers(module.endpoints)"
-              :endpoint="endpoint"
-              :new_endpoint="false"
-              @delete_event="editor.deleteValueFromArray(module.endpoints, endpoint)"
-            />
+          <div v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)" v-bind:key="endpoint">
+            <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"
+              :new_endpoint="false" @delete_event="editor.deleteValueFromArray(module.endpoints, endpoint)" />
           </div>
 
           <div>
-            <Endpoint
-              :existing_controllers="editor.existing_controllers(module.endpoints)"
-              :endpoint="new_endpoint_fields"
-              :new_endpoint="true"
-              @create_new_endpoint="
+            <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)"
+              :endpoint="new_endpoint_fields" :new_endpoint="true" @create_new_endpoint="
                 editor.CreateEndpointAndResetInputFields(module.endpoints, new_endpoint_fields)
-              "
-            />
+              " />
           </div>
         </div>
       </div>
@@ -72,6 +62,10 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
     <div v-if="currentlySelectedModule == SETTINGS_TABS.IMPORT_CONFIG_TAB.id">
       <SettingsImportConfigTab :config="config" header="Import Config" />
     </div>
+
+    <div v-if="currentlySelectedModule == SETTINGS_TABS.EXPORT_CONFIG_TAB.id">
+      <Export :config="config" header="Export Config" />
+    </div>
+
   </div>
 </template>
-

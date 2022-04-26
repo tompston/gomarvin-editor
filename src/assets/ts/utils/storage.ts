@@ -27,7 +27,7 @@ export function LocalStorageConfig() {
  * https://stackoverflow.com/questions/28464449/how-to-save-json-data-locally-on-the-machine
  */
 export function saveDataToJsonFile(data: any) {
-    let content = JSON.stringify(data, undefined, 4)
+    let content = JSON.stringify(data, undefined, 2)
     var a = document.createElement('a')
     a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content))
     a.setAttribute('download', json_config_name)

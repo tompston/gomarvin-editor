@@ -93,7 +93,7 @@ input {
 }
 .tab--header {
     font-size: var(--fs-4);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
 }

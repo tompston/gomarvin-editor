@@ -22,6 +22,11 @@
         padding: 0px 17px;
     }
 
+    .export--grid {
+        grid-template-columns: auto !important;
+        grid-template-rows: auto auto !important;
+    }
+
     .editor,
     .docs {
         grid-template-columns: auto !important;

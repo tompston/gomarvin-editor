@@ -20,21 +20,15 @@ const wants_to_delete_module = ref(false)
       <transition name="fade">
         <div v-if="edit_options_are_shown">
           <div class="flex gap-10">
-            <button
-              class="flex-center module__toolbar_option"
-              @click="; (wants_to_delete_module = true), (edit_options_are_shown = false)"
-            >DELETE</button>
-            <button
-              class="flex-center module__toolbar_option"
-              @click="editor.addCrudEndpoints(module), (edit_options_are_shown = false)"
-            >ADD CRUD</button>
+            <button class="flex-center module__toolbar_option"
+              @click="; (wants_to_delete_module = true), (edit_options_are_shown = false)">DELETE</button>
+            <button class="flex-center module__toolbar_option"
+              @click="editor.addCrudEndpoints(module), (edit_options_are_shown = false)">ADD CRUD</button>
           </div>
         </div>
       </transition>
-      <button
-        class="flex-center disable-text-select ml-10 module__toolbar_tool_btn"
-        @click="edit_options_are_shown = !edit_options_are_shown"
-      >
+      <button class="flex-center disable-text-select ml-10 module__toolbar_tool_btn"
+        @click="edit_options_are_shown = !edit_options_are_shown">
         <div class="flex-center border-rad-5 border-1-2">
           <ToolSvg dims="15" fill="var(--svg-fill)" class="p-8 op-65" />
         </div>
@@ -50,18 +44,13 @@ const wants_to_delete_module = ref(false)
         <div class="p-20 both-100">
           <div class="fs-3">Really want to delete {{ module.name }} module?</div>
           <div class="flex width-100 gap-10 mt-20">
-            <button
-              class="border-1-1 p-6 flex-center width-100 border-rad-4"
-              @click="editor.deleteModule(config.modules, module.name)"
-            >Yes</button>
-            <button
-              class="border-1-1 p-6 flex-center width-100 border-rad-4"
-              @click="wants_to_delete_module = false"
-            >Nope</button>
+            <button class="border-1-1 p-6 flex-center width-100 border-rad-4"
+              @click="editor.deleteModule(config.modules, module.name)">Yes</button>
+            <button class="border-1-1 p-6 flex-center width-100 border-rad-4"
+              @click="wants_to_delete_module = false">Nope</button>
           </div>
         </div>
       </div>
     </div>
   </transition>
 </template>
-

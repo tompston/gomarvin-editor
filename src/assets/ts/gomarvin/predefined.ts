@@ -47,7 +47,7 @@ export const GomarvinVersions = ['v0.1.0', 'v0.2.0', 'v0.3.0']
 export const latest_gomarvin_version = GomarvinVersions[GomarvinVersions.length - 1]
 export const latest_go_version = GoVersions[GoVersions.length - 1]
 
-// --------------- Not Used in Config
+//  Not Used in Config
 export const SETTINGS_TABS = {
     CURRENT_PROJECT_TAB: {
         id: 'CURRENT_PROJECT_TAB',
@@ -60,5 +60,9 @@ export const SETTINGS_TABS = {
     IMPORT_CONFIG_TAB: {
         id: 'IMPORT_CONFIG_TAB',
         label: 'Import',
+    },
+    EXPORT_CONFIG_TAB: {
+        id: 'EXPORT_CONFIG_TAB',
+        label: 'Export',
     },
 }
