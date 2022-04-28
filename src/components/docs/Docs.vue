@@ -53,7 +53,7 @@ const sections = {
         </div>
 
         <div class="docs--content">
-          <div class="fs-2 fw-300-- fw-800 mb-30">Gomarvin explained</div>
+          <div class="fs-2 fw-700 mb-30 font-helvetica">Gomarvin explained</div>
 
           <div class="text-2 fw-400 mb-110 max-w-640">
             <DocIntro />
@@ -119,7 +119,6 @@ const sections = {
 
             <h3 id="include_ts_fetch" class="doc-subheader-1">include_ts_fetch</h3>
 
-            <!-- <p>Currently won't do anything, work in progress</p> -->
             <!-- <br /> -->
             <p>
               If set to true,
@@ -275,9 +274,7 @@ async function FetchCreateUserEndpoint(){
               </li>
               <li>
                 Go has some great benefits for writing backends. On of them is that switching
-                framewoks is relativley easy. So this project supports Gin, Fiber and Echo currently.
-                The
-                goal is to support 4 frameworks at most.
+                framewoks is relativley easy. So this project supports Gin, Fiber, Echo and Chi.
               </li>
               <li>
                 The current frontend editor

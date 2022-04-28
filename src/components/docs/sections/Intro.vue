@@ -31,7 +31,7 @@
 
     <div class="mt-20"></div>
     <h2 id="-install-steps-can-be-found-here-https-github-com-tompston-gomarvin-install-">
-      <div class="flex-center gap-6 mt-80 mb-40">
+      <div class="flex-center gap-6 mt-100 mb-60">
         Install steps can be found
         <a href="https://github.com/tompston/gomarvin#install" target="_blank" rel="noopener noreferrer">here</a>
       </div>
