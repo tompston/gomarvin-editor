@@ -2,7 +2,6 @@
   <div id="intro">
     One of the main tasks of backend REST APIs is really simple in theory:
     <div class="docs-quote">
-      <!-- <code></code> -->
       > "Run this SQL query and return the data"
     </div>
 

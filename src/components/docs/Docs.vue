@@ -100,9 +100,8 @@ const sections = {
               <p class="text-center my-30 fw-600 main-col-danger text-col-white py-16 px-10 border-rad-3">
                 If a file has
                 <code>.gen</code> in the name, that means it will be regenerated on
-                each run. So editing them is a bad idea if you want to save changes. Either rename the
-                file or move it somewhere else to edit it.
-
+                each run. So editing them is a bad idea if you want to save changes. So rename the
+                file to edit it.
               </p>
             </div>
 
@@ -117,17 +116,18 @@ const sections = {
               <li>SQL files that hold placeholder tables and queries for the module endpoints</li>
             </ul>
 
+            <br>
+
             <h3 id="include_ts_fetch" class="doc-subheader-1">include_ts_fetch</h3>
 
             <!-- <br /> -->
             <p>
               If set to true,
-              <code>main.gen.ts</code>
-              will be created at the root of the project and
-              populated with util functions for fetching the data. Everything is in a single file, so
-              that it's easier to import the code into frontend.
+              <code>gomarvin.gen.ts</code>
+              will be created in the <code>/public</code> dir and
+              populated with fetch functions for the endpoint.
               <br />
-              <br />To stay agnostic about frontend frameworks, the generated util functions return only
+              <br />To stay agnostic about frontend frameworks, the generated functions return only
               the promise of the response.
               That way, you can implement custom loading / error states in the framework of your choice.
 
@@ -136,46 +136,89 @@ const sections = {
 
               The name of the generated typescript fetch function is the same as the defined controller
               name.
-              The same applies to the body.
+              The same applies to the body ( <code>ControllerName + "Body"</code> ).
               <br>
               <br>
 
+              The generated values are documented with JSdoc. Interfaces for the Endpoint body include the validate
+              fields.
+              <br>
+              <br>
 
-              Typescript is used because:
-            <ul>
-              <li>strict types are great</li>
-              <li>Typescript can be compiled down to be valid javascript</li>
-            </ul>
-
+              All values from the file are exported. Additionally, the module endpoints are grouped in a object that has
+              a name of
+              <code>ModuleName + "Endpoints"</code>.
+              <br>
+              <br>
             </p>
 
+            <div class="fs-7 fw-700">fetch-only</div>
+            If you only need to generate the typescript file, run
 
-            <h3 id="include_ts_fetch-example" class="doc-subheader-1">Example using generated fetch
+            <div class="docs-quote">
+            gomarvin -fetch-only="true"
+            </div>
+
+            <!-- <br> -->
+            <br>
+
+            <h3 id="include_ts_fetch-example" class="doc-subheader-1">Examples using generated fetch
               functions</h3>
             <pre>
                             <code>
-<span class="op-60">// import the generated file</span>
-import * as F from "../../build/fiber_with_modules/main.gen";
+<span class="docs-comment">// import the generated file</span>
+import * as F from "../../../gomarvin.gen";
+<span class="docs-comment">// or import only the Comment module endpoints</span>
+import { CommentEndpoints } from "../../../gomarvin.gen";
 
+<span class="docs-comment">// fetch a user by id</span>
 async function FetchGetUserByIdEndpoint() {
-    let res = await F.GetUserById(1);
-    let users = await res.json();
-    console.log(users);
+  let res = await F.GetUserById(1);
+  let users = await res.json();
+  console.log(users);
 }
 
+<span class="docs-comment">// create a new user</span>
+async function FetchCreateUserEndpoint() {
+  let res = await F.CreateUser({
+    username: "qweqwe",
+    email: "qwe@qwe.com",
+    age: 20,
+    password: "very-long-and-good-password",
+  });
 
-async function FetchCreateUserEndpoint(){
-    let res = await F.CreateUser({
-          username: "qweqwe",
-          email: "qwe@qwe.com",
-          age: 20,
-          password: "very-long-and-good-password",
-    })
-
-    let users = await res.json()
-    console.log(users)
+  let user = await res.json();
+  console.log(user);
 }
-                            </code>
+
+<span class="docs-comment">// append optional string to the existing endpoint url</span>
+async function FetchEndpointWithAppendedUrl() {
+  const res = await F.GetUserById(10, { append_url: "?name=jim" });
+  console.log(res);
+}
+
+<span class="docs-comment">// define custom options for the fetch request</span>
+async function FetchEndpointWithCustomOptions() {
+  const res = await F.GetUserById(10, { options: { method: "POST" } });
+  console.log(res);
+}
+
+<span class="docs-comment">// Use both optional values
+// - append a string to the fetch url
+// - define a new options object used in the fetch request</span>
+async function FetchWithAppendedUrlAndCustomOptions() {
+  const res = await F.GetUserById(10, {
+    options: { method: "DELETE" },
+    append_url: "?name=jim",
+  });
+  console.log(res);
+}
+
+<span class="docs-comment">// Fetch a single endpoint from the Comment module</span>
+async function FetchCommentById() {
+  const res = await CommentEndpoints.GetComment(20);
+  console.log(res);
+}</code>
                         </pre>
 
 
@@ -244,7 +287,7 @@ async function FetchCreateUserEndpoint(){
                   <code>__</code> prefix. This is done for 3 reasons:
                 </p>
                 <ul>
-                  <li>easier to identify what code is regenerated on eah run</li>
+                  <li>easier to identify what code is regenerated on each run</li>
                   <li>
                     as these values will be regenerated, the prefix removes the option of
                     exporting them from the package
@@ -260,9 +303,6 @@ async function FetchCreateUserEndpoint(){
                   The project is in early stage, this means that there will be breaking changes
                   later.
                 </p>
-              </li>
-              <li>
-                <p>Gin router has some bugs with url params. So that should be fixed manually</p>
               </li>
               <li>
                 Routers for the modules will be automatically imported and available only on the

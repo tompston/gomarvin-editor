@@ -67,8 +67,7 @@
     border-radius: var(--border-rad-3);
     padding: 3px 15px;
     font-size: var(--fs-9);
-    
-    
+
     white-space: pre-wrap;
     /* overflow-x: scroll; */
 }
@@ -77,4 +76,9 @@
     background: rgb(255, 255, 255) !important;
     color: rgb(59, 59, 59) !important;
     /* overflow-x: scroll; */
+}
+
+.docs-comment {
+    opacity: 0.43;
+    font-weight: 600;
 }
