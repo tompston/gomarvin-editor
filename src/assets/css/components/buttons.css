@@ -34,6 +34,8 @@ button[disabled] {
   border-radius: var(--border-rad-5);
   color: var(--selected-text-col-1);
   background: var(--selected-bg-col-1);
+
+  /* margin: 20px; */
 }
 
 .create_project_btn {

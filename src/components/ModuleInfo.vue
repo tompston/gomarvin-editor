@@ -31,7 +31,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
         <!-- Endpoinnt Toolbar row -->
         <ModuleToolbar :module="module" :config="config" />
 
-        <div class="grid gap-6">
+        <div class="grid gap-6--">
           <!-- Grid of endpoints -->
           <div v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)" v-bind:key="endpoint">
             <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"

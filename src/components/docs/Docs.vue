@@ -126,37 +126,54 @@ const sections = {
               <code>gomarvin.gen.ts</code>
               will be created in the <code>/public</code> dir and
               populated with fetch functions for the endpoint.
+
               <br />
-              <br />To stay agnostic about frontend frameworks, the generated functions return only
-              the promise of the response.
-              That way, you can implement custom loading / error states in the framework of your choice.
+              <br />
+              As everything is generated from a single point of reference ( config file ), the fetch functions come with
+              type checked body and url params. This means that keeping the server and frontend client in sync with each
+              other is 10x easier.
+              This also means that if the backend optionally serves the generated fetch functions file, frontend people
+              can import a valid API client, without talking to the backend team.
 
-              <br>
-              <br>
+            <div class="border-1-2 italic op-70 p-18 mt-10 border-rad-3">
+              One problem with this may be the authentication part. As there are multiple ways of doing it, it's a bit
+              harder to implement it in the fetch functions. One possible way of dealing with it, is indicating which
+              routes need authentication by adding <code>"withAuth"</code> at the end of the controller name to signal
+              that more actions need to be taken to make a valid fetch request.
+            </div>
 
-              The name of the generated typescript fetch function is the same as the defined controller
-              name.
-              The same applies to the body ( <code>ControllerName + "Body"</code> ).
-              <br>
-              <br>
 
-              The generated values are documented with JSdoc. Interfaces for the Endpoint body include the validate
-              fields.
-              <br>
-              <br>
+            <br />
+            To stay agnostic about frontend frameworks, the generated functions return only
+            the promise of the response.
+            That way, you can implement custom loading / error states in the framework of your choice.
 
-              All values from the file are exported. Additionally, the module endpoints are grouped in a object that has
-              a name of
-              <code>ModuleName + "Endpoints"</code>.
-              <br>
-              <br>
+            <br>
+            <br>
+
+            The name of the generated typescript fetch function is the same as the defined controller
+            name.
+            The same applies to the body ( <code>ControllerName + "Body"</code> ).
+            <br>
+            <br>
+
+            The generated values are documented with JSdoc. Interfaces for the Endpoint body include the validate
+            fields.
+            <br>
+            <br>
+
+            All values from the file are exported. Additionally, the module endpoints are grouped in a object that has
+            a name of
+            <code>ModuleName + "Endpoints"</code>.
+            <br>
+            <br>
             </p>
 
-            <div class="fs-7 fw-700">fetch-only</div>
+            <div class="fs-8 fw-700">fetch-only</div>
             If you only need to generate the typescript file, run
 
             <div class="docs-quote">
-            gomarvin -fetch-only="true"
+              gomarvin -fetch-only="true"
             </div>
 
             <!-- <br> -->

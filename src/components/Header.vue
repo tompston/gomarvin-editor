@@ -57,7 +57,7 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
   <div v-if="navigationIsShown && windowWidth < 670">
     <div class="flex-center">
       <div class="max-width-1">
-        <div class="fs-9 fw-600 py-10 border-rad-3 header__navigation">
+        <div class="fs-8 fw-600 py-14 border-rad-3 header__navigation">
           <div class="flex-center gap-44 header__navigation__grid">
             <div class="hover-underline hover-pointer">
               <router-link to="/" class="remove-decorations">Editor</router-link>

@@ -26,7 +26,7 @@ const custom_body_field_type = ref('')
         @input="body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)"
       />
       <InputErrBox
-        msg="Body field should not be empty!"
+        msg="Body field can't be empty!"
         v-if="body_param.field == '' && !new_endpoint"
       />
       <InputErrBox
