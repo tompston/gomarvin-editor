@@ -92,7 +92,7 @@ input {
 }
 .tab--header {
     font-size: var(--fs-4);
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 10px;
     font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
 }
@@ -109,4 +109,11 @@ input {
     width: 100%;
     padding: 15px !important;
     box-sizing: border-box;
+}
+
+.delete_endpoint__btn:hover {
+    transition: var(--transition-1);
+    background: rgb(244, 101, 101);
+    color: white;
+    border: 1px solid white;
 }
