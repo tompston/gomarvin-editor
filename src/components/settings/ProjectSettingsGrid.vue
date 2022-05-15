@@ -34,7 +34,7 @@ const framework_dropdown_is_shown = ref(false)
       <div class="settings__project_info_label">framework</div>
       <div class="settings__project_info_value ">
         <div @click="framework_dropdown_is_shown = !framework_dropdown_is_shown" class="settings__project_info_input">{{
-          project_info.framework
+            project_info.framework
         }}</div>
         <Dropdown1 v-if="new_project" :is_shown="framework_dropdown_is_shown" :options="predefined.Frameworks"
           :value="project_info.framework"
@@ -70,7 +70,7 @@ const framework_dropdown_is_shown = ref(false)
           @input="project_info.config_version = utils.ConvertToValidValue($event, utils.ValidConfigVersion)" />
 
         <InputErrBox msg="Config version can't be empty!" v-if="project_info.config_version == ''" />
-        <InputErrBox msg="Config version should be float!"
+        <InputErrBox msg="Config version should be a float!"
           v-if="!editor.isFloat(project_info.config_version) || project_info.config_version.length <= 2" />
       </div>
     </div>
@@ -80,7 +80,7 @@ const framework_dropdown_is_shown = ref(false)
       <div class="settings__project_info_label">db_type</div>
       <div class="settings__project_info_value">
         <div class="settings__project_info_input" @click="db_dropdown_is_shown = !db_dropdown_is_shown">{{
-          project_info.db_type
+            project_info.db_type
         }}</div>
         <Dropdown1 :is_shown="db_dropdown_is_shown" :options="predefined.DbTypes" :value="project_info.db_type"
           @switch="; (project_info.db_type = $event), (db_dropdown_is_shown = false)" />
@@ -105,7 +105,7 @@ const framework_dropdown_is_shown = ref(false)
       <div class="settings__project_info_label">go_version</div>
       <div class="settings__project_info_value">
         <div class="settings__project_info_input" @click="go_v_dropdown_is_shown = !go_v_dropdown_is_shown">{{
-          project_info.go_version
+            project_info.go_version
         }}</div>
         <Dropdown1 :is_shown="go_v_dropdown_is_shown" :options="predefined.GoVersions" :value="project_info.go_version"
           @switch="; (project_info.go_version = $event), (go_v_dropdown_is_shown = false)" />
@@ -193,7 +193,6 @@ const framework_dropdown_is_shown = ref(false)
   /* opacity: 0.9; */
 }
 
-
 .settings__project_info_value {
   min-height: 40px;
 }
@@ -203,5 +202,3 @@ const framework_dropdown_is_shown = ref(false)
   gap: 7px;
 }
 </style>
-
-

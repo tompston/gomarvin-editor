@@ -14,8 +14,6 @@ import './assets/css/components/buttons.css'
 import './assets/css/components/debug.css'
 import './assets/css/components/docs.css'
 
-// 
 import router from './router'
 
-// createApp(App).mount('#app')
 createApp(App).use(router).mount('#app')

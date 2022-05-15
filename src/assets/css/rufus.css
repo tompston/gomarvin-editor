@@ -28,6 +28,8 @@
     --main-bg-col: #ffffff;
     --main-text-col: #000000;
     --main-col-danger: rgb(203, 19, 19);
+    --main-col-danger: rgb(233, 74, 74);
+    /* rgb(244, 101, 101); */
 
     /* font-size */
     --fs-1: 78px;

@@ -114,6 +114,7 @@ input {
 .delete_endpoint__btn:hover {
     transition: var(--transition-1);
     background: rgb(244, 101, 101);
+
     color: white;
     border: 1px solid white;
 }
