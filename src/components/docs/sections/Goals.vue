@@ -24,14 +24,20 @@
     </p>
     <ul>
         <li>
-            The generated controllers are meant to be copied to a new file and customized to run the
+            <!-- The generated controllers are meant to be copied to a new file and customized to run the
             functions that query the data. Thus, while we rely on the codegen to generate the
+            boilerpate, we are not dependent on it if we want to edit it. -->
+
+            While we rely on the codegen to generate the
             boilerpate, we are not dependent on it if we want to edit it.
+            To customize the generated code, rename <code>controllers.gen.go</code> files to
+            <code>controllers.go</code> (or any other name, doesn't really matter) and remove the <code>__</code> prefix
+            in the new file. That way there won't be any overlap between the generated code and editable code.
             <ul>
                 <li>
                     Need a custom field for the generated endpoint Body struct?
                     <ul>
-                        <li>Copy that struct, replace the prefix and edit it in the new file.</li>
+                        <li>Edit in the copied file.</li>
                     </ul>
                 </li>
                 <li>

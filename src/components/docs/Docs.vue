@@ -108,7 +108,7 @@ const sections = {
             <h1 id="optional-values">Optional values</h1>
             <p>
               Controllers aren't the only thing that we can automatically generate from the config
-              file. As the goal of this project is to automate out the boring parts of writing rest
+              file. As the goal of this project is to automate out the boring parts of writing REST
               servers, we can also generate:
             </p>
             <ul>
@@ -315,12 +315,12 @@ async function FetchCommentById() {
                   </li>
                 </ul>
               </li>
-              <li>
+              <!-- <li>
                 <p>
                   The project is in early stage, this means that there will be breaking changes
                   later.
                 </p>
-              </li>
+              </li> -->
               <li>
                 Routers for the modules will be automatically imported and available only on the
                 first run
