@@ -1,5 +1,4 @@
 # Editor for gomarvin configs
-
 If the frontend crashes for some reason, open DevTools, run
 
 ```
@@ -10,20 +9,30 @@ and reload the page
 
 <!--
 
+// return the size of the stored stuff in localstorage
+// https://stackoverflow.com/questions/4391575/how-to-find-the-size-of-localstorage
+
+var _lsTotal = 0,
+    _xLen, _x;
+for (_x in localStorage) {
+    if (!localStorage.hasOwnProperty(_x)) {
+        continue;
+    }
+    _xLen = ((localStorage[_x].length + _x.length) * 2);
+    _lsTotal += _xLen;
+    console.log(_x.substr(0, 50) + " = " + (_xLen / 1024).toFixed(2) + " KB")
+};
+console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
+
+
+
+
 /* 
   --- Centering content + full width backgrounds in html
       <div class="flex-center">
           <div class="max-width-1">content</div>
       </div>
   
-  --- importing fonts example
-    @font-face {
-      font-family: "Poppins-Bold";
-      src: url(../fonts/Poppins-Bold.ttf);
-    }
-  
-  --- Automatic grid example
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
 <a
   href="qwe"
