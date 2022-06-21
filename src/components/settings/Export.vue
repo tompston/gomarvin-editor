@@ -45,7 +45,7 @@ function fakePause(time: number) {
         </div>
 
         <div class="border-1-2 p-16 border-rad-4 op-75">
-            <pre>{{ JSON.stringify(config, undefined, 2) }}</pre>
+            <pre class="font-mono fs-10">{{ JSON.stringify(config, undefined, 2) }}</pre>
         </div>
 
         <transition name="fade">
