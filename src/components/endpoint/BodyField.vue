@@ -37,15 +37,15 @@ const custom_body_field_type = ref('')
     </div>
 
     <input type="text" class="code" v-model="body_param.validate" placeholder="validate field in go struct"
-      @input="body_param.validate = utils.ConvertToValidValue($event, utils.ValidValidateField)" />
+      autocorrect="off" @input="body_param.validate = utils.ConvertToValidValue($event, utils.ValidValidateField)" />
 
-    <!-- if already existing endpoint, return element that allows to delete current body_param -->
+    <!-- if an existing endpoint, return element that allows to delete current body_param -->
     <button v-if="!new_endpoint" class="flex-center temp-main-col-1 text-col-6 delete_body_param border-rad-5"
       @click="editor.deleteValueFromArray(endpoint.body, body_param)">
       <DeleteSvg dims="14" fill="white" class="qwe" />
     </button>
 
-    <!-- if already existing endpoint, return element that allows to create current body_param -->
+    <!-- if a new endpoint, return element that allows to create current body_param -->
     <button v-if="new_endpoint" class="flex-center"
       :disabled="!editor.canCreateNewBodyField(existing_body_params, body_param.field)"
       @click="$emit('create_body_field')">N</button>

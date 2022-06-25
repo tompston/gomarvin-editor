@@ -16,7 +16,7 @@ const wants_to_delete_module = ref(false)
   <div class="grid gtc-1-auto module__toolbar tab--header">
     <div class="">{{ module.name }}</div>
     <div class="flex">
-      <!-- <div></div> -->
+
       <transition name="fade">
         <div v-if="edit_options_are_shown">
           <div class="flex gap-10">
@@ -27,12 +27,14 @@ const wants_to_delete_module = ref(false)
           </div>
         </div>
       </transition>
+
       <button class="flex-center disable-text-select ml-10 module__toolbar_tool_btn"
         @click="edit_options_are_shown = !edit_options_are_shown">
         <div class="flex-center border-rad-5 border-1-2">
           <ToolSvg dims="15" fill="var(--svg-fill)" class="p-8 op-65" />
         </div>
       </button>
+
     </div>
   </div>
 
@@ -53,4 +55,5 @@ const wants_to_delete_module = ref(false)
       </div>
     </div>
   </transition>
+
 </template>

@@ -10,17 +10,6 @@ import Header from './Header.vue'
 import ModuleInfo from './ModuleInfo.vue'
 
 
-/**
- * Before implementing localstorage for storing config, used this
- * import json_config from '../../../gomarvin.json' // import ouside of the project scope
- * const placeholder_config: gomarvin_config.Config = JSON.parse(JSON.stringify(json_config))
- * const config = reactive(JSON.parse(JSON.stringify(json_config)))
- * 
- * localStorage.clear();
- */
-
-
-
 let stored_config = getConfig()
 const config = reactive((stored_config))
 const createNewModuleDropdownIsShown = ref(false)
@@ -36,25 +25,17 @@ function module_name(): string {
   return ''
 }
 
-/** -------- Debug vars */
-function c(x: any) {
-  console.log(x)
-}
-function debug() {
-  // console.log(publicConfigExists())
-}
 
+function debug() { }
 
 onMounted(async () => {
   console.log(getConfig())
-  // console.log((await publicConfigExists()))
 })
 
 //  Save config to localstorage when it is changed
 watchEffect(() => {
   saveConfigToLocalStorage(config)
 })
-
 
 </script>
 

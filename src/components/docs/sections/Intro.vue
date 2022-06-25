@@ -5,8 +5,8 @@
       > "Run this SQL query and return the data"
     </div>
 
-    <!-- <br> -->
-    <div class="mt-16"></div>But the process of creating endpoints is boring and slow. A lot of boilerplate needs to be
+    <div class="mt-16"></div>
+    But the process of creating endpoints is boring and slow. A lot of boilerplate needs to be
     written to do that one simple thing correctly.
     So how can you fix this? How can you generate the boilerplate parts for the backend while
     allowing full customization?

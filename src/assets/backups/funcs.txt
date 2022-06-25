@@ -1,0 +1,24 @@
+export function lastCharCantBe(x: string, invalid_value: string): string {
+  if (x.length >= 1) {
+    let x_without_last_char = x.substring(0, x.length - 1)
+    let x_last_char = x.charAt(x.length - 1)
+
+    if (x_last_char == invalid_value) {
+      x_last_char = ''
+      return x_without_last_char + x_last_char
+    }
+    return x
+  }
+  return x
+}
+
+
+
+/**
+ * Before implementing localstorage for storing config, used this
+ * import json_config from '../../../gomarvin.json' // import ouside of the project scope
+ * const placeholder_config: gomarvin_config.Config = JSON.parse(JSON.stringify(json_config))
+ * const config = reactive(JSON.parse(JSON.stringify(json_config)))
+ * 
+ * localStorage.clear();
+ */

@@ -47,9 +47,6 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
             <path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
           </svg>
         </div>
-
-        <!-- <div>{{ navigationIsShown }}</div> -->
-        <!-- <div>{{ windowWidth }}</div> -->
       </div>
     </div>
   </header>
@@ -68,15 +65,13 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
             <div class="hover-underline hover-pointer remove-decorations">
               <a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
             </div>
-
             <div class>{{ latest_gomarvin_version }}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <hr class="hr-1-3" /> -->
-
+  
   <div class="mb-24"></div>
 </template>
 
@@ -86,11 +81,6 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 .header__navigation {
   background-color: black;
   color: white;
-  position: absolute;
-  position: static;
   position: relative;
-  /* width: 1fr; */
-  /* min-width: 100%; */
-  /* right: 0px; */
 }
 </style>

@@ -15,11 +15,8 @@ import Export from '../components/settings/Export.vue'
 
 defineProps<{ config: any; currentlySelectedModule: string }>()
 
-function c(x: any) {
-  console.log(x)
-}
-
 const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_endpoint_fields })
+
 </script>
 
 
@@ -31,7 +28,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
         <!-- Endpoinnt Toolbar row -->
         <ModuleToolbar :module="module" :config="config" />
 
-        <div class="grid gap-6--">
+        <div class="grid">
           <!-- Grid of endpoints -->
           <div v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)" v-bind:key="endpoint">
             <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"
@@ -47,6 +44,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
         </div>
       </div>
     </div>
+
     <div class="code mt-16" v-if="debug_mode">
       <div class="mb-4">new_endpoint_fields</div>
       <div>{{ new_endpoint_fields }}</div>
@@ -62,7 +60,6 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
     <div v-if="currentlySelectedModule == SETTINGS_TABS.IMPORT_CONFIG_TAB.id">
       <SettingsImportConfigTab :config="config" header="Import Config" />
     </div>
-
     <div v-if="currentlySelectedModule == SETTINGS_TABS.EXPORT_CONFIG_TAB.id">
       <Export :config="config" header="Export Config" />
     </div>
