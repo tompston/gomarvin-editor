@@ -18,7 +18,7 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 <template>
   <header class="flex-center">
     <div class="max-width-1">
-      <div class="py-20 grid gtc-1-auto header disable-text-select">
+      <div class="py-20 grid gtc-1-auto header disable-text-select fs-8">
         <div class="fw-400 header__left">
           <router-link to="/" class="remove-decorations fw-500">GOMARVIN</router-link>
         </div>

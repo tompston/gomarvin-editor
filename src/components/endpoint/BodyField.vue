@@ -18,7 +18,7 @@ const custom_body_field_type = ref('')
 <template>
   <div class="endpoint_body_grid">
     <div>
-      <input type="text" placeholder="field_name" v-model="body_param.field" class="code"
+      <input type="text" placeholder="field_name" v-model="body_param.field" class="code width-100"
         @input="body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)" />
       <InputErrBox msg="Body field can't be empty!" v-if="body_param.field == '' && !new_endpoint" />
       <InputErrBox msg="Body field already exists!" v-if="

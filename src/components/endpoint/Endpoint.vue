@@ -99,10 +99,9 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 
   <div class="p-2 mt-4" v-if="detailsAreShown">
     <!-- Single Body field -->
-    <div class="mb-6">
-
+    <div class="mb-8">
       <div class="grid gtc-1-auto mb-10 mt-2">
-        <div class="fs-6 fw-500 disable-text-select">Body</div>
+        <div class="fs-7 fw-500 disable-text-select">Body</div>
         <div v-if="!new_endpoint">
           <div class="flex both-100">
             <div class="flex gap-6 flex-center">

@@ -93,6 +93,9 @@ const sections = {
               </li>
 
               <li>Bugs caused by url params and routing should be fixed manually.</li>
+              <li>The currently generated codebase uses a global <code>database.DB</code> variable to create a
+                database connection. Some places say that this is not the best approach. So do your own research on
+                which method you want to use.</li>
 
             </ul>
 
@@ -310,10 +313,13 @@ async function FetchCommentById() {
                     exporting them from the package
                   </li>
                   <li>
-                    If you wish to copy and edit all of the generated code in one go, just make
-                    a copy of it and replace the prefix.
+                    If you wish to copy and edit all of the generated code in one go, just rename the file and remove
+                    the prefix.
                   </li>
                 </ul>
+              </li>
+              <li>
+                Check for a newer version of the used backend framework. The current ones may not be up to date.
               </li>
               <!-- <li>
                 <p>

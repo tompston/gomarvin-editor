@@ -49,6 +49,9 @@
     --border-rad-4: 7px;
     --border-rad-5: 5px;
     --border-rad-6: 0px;
+
+    --border-rad-main: 5px;
+
     /* hr color  */
     --hr-col-1: rgba(29, 29, 29, 0.4);
     --hr-col-2: rgba(29, 29, 29, 0.2);
@@ -107,7 +110,8 @@
 
     /* E23E36 */
     /*  */
-    --mevi-w: 118px;
+    /* --mevi-w: 118px; */
+    --mevi-w: 123px;
     --mevi-border: 1px solid rgba(0, 0, 0, 0.12);
     --endpoint-btn-width: 37px;
     --endpoint-btn-width: 39px;
@@ -210,4 +214,8 @@ code,
 
 .font-helvetica {
     font-family: Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+.border-rad-main {
+    border-radius: var(--border-rad-main);
 }
