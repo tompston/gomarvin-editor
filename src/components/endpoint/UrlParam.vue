@@ -39,7 +39,8 @@ const dropdownIsShown = ref(false)
               :class="url_param.type == option ? 'method__option_btn--selected' : ''">{{ option }}</div>
           </div>
           <div class="method__option_btn">
-            <button @click="editor.deleteValueFromArray(endpoint.url_params, url_param)" class="w-full h-full">
+            <button @click="editor.deleteValueFromArray(endpoint.url_params, url_param)"
+              class="w-full h-full flex-center">
               <DeleteSvg dims="15" fill="var(--svg-fill)" class="qwe" />
             </button>
           </div>

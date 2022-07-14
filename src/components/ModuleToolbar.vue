@@ -28,7 +28,7 @@ const wants_to_delete_module = ref(false)
       <button class="flex-center disable-text-select ml-[10px] module__toolbar_tool_btn"
         @click="edit_options_are_shown = !edit_options_are_shown">
         <div class="flex-center border-rad-5 border-1-2">
-          <ToolSvg dims="28" fill="var(--svg-fill)" class="p-[8px] opacity-60" />
+          <ToolSvg dims="29" fill="var(--svg-fill)" class="p-[8px] opacity-60" />
         </div>
       </button>
 

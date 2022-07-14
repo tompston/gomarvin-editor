@@ -21,6 +21,8 @@
     --main-col-8: #ffffff;
     --main-col-9: #ffffff;
 
+    --bg-light-select-1: rgb(246, 246, 246);
+
     --main-bg-col: #ffffff;
     --main-text-col: #000000;
     --main-col-danger: rgb(203, 19, 19);
@@ -186,4 +188,8 @@ input {
     padding: 5px 0px;
     font-weight: 400;
     color: var(--main-text-col);
+}
+
+.bg-light-select-1 {
+    background-color: var(--bg-light-select-1);
 }
