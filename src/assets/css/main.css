@@ -1,33 +1,13 @@
-/* 
-.flex-center{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-*/
-
-.code {
-    font-size: 11px;
-    background: rgb(249, 249, 249);
-    border: 1px solid rgba(0, 0, 0, 0);
-}
-code {
-    font-size: 12px;
-    padding: 3px 7px;
-}
-input {
-    padding: 5px 0px;
-    font-weight: 400;
-    color: var(--main-text-col);
-}
 .editor {
-    grid-template-columns: 142px auto;
+    width: 100%;
+    grid-template-columns: 144px auto;
     display: grid;
     gap: 24px;
 }
 .code,
 .mevi {
     transition: var(--transition-1);
+    font-size: var(--fs-9);
 }
 
 .endpoint__method_selected,
@@ -37,27 +17,22 @@ input {
 
 /* mevi = module endpoint value input  */
 .mevi {
+    background: rgba(0, 0, 0, 0);
     border: var(--mevi-border);
     width: 100%;
+    min-height: 30px;
     height: 100%;
     box-sizing: border-box;
     padding-left: 9px;
-    /* border-radius: 3px; */
-    /* border-radius: 5px; */
     max-width: var(--mevi-w);
 }
 .mevi:focus,
 .code:focus {
     border: 1px solid rgb(54, 134, 255);
 }
-.max-w-full {
-    max-width: 100%;
-}
 
 .endpoint {
     border-bottom: var(--border-1-3);
-    /* border-radius: 6px; */
-    /* background: rgb(215, 255, 182); */
     display: grid;
     grid-template-columns: auto var(--endpoint-btn-width);
 }
@@ -65,60 +40,20 @@ input {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
     gap: 6px;
-    /* padding: 9px 5px; */
     padding: 11px 0px;
     width: 100%;
 }
-.endpoint_input_grid {
-    height: 100%;
-}
-.endpoint__method_options_grid__content {
-    display: flex;
-    flex-flow: column;
-    gap: 4px;
-}
-/* very good overlay example --> https://jsfiddle.net/j39c0p4s/1/ */
-.url_param_input_grid {
-    position: relative;
-}
-.url_param_input_grid .url_param_input_grid--overlay {
-    text-align: center;
-    position: absolute;
-    right: 0;
-    top: 0;
-    border-radius: 5px;
-    font-size: 13px;
-    padding: 2px 6px;
-    /*  */
-    opacity: 0.7;
-    background: var(--selected-bg-col-1);
-    color: var(--selected-text-col-1);
-    margin-top: 4px;
-    margin-right: 4px;
-}
-.tab--header {
+
+.tab__header {
     font-size: var(--fs-4);
     font-weight: 600;
     margin-bottom: 10px;
+    line-height: 1;
 }
+
 .project-settings-header {
     font-size: var(--fs-6);
     font-weight: 700;
     margin-bottom: 3px;
     margin-top: 12px;
-}
-/* textarea */
-.import_new_config_input {
-    min-height: 300px;
-    height: 100%;
-    width: 100%;
-    padding: 15px !important;
-    box-sizing: border-box;
-}
-
-.delete_endpoint__btn:hover {
-    transition: var(--transition-1);
-    background: rgb(244, 101, 101);
-    color: white;
-    border: 1px solid white;
 }

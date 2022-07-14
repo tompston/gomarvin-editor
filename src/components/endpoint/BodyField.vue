@@ -18,7 +18,7 @@ const custom_body_field_type = ref('')
 <template>
   <div class="endpoint_body_grid">
     <div>
-      <input type="text" placeholder="field_name" v-model="body_param.field" class="code width-100"
+      <input type="text" placeholder="field_name" v-model="body_param.field" class="code w-full"
         @input="body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)" />
       <InputErrBox msg="Body field can't be empty!" v-if="body_param.field == '' && !new_endpoint" />
       <InputErrBox msg="Body field already exists!" v-if="
@@ -42,7 +42,7 @@ const custom_body_field_type = ref('')
     <!-- if an existing endpoint, return element that allows to delete current body_param -->
     <button v-if="!new_endpoint" class="flex-center temp-main-col-1 text-col-6 delete_body_param border-rad-5"
       @click="editor.deleteValueFromArray(endpoint.body, body_param)">
-      <DeleteSvg dims="14" fill="white" class="qwe" />
+      <DeleteSvg dims="14" fill="var(--svg-fill)" class="qwe" />
     </button>
 
     <!-- if a new endpoint, return element that allows to create current body_param -->
@@ -58,7 +58,7 @@ const custom_body_field_type = ref('')
 .endpoint_body_grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: 110px 100px 1fr 24px;
+  grid-template-columns: 110px 100px 1fr 27px;
   height: 100%;
   width: 100%;
 }

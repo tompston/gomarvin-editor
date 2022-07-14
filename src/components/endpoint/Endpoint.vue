@@ -8,7 +8,6 @@ import { ref, reactive } from 'vue'
 import DeleteSvg from '../utils/svg/DeleteSvg.vue'
 import InputErrBox from '../utils/InputErrBox.vue'
 import Dropdown1 from '../utils/dropdown/Dropdown1.vue'
-// import EndpointBodyField from './EndpointBodyField.vue'
 import BodyField from './BodyField.vue'
 import UrlParam from './UrlParam.vue'
 
@@ -35,7 +34,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
   <div class="endpoint">
     <div class="endpoint__info">
       <!-- Endpoint method -->
-      <div class="endpoint__method_input_grid">
+      <div class="">
         <button class="endpoint__method_selected flex-center disable-text-select"
           :class="'endpoint_method_' + endpoint.method"
           @click="endpoint_method_dropdown_is_shown = !endpoint_method_dropdown_is_shown">{{ endpoint.method }}</button>
@@ -46,7 +45,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
 
       <!-- CONTROLLER NAME -->
-      <div class="endpoint_input_grid">
+      <div class="h-full">
         <div>
           <input type="text" class="mevi" placeholder="controller_name" v-model="endpoint.controller_name"
             @input="endpoint.controller_name = utils.ConvertToValidValue($event, utils.ValidControllerName)" />
@@ -60,7 +59,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
 
       <!-- URL -->
-      <div class="endpoint_input_grid">
+      <div class="h-full">
         <div>
           <input type="text" class="mevi" v-model="endpoint.url"
             @input="endpoint.url = utils.ConvertToValidValue($event, utils.ValidUrl)" />
@@ -69,7 +68,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
 
       <!-- Endpoint URL param -->
-      <div v-for="url_param in endpoint.url_params" v-bind:key="url_param" class="endpoint_input_grid">
+      <div v-for="url_param in endpoint.url_params" v-bind:key="url_param" class="h-full">
         <UrlParam :url_param="url_param" :new_endpoint="new_endpoint" :endpoint="endpoint" />
       </div>
 
@@ -84,7 +83,8 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 
     <button v-if="!new_endpoint" class="endpoint__expander" @click="detailsAreShown = !detailsAreShown">
       <div class="flex-center">
-        <svg class="op-70" width="27" height="8" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="opacity-70" width="27" height="8" viewBox="0 0 25 18" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
           <path d="M2 1L12.5 15L23 1" stroke="var(--svg-fill)" stroke-width="3.2" />
         </svg>
       </div>
@@ -97,35 +97,34 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
     </button>
   </div>
 
-  <div class="p-2 mt-4" v-if="detailsAreShown">
+  <div class="p-[2px] mt-[4px]" v-if="detailsAreShown">
     <!-- Single Body field -->
-    <div class="mb-8">
-      <div class="grid gtc-1-auto mb-10 mt-2">
+    <div class="mb-[8px]">
+      <div class="grid grid-cols-[1fr_auto] mb-[10px] mt-[2px]">
         <div class="fs-7 fw-500 disable-text-select">Body</div>
         <div v-if="!new_endpoint">
-          <div class="flex both-100">
-            <div class="flex gap-6 flex-center">
+          <div class="flex w-full h-full">
+            <div class="flex gap-[6px] flex-center">
 
               <transition name="fade">
                 <div v-if="wantsToDeleteEndpoint">
                   <button @click="$emit('delete_event')"
-                    class="border-1-1 flex flex-center px-12 py-4 border-rad-5 delete_endpoint__btn">
+                    class="border-1-1 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn">
                     <div class="fs-10 fw-600 ">Delete {{ endpoint.controller_name }} endpoint</div>
                   </button>
                 </div>
               </transition>
-              <button class="flex-center w-24 h-24 border-1-2 height-100 border-rad-5"
+              <button class="flex-center w-[26px] h-[26px] border-1-1 border-rad-5"
                 @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint">
-                <DeleteSvg dims="14" fill="black" class="qwe" />
+                <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
               </button>
-
             </div>
           </div>
         </div>
       </div>
 
 
-      <div class="grid gap-8 endpoint__body">
+      <div class="grid gap-[8px] endpoint__body">
         <!-- Pass down the object that holds the values  -->
         <div v-for="body_param in endpoint.body" :key="body_param">
           <BodyField :existing_body_params="editor.existing_body_params(endpoint.body)" :body_param="body_param"
@@ -142,7 +141,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
 
       <!-- DEBUG GRID -->
-      <div class="code flex gap-14 flex-column mt-20" v-if="debug_mode">
+      <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
         <div>
           <div>existing_body_params</div>
           <div>{{ editor.existing_body_params(endpoint.body) }}</div>
@@ -163,3 +162,12 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
     </div>
   </div>
 </template>
+
+<style>
+.delete_endpoint__btn:hover {
+  transition: var(--transition-1);
+  background: rgb(244, 101, 101);
+  color: white;
+  border: 1px solid white;
+}
+</style>

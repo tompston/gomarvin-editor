@@ -16,17 +16,14 @@
     gap: 4px;
 }
 .navigation--option {
-    /* width: auto; */
-    /* width: 100%; */
-    /* display: flex; */
     overflow: auto;
 }
 
 .module__name_btn {
-    padding: 4px 12px;
-    font-size: 16px;
-    border-radius: 5px;
     color: var(--module-name-btn-txt-col);
+    font-size: var(--fs-8);
+    border-radius: 5px;
+    padding: 3px 12px;
 }
 .module__name_btn--selected {
     color: var(--selected-text-col-1);

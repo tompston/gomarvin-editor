@@ -18,30 +18,32 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 <template>
   <header class="flex-center">
     <div class="max-width-1">
-      <div class="py-20 grid gtc-1-auto header disable-text-select fs-8">
+      <div class="py-[20px] grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]">
         <div class="fw-400 header__left">
           <router-link to="/" class="remove-decorations fw-500">GOMARVIN</router-link>
         </div>
-        <div class="header__right">
-          <div class="flex gap-44 op-70">
-            <div class="hover-underline hover-pointer">
-              <router-link to="/" class="remove-decorations">Editor</router-link>
+        <!--  -->
+        <div class="hide-on-sm">
+          <div>
+            <div class="flex gap-[44px] opacity-70">
+              <div class="hover-underline hover-pointer">
+                <router-link to="/" class="remove-decorations">Editor</router-link>
+              </div>
+              <div class="hover-underline hover-pointer">
+                <router-link to="/docs" class="remove-decorations">Docs</router-link>
+              </div>
+              <div class="hover-underline hover-pointer remove-decorations">
+                <a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
+              </div>
+              <ThemeSwitcher />
+              <div class>{{ latest_gomarvin_version }}</div>
             </div>
-            <div class="hover-underline hover-pointer">
-              <router-link to="/docs" class="remove-decorations">Docs</router-link>
-            </div>
-            <div class="hover-underline hover-pointer remove-decorations">
-              <a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
-            </div>
-
-            <ThemeSwitcher />
-
-            <div class>{{ latest_gomarvin_version }}</div>
           </div>
         </div>
 
-        <div class="header__burger hidden pointer" @click="navigationIsShown = !navigationIsShown">
-          <svg width="20" height="13" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="hidden pointer show-on-sm flex-center w-[20px] h-[20px]"
+          @click="navigationIsShown = !navigationIsShown">
+          <svg width="16" height="16" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1H23" stroke="var(--svg-fill)" stroke-width="2.5" />
             <path d="M0 9H23" stroke="var(--svg-fill)" stroke-width="2.5" />
             <path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
@@ -51,11 +53,11 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
     </div>
   </header>
 
-  <div v-if="navigationIsShown && windowWidth < 670">
+  <div v-if="navigationIsShown && windowWidth < 750">
     <div class="flex-center">
       <div class="max-width-1">
-        <div class="fs-8 fw-600 py-14 border-rad-3 header__navigation">
-          <div class="flex-center gap-44 header__navigation__grid">
+        <div class="fs-8 fw-600 py-[14px] border-rad-3 header__navigation">
+          <div class="flex-center gap-[44px] header__navigation__grid">
             <div class="hover-underline hover-pointer">
               <router-link to="/" class="remove-decorations">Editor</router-link>
             </div>
@@ -71,8 +73,8 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
       </div>
     </div>
   </div>
-  
-  <div class="mb-24"></div>
+
+  <div class="mb-[24px]"></div>
 </template>
 
 

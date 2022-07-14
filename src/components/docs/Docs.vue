@@ -42,10 +42,12 @@ const sections = {
 
   <div class="flex-center">
     <div class="max-width-2">
-      <div class="docs">
-        <!-- Docs navigation -->
-        <div class="docs--nav">
-          <div class="pl-12 py-20 flex flex-column gap-10 fs-8 docs-sticky main-col-1- text-col-6- border-1-1">
+
+      <div class="docs grid-cols-[140px_auto] md:grid-cols-[1fr]">
+
+
+        <div class="docs--nav hide-on-md">
+          <div class="pl-[12px] py-[20px] flex flex-col gap-[10px] fs-8 docs-sticky border-1-1">
             <div v-for="section in sections">
               <a :href="section.href">{{ section.label }}</a>
             </div>
@@ -53,9 +55,9 @@ const sections = {
         </div>
 
         <div class="docs--content">
-          <div class="fs-2 fw-700 mb-30 font-helvetica">Gomarvin explained</div>
+          <div class="fs-2 fw-700 mb-[30px] leading-none">Gomarvin explained</div>
 
-          <div class="text-2 fw-400 mb-110 max-w-640">
+          <div class="text-2 fw-400 mb-[110px] max-w-[640px] md:max-w-[100%]">
             <DocIntro />
             <DocGoals />
             <h1 id="config">Config</h1>
@@ -69,11 +71,11 @@ const sections = {
                 class="underline">examples dir</a>.
 
 
-            <div class="mt-10"></div>
+            <div class="mt-[10px]"></div>
 
             The frontend saves the config in local storage on change.
             </p>
-            <p class="mt-10">
+            <p class="mt-[10px]">
               One config file holds all of the information that is needed to generate the boilerpate.
               Incidentally in this case, that same config file also documents the API endpoints by
               default. So we can kill 2 birds with 1 stone, to some degree.
@@ -100,7 +102,7 @@ const sections = {
             </ul>
 
             <div>
-              <p class="text-center my-30 fw-600 main-col-danger text-col-white py-16 px-10 border-rad-3">
+              <p class="text-center my-30 fw-600 main-col-danger text-white py-[16px] px-10 border-rad-3">
                 If a file has
                 <code>.gen</code> in the name, that means it will be regenerated on
                 each run. So editing them is a bad idea if you want to save changes. So rename the
@@ -108,7 +110,9 @@ const sections = {
               </p>
             </div>
 
-            <h1 id="optional-values">Optional values</h1>
+            <div class="mt-4">
+              <h1 id="optional-values">Optional values</h1>
+            </div>
             <p>
               Controllers aren't the only thing that we can automatically generate from the config
               file. As the goal of this project is to automate out the boring parts of writing REST
@@ -138,7 +142,7 @@ const sections = {
               This also means that if the backend optionally serves the generated fetch functions file, frontend people
               can import a valid API client, without talking to the backend team.
 
-            <div class="border-1-2 italic op-70 p-18 mt-10 border-rad-3">
+            <div class="border-1-2 italic opacity-70 p-[18px] mt-[10px] border-rad-3">
               One problem with this may be the authentication part. As there are multiple ways of doing it, it's a bit
               harder to implement it in the fetch functions. One possible way of dealing with it, is indicating which
               routes need authentication by adding <code>"withAuth"</code> at the end of the controller name to signal
@@ -296,7 +300,7 @@ async function FetchCommentById() {
               the same dir. So copy and rename the files to preserve changes to them
             </p>
 
-            <div class="mt-30"></div>
+            <div class="mt-[30px]"></div>
 
             <h1 id="notes">Notes</h1>
             <ul>

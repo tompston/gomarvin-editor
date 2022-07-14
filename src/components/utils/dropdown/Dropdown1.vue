@@ -9,11 +9,8 @@ defineEmits(['switch'])
       <div class="dropdown__1_content">
         <div class="dropdown__1_options">
           <div v-for="option in options" v-bind:key="option">
-            <div
-              @click="$emit('switch', option)"
-              class="method__option_btn disable-text-select hover-pointer--"
-              :class="value == option ? 'method__option_btn--selected' : ''"
-            >{{ option }}</div>
+            <div @click="$emit('switch', option)" class="method__option_btn disable-text-select "
+              :class="value == option ? 'method__option_btn--selected' : ''">{{ option }}</div>
           </div>
         </div>
       </div>
@@ -28,10 +25,12 @@ defineEmits(['switch'])
   display: inline-block;
   width: 100%;
 }
+
 .dropdown__1_value {
   width: 100%;
   height: 100%;
 }
+
 .dropdown__1_content {
   /* background: rgb(255, 255, 255); */
   z-index: 20;
@@ -48,9 +47,11 @@ defineEmits(['switch'])
   margin-top: 7px;
   border-radius: 8px;
 }
+
 .dropdown__1_content {
   padding: 10px 10px;
 }
+
 .dropdown__1_options {
   width: 100%;
   height: 100%;
@@ -58,10 +59,12 @@ defineEmits(['switch'])
   flex-flow: column;
   gap: 2px;
 }
+
 .dropdown__1_option {
   width: 100%;
   height: 100%;
 }
+
 .method__option_btn {
   /* border: 1px solid rgba(255, 255, 255, 0.705); */
   border: var(--border-1-3);
@@ -71,6 +74,7 @@ defineEmits(['switch'])
   font-size: var(--fs-9);
   transition: var(--transition-1);
 }
+
 .method__option_btn:hover {
   border: 1px solid rgba(107, 107, 107, 0.4);
   border: var(--border-1-1);

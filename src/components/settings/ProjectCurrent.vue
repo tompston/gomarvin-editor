@@ -8,7 +8,7 @@ defineProps<{ config: any, header: any }>()
 
 <template>
   <div>
-    <div class="tab--header">{{ header }}</div>
+    <div class="tab__header">{{ header }}</div>
 
     <ProjectSettingsGrid :project_info="config.project_info" :new_project="false" />
 

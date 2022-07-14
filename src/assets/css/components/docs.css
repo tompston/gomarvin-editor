@@ -1,10 +1,15 @@
+.docs ul {
+    margin-left: 20px;
+    list-style: circle;
+}
+
 .docs .text-2 {
     font-size: var(--fs-8);
     opacity: 0.9;
 }
 .docs {
     margin-top: 10px;
-    grid-template-columns: 141px auto;
+
     display: grid;
     gap: 24px;
 }
@@ -12,8 +17,6 @@
     font-size: var(--fs-4);
     line-height: var(--lh-1);
     font-weight: 700;
-
-    /* margin-bottom: 6px; */
 }
 .docs h2 {
     font-size: var(--fs-5);
@@ -21,7 +24,6 @@
     font-weight: 400;
 }
 .docs h3 {
-    /* margin-top: 20px; */
     font-weight: 700;
 }
 .docs:first-child ul li {

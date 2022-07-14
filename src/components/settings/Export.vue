@@ -30,12 +30,12 @@ function fakePause(time: number) {
 </script>
 
 <template>
-    <div class="tab--header">{{ header }}</div>
+    <div class="tab__header">{{ header }}</div>
 
-    <div class="grid gap-10 export--grid">
+    <div class="grid gap-[10px] export--grid">
 
         <div class="export--buttons-grid">
-            <div class="flex mb-8">
+            <div class="flex mb-[8px]">
                 <button class="export--btn" @click="saveToClipbard(JSON.stringify(config, undefined, 2))">Copy to
                     clipbard</button>
             </div>
@@ -44,7 +44,7 @@ function fakePause(time: number) {
             </div>
         </div>
 
-        <div class="border-1-2 p-16 border-rad-4 op-75">
+        <div class="border-1-2 p-[16px] border-rad-4 opacity-70">
             <pre class="font-mono fs-10">{{ JSON.stringify(config, undefined, 2) }}</pre>
         </div>
 

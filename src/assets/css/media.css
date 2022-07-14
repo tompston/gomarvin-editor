@@ -1,11 +1,36 @@
-@media screen and (max-width: 1480px) {
-    .max-width-1,
-    .max-width-2 {
-        padding: 0px 40px;
+.max-width-1,
+.max-width-2,
+.max-width-3,
+.max-width-3,
+.max-width-4,
+.max-width-5,
+.max-width-6 {
+    padding: 0px 30px;
+}
+
+/* xl */
+@media (max-width: 1600px) {
+    .hide-on-xl {
+        display: none;
+    }
+    .show-on-xl {
+        display: block !important;
     }
 }
 
-@media screen and (max-width: 820px) {
+/* lg */
+@media (max-width: 1064px) {
+    .max-width-1,
+    .max-width-2,
+    .max-width-3 {
+        padding: 0px 20px;
+    }
+    .hide-on-lg {
+        display: none;
+    }
+    .show-on-lg {
+        display: block !important;
+    }
     :root {
         --fs-1: 54px;
         --fs-2: 39px;
@@ -17,74 +42,46 @@
         --fs-8: 15px;
         --fs-9: 14px;
     }
-    .max-width-1,
-    .max-width-2 {
-        padding: 0px 17px;
-    }
+}
 
-    .export--grid {
-        grid-template-columns: auto !important;
-        grid-template-rows: auto auto !important;
+/* md */
+@media (max-width: 920px) {
+    .hide-on-md {
+        display: none;
     }
-
-    .editor,
-    .docs {
-        grid-template-columns: auto !important;
-        grid-template-rows: auto auto !important;
-        gap: 14px;
-    }
-    .endpoint__body {
-        gap: 24px;
-    }
-    .endpoint_body_grid {
-        grid-template-columns: auto !important;
-        grid-template-rows: auto auto auto 27px !important;
-    }
-    /*  */
-    .navigation--options {
-        flex-flow: row !important;
-    }
-    .module__name_btn {
-        padding: 6px 15px !important;
-    }
-    .create-new-module-grid {
-        flex-flow: row;
-        max-width: 100%;
-        margin: 0px;
+    .show-on-md {
+        display: block !important;
     }
 }
 
-@media screen and (max-width: 670px) {
+/* sm */
+@media (max-width: 750px) {
+    .hide-on-sm {
+        display: none;
+    }
+    .show-on-sm {
+        display: block !important;
+    }
+}
+
+/* xs */
+@media (max-width: 550px) {
     :root {
         --fs-1: 34px;
         --fs-2: 29px;
         --fs-3: 24px;
-        --fs-4: 28px;
+        --fs-4: 22px;
         --fs-5: 20px;
-        --fs-6: 20px;
+        --fs-6: 19px;
         --fs-7: 18px;
         --fs-8: 15px;
         --fs-9: 14px;
     }
-    .header {
-        grid-template-columns: 1fr auto;
-    }
-    .header__right {
-        visibility: hidden;
+
+    .hide-on-xs {
         display: none;
     }
-    .header__burger {
-        display: block;
-    }
-    .header__navigation__grid {
-        padding: 10px 0px;
-        flex-flow: column;
-        gap: 13px;
-    }
-
-    /*  */
-    .settings__project_info {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-        gap: 10px;
+    .show-on-xs {
+        display: block !important;
     }
 }

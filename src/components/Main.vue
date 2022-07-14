@@ -44,91 +44,89 @@ watchEffect(() => {
   <Header />
 
   <div class="flex-center">
-    <div class="max-width-1 pb-100">
-      <div>
-        <div class="editor">
-          <div class="editor__left">
-            <div class="flex flex-column">
-              <!-- Modules Navigation grid -->
-              <div class="navigation--section">
-                <div class="navigation--header">Modules</div>
-                <div class="navigation--options">
-                  <div v-for="module in config.modules" v-bind:key="module" class="navigation--option">
-                    <button @click="currentlySelectedModule = module.name" class="module__name_btn"
-                      :class="currentlySelectedModule == module.name ? 'module__name_btn--selected' : ''">{{
-                          module.name
-                      }}</button>
-                  </div>
-                  <div class="navigation--option">
-                    <button class="module__name_btn"
-                      @click="createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown">+</button>
-                  </div>
-                  <div>
-                    <div v-if="createNewModuleDropdownIsShown">
-                      <div class="flex flex-column my-10 max-w-120 create-new-module-grid">
-                        <input type="text" class="mevi max-w-full" placeholder="Singular Module" v-model="newModuleName"
-                          @input="newModuleName = utils.ConvertToValidValue($event, utils.ValidModuleName)" />
-                        <div class="flex-center">
-                          <button @click="
-                            editor.createNewModule(config.modules, newModuleName),
-                            (newModuleName = ''),
-                            (createNewModuleDropdownIsShown = false)
-                          " class="fs-10 fw-700 flex-center both-100 mt-6 py-6 add_new_module_btn"
-                            :disabled="!editor.module_name_is_valid(config.modules, newModuleName)">ADD</button>
-                        </div>
+    <div class="max-width-1 pb-[100px]">
+      <div class="editor">
+        <div class="editor__left">
+          <div class="flex flex-col">
+            <!-- Modules Navigation grid -->
+            <div class="navigation--section">
+              <div class="navigation--header">Modules</div>
+              <div class="navigation--options">
+                <div v-for="module in config.modules" v-bind:key="module" class="navigation--option">
+                  <button @click="currentlySelectedModule = module.name" class="module__name_btn"
+                    :class="currentlySelectedModule == module.name ? 'module__name_btn--selected' : ''">{{
+                        module.name
+                    }}</button>
+                </div>
+                <div class="navigation--option">
+                  <button class="module__name_btn"
+                    @click="createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown">+</button>
+                </div>
+                <div>
+                  <div v-if="createNewModuleDropdownIsShown">
+                    <div class="flex flex-col my-[10px] max-w-[120px] create-new-module-grid">
+                      <input type="text" class="mevi max-w-full" placeholder="Singular Module" v-model="newModuleName"
+                        @input="newModuleName = utils.ConvertToValidValue($event, utils.ValidModuleName)" />
+                      <div class="flex-center">
+                        <button @click="
+                          editor.createNewModule(config.modules, newModuleName),
+                          (newModuleName = ''),
+                          (createNewModuleDropdownIsShown = false)
+                        " class="fs-10 fw-700 flex-center w-full h-full mt-[6px] py-[6px] add_new_module_btn"
+                          :disabled="!editor.module_name_is_valid(config.modules, newModuleName)">ADD</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!--  -->
-              <div class="navigation--section">
-                <div class="navigation--header">Settings</div>
-                <div class="navigation--options">
-                  <div v-for="SETTINGS_TAB in SETTINGS_TABS" v-bind:key="SETTINGS_TAB.id">
-                    <button @click="currentlySelectedModule = SETTINGS_TAB.id" class="module__name_btn"
-                      :class="currentlySelectedModule == SETTINGS_TAB.id ? 'module__name_btn--selected' : ''">{{
-                          SETTINGS_TAB.label
-                      }}</button>
-                  </div>
+            <!--  -->
+            <div class="navigation--section">
+              <div class="navigation--header">Settings</div>
+              <div class="navigation--options">
+                <div v-for="SETTINGS_TAB in SETTINGS_TABS" v-bind:key="SETTINGS_TAB.id">
+                  <button @click="currentlySelectedModule = SETTINGS_TAB.id" class="module__name_btn"
+                    :class="currentlySelectedModule == SETTINGS_TAB.id ? 'module__name_btn--selected' : ''">{{
+                        SETTINGS_TAB.label
+                    }}</button>
+                </div>
 
-                  <!-- <div>
+                <!-- <div>
                     <button class="module__name_btn" @click="utils.saveDataToJsonFile(config)">Save</button>
                   </div> -->
 
-                </div>
               </div>
             </div>
           </div>
-
-          <!-- editor__right -->
-          <ModuleInfo :config="config" :currentlySelectedModule="currentlySelectedModule" />
-          <!--  -->
         </div>
 
-        <!-- DEBUG BOX -->
-        <div v-if="debug_grid_shown">
-          <div class="debug__box">
-            <div class="debug__label_value grid">
-              <div>currentlySelectedModule</div>
-              <div>{{ currentlySelectedModule }}</div>
-            </div>
-            <button @click="debug()" class="debug__btn">debug()</button>
-            <div class="debug__label_value grid">
-              <div>newModuleName</div>
-              <div>{{ newModuleName }}</div>
-            </div>
-            <div class="debug__label_value grid">
-              <div>new_endpoint_fields</div>
-              <div>{{ new_endpoint_fields }}</div>
-            </div>
-            <div class="debug__label_value grid">
-              <div>module_name_is_valid</div>
-              <div>{{ editor.module_name_is_valid(config.modules, newModuleName) }}</div>
-            </div>
-            <div class="debug__config_box">{{ config }}</div>
+        <!-- editor__right -->
+        <ModuleInfo :config="config" :currentlySelectedModule="currentlySelectedModule" />
+        <!--  -->
+      </div>
+
+      <!-- DEBUG BOX -->
+      <div v-if="debug_grid_shown">
+        <div class="debug__box">
+          <div class="debug__label_value grid">
+            <div>currentlySelectedModule</div>
+            <div>{{ currentlySelectedModule }}</div>
           </div>
+          <button @click="debug()" class="debug__btn">debug()</button>
+          <div class="debug__label_value grid">
+            <div>newModuleName</div>
+            <div>{{ newModuleName }}</div>
+          </div>
+          <div class="debug__label_value grid">
+            <div>new_endpoint_fields</div>
+            <div>{{ new_endpoint_fields }}</div>
+          </div>
+          <div class="debug__label_value grid">
+            <div>module_name_is_valid</div>
+            <div>{{ editor.module_name_is_valid(config.modules, newModuleName) }}</div>
+          </div>
+          <div class="debug__config_box">{{ config }}</div>
         </div>
       </div>
     </div>

@@ -113,9 +113,9 @@ const framework_dropdown_is_shown = ref(false)
     </div>
   </div>
   <!-- Optional params that will change the generated project after the first run -->
-  <div class="mt-16">
+  <div class="mt-[16px]">
     <div class="project-settings-header">Optional</div>
-    <div class="settings__project_info-- flex gap-30">
+    <div class="settings__project_info-- flex gap-[30px]">
       <!-- include_sql switch -->
       <div class="settings__project_info_value_label_grid">
         <div class="settings__project_info_label">include_sql</div>

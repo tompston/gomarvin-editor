@@ -16,15 +16,22 @@ function importConfig(config: any) {
 </script>
 
 <template>
-  <div class="tab--header">{{ header }}</div>
+  <div class="tab__header">{{ header }}</div>
 
   <textarea type="text" class="code import_new_config_input" v-model="imported_conf" />
-  <div class="flex-center mt-20">
-    <button
-      :disabled="imported_conf.length == 0"
-      class="create_project_btn py-10 py-10 px-12 fw-700 border-rad-4 fs-10"
-      @click="importConfig(config)"
-    >IMPORT</button>
+  <div class="flex-center mt-[20px]">
+    <button :disabled="imported_conf.length == 0"
+      class="create_project_btn py-[10px] px-[12px] fw-700 border-rad-4 fs-10"
+      @click="importConfig(config)">IMPORT</button>
   </div>
 </template>
 
+<style>
+.import_new_config_input {
+  min-height: 300px;
+  height: 100%;
+  width: 100%;
+  padding: 15px !important;
+  box-sizing: border-box;
+}
+</style>

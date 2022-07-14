@@ -73,4 +73,8 @@ import { ref } from 'vue'
  * https://stackoverflow.com/questions/33731939/vue-js-toggle-class-on-click
  * @click="$event.target.classList.toggle('active')"
  */
+
+
+         "postbuild": "purgecss --css dist/assets/*.css --content dist/assets/*.js -o dist/assets/  --safelist html body"
+
  -->

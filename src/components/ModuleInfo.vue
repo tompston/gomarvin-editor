@@ -21,7 +21,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
 
 
 <template>
-  <div class="mb-70 editor__right">
+  <div class="mb-[70px] editor__right">
     <!-- Module tabs -->
     <div v-for="module in config.modules" v-bind:key="module">
       <div class="current-module-tab" v-if="currentlySelectedModule == module.name">
@@ -45,8 +45,8 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({ ...editor.init_
       </div>
     </div>
 
-    <div class="code mt-16" v-if="debug_mode">
-      <div class="mb-4">new_endpoint_fields</div>
+    <div class="code mt-[16px]" v-if="debug_mode">
+      <div class="mb-[4px]">new_endpoint_fields</div>
       <div>{{ new_endpoint_fields }}</div>
     </div>
 
