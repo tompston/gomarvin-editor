@@ -217,3 +217,24 @@ input {
 .bg-light-select-1 {
     background-color: var(--bg-light-select-1);
 }
+.endpoint_body_grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 110px 100px 1fr 27px;
+    height: 100%;
+    width: 100%;
+}
+
+.add_new_body_field_type_btn {
+    height: 100%;
+    width: 100%;
+    padding: 5px 0px;
+}
+
+.delete_body_param {
+    transition: var(--transition-1);
+}
+
+.delete_body_param:hover {
+    background: var(--main-col-danger);
+}

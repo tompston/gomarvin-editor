@@ -105,7 +105,6 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
         <div v-if="!new_endpoint">
           <div class="flex w-full h-full">
             <div class="flex gap-[6px] flex-center">
-
               <transition name="fade">
                 <div v-if="wantsToDeleteEndpoint">
                   <button @click="$emit('delete_event')"
@@ -123,7 +122,11 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
         </div>
       </div>
 
-
+      <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
+        <div>FIELD</div>
+        <div>TYPE</div>
+        <div>VALIDATE</div>
+      </div>
       <div class="grid gap-[8px] endpoint__body">
         <!-- Pass down the object that holds the values  -->
         <div v-for="body_param in endpoint.body" :key="body_param">

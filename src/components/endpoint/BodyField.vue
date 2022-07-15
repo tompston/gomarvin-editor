@@ -16,6 +16,7 @@ const custom_body_field_type = ref('')
 </script>
 
 <template>
+
   <div class="endpoint_body_grid">
     <div>
       <input type="text" placeholder="field_name" v-model="body_param.field" class="code w-full"
@@ -55,25 +56,5 @@ const custom_body_field_type = ref('')
 
 
 <style>
-.endpoint_body_grid {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 110px 100px 1fr 27px;
-  height: 100%;
-  width: 100%;
-}
 
-.add_new_body_field_type_btn {
-  height: 100%;
-  width: 100%;
-  padding: 5px 0px;
-}
-
-.delete_body_param {
-  transition: var(--transition-1);
-}
-
-.delete_body_param:hover {
-  background: var(--main-col-danger);
-}
 </style>
