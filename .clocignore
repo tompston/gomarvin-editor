@@ -1,0 +1,9 @@
+node_modules
+out
+.next
+dist
+package-lock.json
+package.json
+docs
+README.md
+w.code-workspace

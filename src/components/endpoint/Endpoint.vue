@@ -180,6 +180,6 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
   transition: var(--transition-1);
   background: rgb(244, 101, 101);
   color: white;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0);
 }
 </style>

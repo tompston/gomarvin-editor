@@ -1,11 +1,20 @@
 # Editor for gomarvin configs
+
 If the frontend crashes for some reason, open DevTools, run
 
 ```
 localStorage.clear();
 ```
+
 and reload the page
 
+## commands
+
+```bash
+npm i               # install node_modules
+npm run dev         # run the project on localhost:3000
+npm run preview     # preview build on localhost:8888
+```
 
 <!--
 
@@ -27,12 +36,12 @@ console.log("Total = " + (_lsTotal / 1024).toFixed(2) + " KB");
 
 
 
-/* 
+/*
   --- Centering content + full width backgrounds in html
       <div class="flex-center">
           <div class="max-width-1">content</div>
       </div>
-  
+
 
 <a
   href="qwe"
@@ -49,7 +58,7 @@ git commit -m "next"
 git push
 
 
-# delete branch 
+# delete branch
 git branch -d gh-pages
 
 # create
