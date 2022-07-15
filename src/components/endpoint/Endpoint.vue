@@ -99,7 +99,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 
   <div class="p-[2px] mt-[4px]" v-if="detailsAreShown">
     <!-- Single Body field -->
-    <div class="mb-[8px]">
+    <div class="mb-[10px]">
       <div class="grid grid-cols-[1fr_auto] mb-[10px] mt-[2px]">
         <div class="fs-7 fw-500 disable-text-select">Body</div>
         <div v-if="!new_endpoint">
@@ -125,7 +125,16 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
         <div>FIELD</div>
         <div>TYPE</div>
-        <div>VALIDATE</div>
+        <div class="flex gap-1.5">
+          <div>
+            VALIDATE
+          </div>
+          <a href="https://github.com/go-playground/validator" target="_blank" rel="noopener noreferrer"
+            class="underline">
+            <div class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select">?</div>
+          </a>
+
+        </div>
       </div>
       <div class="grid gap-[8px] endpoint__body">
         <!-- Pass down the object that holds the values  -->

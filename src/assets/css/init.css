@@ -143,6 +143,7 @@
 
     /*  */
     --bg-light-select-1: rgb(29, 29, 29);
+    --bg-light-select-2: rgb(24, 24, 24);
 }
 
 html {
@@ -199,11 +200,20 @@ code,
     background: var(--code-bg) !important;
     color: var(--code-txt) !important;
     font-size: var(--fs-10) !important;
+    border: 1px solid rgba(0, 0, 0, 0);
     padding: 5px 10px;
     border-radius: 6px;
     font-size: 12px;
     padding: 3px 7px;
 }
+
+.settings__project_info_input:focus,
+.mevi:focus,
+.code:focus {
+    outline: none;
+    border-color: rgb(77, 139, 210) !important;
+}
+
 .main-col-danger {
     background: var(--main-col-danger);
 }

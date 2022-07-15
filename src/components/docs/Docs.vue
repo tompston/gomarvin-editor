@@ -302,7 +302,9 @@ async function FetchCommentById() {
 
             <div class="mt-[30px]"></div>
 
-            <h1 id="notes">Notes</h1>
+            <div class="mb-2">
+              <h1 id="notes">Notes</h1>
+            </div>
             <ul>
               <li>
                 <p>

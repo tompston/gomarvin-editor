@@ -54,7 +54,3 @@ const custom_body_field_type = ref('')
 </template>
 
 
-
-<style>
-
-</style>
