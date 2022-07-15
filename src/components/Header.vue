@@ -16,11 +16,11 @@ onUnmounted(() => window.removeEventListener('resize', onWidthChange))
 </script>
 
 <template>
-  <header class="flex-center bg-light-select-1 text-white--">
+  <header class="flex-center bg-light-select-1-- border-1-3-bottom">
     <div class="max-width-1">
       <div class="py-2 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]">
         <div class="fw-400 header__left">
-          <router-link to="/" class="remove-decorations fw-500 fs-9">GOMARVIN</router-link>
+          <router-link to="/" class="remove-decorations fw-600 fs-9">GOMARVIN</router-link>
         </div>
         <!--  -->
         <div class="hide-on-sm">

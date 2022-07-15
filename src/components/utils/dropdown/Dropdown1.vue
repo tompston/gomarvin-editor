@@ -73,6 +73,7 @@ defineEmits(['switch'])
   font-weight: 500;
   font-size: var(--fs-9);
   transition: var(--transition-1);
+  cursor: pointer;
 }
 
 .method__option_btn:hover {

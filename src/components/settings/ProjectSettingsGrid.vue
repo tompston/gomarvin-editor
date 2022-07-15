@@ -175,7 +175,6 @@ const framework_dropdown_is_shown = ref(false)
 .settings__project_info_value,
 .settings__project_info_input {
   font-size: var(--fs-7);
-
 }
 
 .settings__project_info_input {
@@ -191,6 +190,11 @@ const framework_dropdown_is_shown = ref(false)
     "Liberation Mono", "Courier New", monospace;
   font-size: var(--fs-9);
   /* opacity: 0.9; */
+  transition: var(--transition-1);
+}
+
+.settings__project_info_input:hover {
+  background: var(--bg-light-select-2);
 }
 
 .settings__project_info_value {

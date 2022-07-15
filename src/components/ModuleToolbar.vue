@@ -10,7 +10,7 @@ const wants_to_delete_module = ref(false)
 </script>
 
 <template>
-  <div class="grid grid-cols-[1fr_auto] module__toolbar tab__header">
+  <div class="grid grid-cols-[1fr_auto] tab__header">
     <div class="">{{ module.name }}</div>
     <div class="flex">
 
