@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import ProjectSettingsGrid from './ProjectSettingsGrid.vue'
-import { saveDataToJsonFile } from '../../assets/ts/utils/storage'
-defineProps<{ config: any, header: any }>()
-
+import { ref } from "vue";
+import ProjectSettingsGrid from "./ProjectSettingsGrid.vue";
+import { saveDataToJsonFile } from "../../assets/ts/utils/storage";
+defineProps<{ config: any; header: any }>();
 </script>
 
 <template>

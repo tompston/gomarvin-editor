@@ -1,6 +1,6 @@
 <script setup lang="ts">
-defineProps<{ is_shown: boolean; options: any; value: any }>()
-defineEmits(['switch'])
+defineProps<{ is_shown: boolean; options: any; value: any }>();
+defineEmits(["switch"]);
 </script>
 
 <template>
@@ -9,8 +9,13 @@ defineEmits(['switch'])
       <div class="dropdown__1_content">
         <div class="dropdown__1_options">
           <div v-for="option in options" v-bind:key="option">
-            <div @click="$emit('switch', option)" class="method__option_btn disable-text-select "
-              :class="value == option ? 'method__option_btn--selected' : ''">{{ option }}</div>
+            <div
+              @click="$emit('switch', option)"
+              class="method__option_btn disable-text-select"
+              :class="value == option ? 'method__option_btn--selected' : ''"
+            >
+              {{ option }}
+            </div>
           </div>
         </div>
       </div>

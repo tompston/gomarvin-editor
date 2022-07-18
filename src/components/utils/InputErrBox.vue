@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 </script>
 
 <template>
@@ -9,7 +9,6 @@ defineProps<{ msg: string }>()
     </div>
   </div>
 </template>
-
 
 <style>
 .err_msg_box {

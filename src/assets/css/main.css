@@ -1,59 +1,66 @@
 .editor {
-    width: 100%;
-    grid-template-columns: 144px auto;
-    display: grid;
-    gap: 24px;
+  width: 100%;
+  grid-template-columns: 144px auto;
+  display: grid;
+  gap: 24px;
 }
 .code,
 .mevi {
-    transition: var(--transition-1);
-    font-size: var(--fs-9);
+  transition: var(--transition-1);
+  font-size: var(--fs-9);
 }
 
 .endpoint__method_selected,
 .mevi {
-    border-radius: var(--border-rad-main);
+  border-radius: var(--border-rad-main);
 }
 
 /* mevi = module endpoint value input  */
 .mevi {
-    background: rgba(0, 0, 0, 0);
-    border: var(--mevi-border);
-    width: 100%;
-    min-height: 30px;
-    height: 100%;
-    box-sizing: border-box;
-    padding-left: 9px;
-    max-width: var(--mevi-w);
+  background: rgba(0, 0, 0, 0);
+  border: var(--mevi-border);
+  width: 100%;
+  min-height: 30px;
+  height: 100%;
+  box-sizing: border-box;
+  padding-left: 9px;
+  max-width: var(--mevi-w);
 }
 .mevi:focus,
 .code:focus {
-    border: 1px solid rgb(54, 134, 255);
+  border: 1px solid rgb(54, 134, 255);
 }
 
 .endpoint {
-    border-bottom: var(--border-1-3);
-    display: grid;
-    grid-template-columns: auto var(--endpoint-btn-width);
+  border-bottom: var(--border-1-3);
+  display: grid;
+  grid-template-columns: auto var(--endpoint-btn-width);
 }
 .endpoint__info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
-    gap: 6px;
-    padding: 11px 0px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
+  gap: 6px;
+  padding: 11px 0px;
+  width: 100%;
 }
 
 .tab__header {
-    font-size: var(--fs-4);
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1;
+  font-size: var(--fs-4);
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1;
 }
 
 .project-settings-header {
-    font-size: var(--fs-6);
-    font-weight: 700;
-    margin-bottom: 3px;
-    margin-top: 12px;
+  font-size: var(--fs-6);
+  font-weight: 700;
+  margin-bottom: 3px;
+  margin-top: 12px;
+}
+
+.link__1 {
+  color: rgb(83, 139, 224) !important;
+}
+.link__1:hover {
+  text-decoration: underline;
 }
