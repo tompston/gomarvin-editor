@@ -200,7 +200,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
             href="https://github.com/go-playground/validator"
             target="_blank"
             rel="noopener noreferrer"
-            class="underline"
+            class=""
           >
             <div
               class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"

@@ -13,7 +13,7 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
 </script>
 
 <template>
-  <header class="flex-center bg-light-select-1-- border-1-2-bottom">
+  <header class="flex-center border-1-3-bottom">
     <div class="max-width-1">
       <div
         class="py-2 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]"

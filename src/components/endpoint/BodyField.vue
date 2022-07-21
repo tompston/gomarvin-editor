@@ -81,13 +81,13 @@ const custom_body_field_type = ref("");
       class="flex-center text-col-6 delete_body_param border-rad-5"
       @click="editor.deleteValueFromArray(endpoint.body, body_param)"
     >
-      <DeleteSvg dims="14" fill="var(--svg-fill)" class="qwe" />
+      <DeleteSvg dims="14" fill="var(--svg-fill)" class="delete__svg" />
     </button>
 
     <!-- if a new endpoint, return element that allows to create current body_param -->
     <button
       v-if="new_endpoint"
-      class="flex-center"
+      class="flex-center create__endpoint_btn"
       :disabled="!editor.canCreateNewBodyField(existing_body_params, body_param.field)"
       @click="$emit('create_body_field')"
     >
@@ -95,3 +95,25 @@ const custom_body_field_type = ref("");
     </button>
   </div>
 </template>
+
+<style>
+.create__endpoint_btn {
+  color: var(--selected-text-col-1);
+  background: var(--selected-bg-col-1);
+  border-radius: 5px;
+}
+.create__endpoint_btn:disabled {
+  opacity: 0.4;
+}
+
+.delete_body_param {
+  transition: var(--transition-1);
+}
+
+.delete_body_param:hover {
+  background: var(--main-col-danger);
+}
+.delete_body_param:hover .delete__svg {
+  stroke: #ffffff !important;
+}
+</style>
