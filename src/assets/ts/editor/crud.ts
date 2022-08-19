@@ -1,4 +1,4 @@
-import { HttpMethods, UrlFieldTypes } from '../gomarvin/predefined'
+import { HttpMethods, UrlFieldTypes, ResponseTypes } from '../gomarvin/predefined'
 import { Endpoint, Module } from '../gomarvin/interfaces'
 import { existing_controllers, stringExistsInArray } from './editor'
 
@@ -10,6 +10,7 @@ export function addCrudEndpoints(module: Module) {
   let getMany: Endpoint = {
     url: module_name_url,
     method: HttpMethods.GET,
+    response_type: ResponseTypes.with_pagination,
     controller_name: `Get${module_name}s`,
     url_params: [],
     body: [],
@@ -17,6 +18,7 @@ export function addCrudEndpoints(module: Module) {
   let getOne: Endpoint = {
     url: module_name_url,
     method: HttpMethods.GET,
+    response_type: ResponseTypes.default,
     controller_name: `Get${module_name}`,
     url_params: [
       {
@@ -29,6 +31,7 @@ export function addCrudEndpoints(module: Module) {
   let postOne: Endpoint = {
     url: module_name_url,
     method: HttpMethods.POST,
+    response_type: ResponseTypes.default,
     controller_name: `Create${module_name}`,
     url_params: [],
     body: [],
@@ -36,6 +39,7 @@ export function addCrudEndpoints(module: Module) {
   let deleteOne: Endpoint = {
     url: module_name_url,
     method: HttpMethods.DELETE,
+    response_type: ResponseTypes.default,
     controller_name: `Delete${module_name}`,
     url_params: [],
     body: [],
@@ -43,6 +47,7 @@ export function addCrudEndpoints(module: Module) {
   let updateOne: Endpoint = {
     url: module_name_url,
     method: HttpMethods.PUT,
+    response_type: ResponseTypes.default,
     controller_name: `Update${module_name}`,
     url_params: [],
     body: [],

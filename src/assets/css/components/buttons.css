@@ -50,12 +50,15 @@ button[disabled] {
 .settings__multiple_choices_grid_option {
   border-radius: var(--border-rad-5);
   background: var(--selected-bg-col-2);
-  font-size: var(--fs-8);
-  padding: 4px 17px;
+  font-size: var(--fs-9);
+  opacity: 0.75;
+  font-weight: 500;
+  padding: 3px 16px;
 }
 .currently_selected_multiple_choices_option {
   background-color: var(--selected-bg-col-1);
   color: var(--selected-text-col-1);
+  opacity: 1;
 }
 
 .module__toolbar_option {

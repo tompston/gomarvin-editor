@@ -52,7 +52,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
           :options="predefined.HttpMethods"
           :value="endpoint.method"
           @switch="
-            (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false);
+            (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
           "
         />
       </div>
@@ -163,8 +163,8 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
   <div class="p-[2px] mt-[4px]" v-if="detailsAreShown">
     <!-- Single Body field -->
     <div class="mb-[10px]">
-      <div class="grid grid-cols-[1fr_auto] mb-[10px] mt-[2px]">
-        <div class="fs-7 fw-500 disable-text-select">Body</div>
+      <div class="grid grid-cols-[1fr_auto] mb-1 mt-[2px]">
+        <div class="endpoint_body_subheader">Body</div>
         <div v-if="!new_endpoint">
           <div class="flex w-full h-full">
             <div class="flex gap-[6px] flex-center">
@@ -231,6 +231,36 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
               editor.CreateBodyFieldAndResetInputFields(endpoint.body, new_body_field)
             "
           />
+        </div>
+      </div>
+
+      <!-- {{ endpoint.response_type }} -->
+      <!-- Switch  Response Type For Endpoint -->
+      <div class="mt-4">
+        <div class="endpoint_body_subheader mb-2">Response Type</div>
+        <div class="flex flex-row gap-2">
+          <div
+            class="settings__multiple_choices_grid_option"
+            :class="
+              endpoint.response_type === predefined.ResponseTypes.default
+                ? 'currently_selected_multiple_choices_option'
+                : ''
+            "
+            @click="endpoint.response_type = predefined.ResponseTypes.default"
+          >
+            Default
+          </div>
+          <div
+            class="settings__multiple_choices_grid_option"
+            :class="
+              endpoint.response_type === predefined.ResponseTypes.with_pagination
+                ? 'currently_selected_multiple_choices_option'
+                : ''
+            "
+            @click="endpoint.response_type = predefined.ResponseTypes.with_pagination"
+          >
+            With Pagination
+          </div>
         </div>
       </div>
 

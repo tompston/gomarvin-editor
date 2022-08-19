@@ -71,7 +71,7 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
   <div v-if="navigationIsShown && windowWidth < 750">
     <div class="flex-center">
       <div class="max-width-1">
-        <div class="fs-8 fw-600 py-[14px] border-rad-3 header__navigation">
+        <div class="fs-8 fw-600 py-[14px] border-rad-3 bg-black text-white relative">
           <div class="flex-center gap-[44px]">
             <div class="hover-underline hover-pointer">
               <router-link to="/" class="remove-decorations">Editor</router-link>
@@ -97,11 +97,3 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
 
   <div class="mb-[24px]"></div>
 </template>
-
-<style>
-.header__navigation {
-  background-color: black;
-  color: white;
-  position: relative;
-}
-</style>

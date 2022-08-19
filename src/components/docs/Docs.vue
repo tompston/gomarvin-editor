@@ -125,7 +125,7 @@ const sections = {
 
             <br>
 
-            <h3 id="include_ts_fetch" class="doc-subheader-1">include_ts_fetch</h3>
+            <h3 id="include_fetch" class="doc-subheader-1">include_fetch</h3>
 
             <!-- <br /> -->
             <p>
@@ -186,7 +186,7 @@ const sections = {
             <!-- <br> -->
             <br>
 
-            <h3 id="include_ts_fetch-example" class="doc-subheader-1">Examples using generated fetch
+            <h3 id="include_fetch-example" class="doc-subheader-1">Examples using generated fetch
               functions</h3>
             <pre>
                             <code>

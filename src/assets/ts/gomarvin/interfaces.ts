@@ -14,7 +14,7 @@ export interface ProjectInfo {
     config_version: number
     db_type: string
     include_sql: boolean
-    include_ts_fetch: boolean
+    include_fetch: boolean
     gomarvin_version: string
 }
 
@@ -26,6 +26,7 @@ export interface Module {
 export interface Endpoint {
     url: string
     method: string
+    response_type: string
     controller_name: string
     url_params: UrlParam[]
     body: Body[]

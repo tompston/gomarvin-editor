@@ -6,11 +6,13 @@ import {
   DbTypes,
   latest_gomarvin_version,
   latest_go_version,
+  ResponseTypes
 } from '../gomarvin/predefined'
 
 export const init_endpoint_fields: Endpoint = {
   url: '/',
   method: HttpMethods.GET,
+  response_type: ResponseTypes.default,
   controller_name: 'ControllerName',
   url_params: [],
   body: [],
@@ -31,7 +33,7 @@ export const init_project_info: ProjectInfo = {
   config_version: 0.1,
   db_type: DbTypes.Postgres,
   include_sql: false,
-  include_ts_fetch: false,
+  include_fetch: false,
   gomarvin_version: latest_gomarvin_version,
 }
 
@@ -41,6 +43,7 @@ export const init_module: Module = {
     {
       url: '/user',
       method: 'GET',
+      response_type: ResponseTypes.with_pagination,
       controller_name: 'GetUsers',
       url_params: [],
       body: [],
@@ -48,6 +51,7 @@ export const init_module: Module = {
     {
       url: '/user/register',
       method: 'POST',
+      response_type: ResponseTypes.default,
       controller_name: 'CreateUser',
       url_params: [],
       body: [
@@ -76,11 +80,25 @@ export const init_module: Module = {
     {
       url: '/user',
       method: 'GET',
+      response_type: ResponseTypes.default,
       controller_name: 'GetUser',
       url_params: [
         {
-          field: 'user_id',
-          type: 'int',
+          field: 'id',
+          type: 'string',
+        },
+      ],
+      body: [],
+    },
+    {
+      url: '/user',
+      method: 'DELETE',
+      response_type: ResponseTypes.default,
+      controller_name: 'DeleteUser',
+      url_params: [
+        {
+          field: 'id',
+          type: 'string',
         },
       ],
       body: [],

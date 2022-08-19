@@ -26,6 +26,7 @@ export function CreateEndpointAndResetInputFields(
   const new_endpoint: gomarvin_config.Endpoint = {
     url: new_endpoint_fields.url,
     method: new_endpoint_fields.method,
+    response_type: new_endpoint_fields.response_type,
     controller_name: new_endpoint_fields.controller_name,
     url_params: [],
     body: [],

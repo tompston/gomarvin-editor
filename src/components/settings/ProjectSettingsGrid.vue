@@ -226,30 +226,30 @@ const framework_dropdown_is_shown = ref(false);
         </div>
       </div>
 
-      <!-- include_ts_fetch -->
+      <!-- include_fetch -->
       <div class="settings__project_info_value_label_grid">
-        <div class="settings__project_info_label">include_ts_fetch</div>
+        <div class="settings__project_info_label">include_fetch</div>
         <div class="settings__project_info_value">
           <div class="settings__multiple_choices_grid">
             <button
               class="settings__multiple_choices_grid_option"
               :class="
-                project_info.include_ts_fetch == true
+                project_info.include_fetch == true
                   ? 'currently_selected_multiple_choices_option'
                   : ''
               "
-              @click="project_info.include_ts_fetch = true"
+              @click="project_info.include_fetch = true"
             >
               true
             </button>
             <button
               class="settings__multiple_choices_grid_option"
               :class="
-                project_info.include_ts_fetch == false
+                project_info.include_fetch == false
                   ? 'currently_selected_multiple_choices_option'
                   : ''
               "
-              @click="project_info.include_ts_fetch = false"
+              @click="project_info.include_fetch = false"
             >
               false
             </button>
