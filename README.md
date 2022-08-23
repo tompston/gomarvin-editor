@@ -1,9 +1,14 @@
 # Editor for gomarvin configs
 
-If the frontend crashes for some reason, open DevTools, run
+If
 
-```
-localStorage.clear();
+- you're updating from v0.3 or less to v0.4.x
+- the frontend crashes for some reason
+
+open DevTools, and run
+
+```js
+localStorage.clear()
 ```
 
 and reload the page
