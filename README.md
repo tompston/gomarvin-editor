@@ -2,7 +2,7 @@
 
 If
 
-- you're updating from v0.3 or less to v0.4.x
+- you're updating from v0.3.x or less to v0.4.x
 - the frontend crashes for some reason
 
 open DevTools, and run
