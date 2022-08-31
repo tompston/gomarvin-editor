@@ -1,17 +1,7 @@
 # Editor for gomarvin configs
 
-If
-
-- you're updating from v0.3.x or less to v0.4.x
-- the frontend crashes for some reason
-
-open DevTools, and run
-
-```js
-localStorage.clear()
-```
-
-and reload the page
+- If you're updating from v0.3.x or less to v0.4.x or the frontend crashes for some reason, open DevTools, and run `localStorage.clear()`and reload the page
+- If using a version that is less than 0.4.x, use [this editor](https://7e0e40cb.gomarvin.pages.dev/)
 
 ## commands
 
