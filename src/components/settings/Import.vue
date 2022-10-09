@@ -20,7 +20,7 @@ function importConfig(config: any) {
   <div class="flex-center mt-[20px]">
     <button
       :disabled="imported_conf.length == 0"
-      class="create_project_btn py-[10px] px-[12px] fw-700 border-rad-4 fs-10"
+      class="create_project_btn "
       @click="importConfig(config)"
     >
       IMPORT

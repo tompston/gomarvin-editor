@@ -4,6 +4,7 @@
   display: grid;
   gap: 24px;
 }
+
 .code,
 .mevi {
   transition: var(--transition-1);
@@ -23,9 +24,10 @@
   min-height: 30px;
   height: 100%;
   box-sizing: border-box;
-  padding-left: 9px;
+  padding-left: 10px;
   max-width: var(--mevi-w);
 }
+
 .mevi:focus,
 .code:focus {
   border: 1px solid rgb(54, 134, 255);
@@ -36,6 +38,7 @@
   display: grid;
   grid-template-columns: auto var(--endpoint-btn-width);
 }
+
 .endpoint__info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
@@ -61,6 +64,7 @@
 .link__1 {
   color: rgb(83, 139, 224) !important;
 }
+
 .link__1:hover {
   text-decoration: underline;
 }
@@ -74,4 +78,12 @@
   /*  */
   font-size: var(--fs-8);
   font-weight: 600;
+}
+
+
+/* fs-4 fw-700 leading-none */
+.modal__header {
+  font-size: var(--fs-4);
+  font-weight: 700;
+  line-height: 1;
 }

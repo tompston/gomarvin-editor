@@ -16,26 +16,20 @@ const wants_to_delete_module = ref(false);
       <transition name="fade">
         <div v-if="edit_options_are_shown">
           <div class="flex gap-[10px]">
-            <button
-              class="flex-center module__toolbar_option"
-              @click="(wants_to_delete_module = true), (edit_options_are_shown = false);"
-            >
+            <button class="flex-center module__toolbar_option"
+              @click="(wants_to_delete_module = true), (edit_options_are_shown = false);">
               DELETE
             </button>
-            <button
-              class="flex-center module__toolbar_option"
-              @click="editor.addCrudEndpoints(module), (edit_options_are_shown = false)"
-            >
+            <button class="flex-center module__toolbar_option"
+              @click="editor.addCrudEndpoints(module), (edit_options_are_shown = false)">
               ADD CRUD
             </button>
           </div>
         </div>
       </transition>
 
-      <button
-        class="flex-center disable-text-select ml-[10px] module__toolbar_tool_btn"
-        @click="edit_options_are_shown = !edit_options_are_shown"
-      >
+      <button class="flex-center disable-text-select ml-[10px] module__toolbar_tool_btn"
+        @click="edit_options_are_shown = !edit_options_are_shown">
         <div class="flex-center border-rad-5 border-1-2">
           <ToolSvg dims="29" fill="var(--svg-fill)" class="p-[8px] opacity-60" />
         </div>
@@ -48,19 +42,13 @@ const wants_to_delete_module = ref(false);
     <div v-if="wants_to_delete_module">
       <div class="modal__overlay" @click="wants_to_delete_module = false"></div>
       <div class="modal__content max-w-[400px]">
-        <div class="p-[20px] w-full h-full">
-          <div class="fs-3">Really want to delete {{ module.name }} module?</div>
+        <div class="p-[40px] w-full h-full text-center">
+          <div class="modal__header">Really want to delete {{ module.name }} module?</div>
           <div class="flex w-full gap-[10px] mt-[20px]">
-            <button
-              class="border-1-1 p-[6px] flex-center w-full border-rad-4"
-              @click="editor.deleteModule(config.modules, module.name)"
-            >
+            <button class="modal__btn" @click="editor.deleteModule(config.modules, module.name)">
               Yes
             </button>
-            <button
-              class="border-1-1 p-[6px] flex-center w-full border-rad-4"
-              @click="wants_to_delete_module = false"
-            >
+            <button class="modal__btn" @click="wants_to_delete_module = false">
               Nope
             </button>
           </div>

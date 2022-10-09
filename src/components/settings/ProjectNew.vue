@@ -28,10 +28,8 @@ const wantsToCreateNewProject = ref(false);
 
   <!--  -->
   <div class="flex-center w-full mt-[30px]">
-    <button
-      class="create_project_btn py-[10px] px-[12px] fw-700 border-rad-4 fs-10"
-      @click="wantsToCreateNewProject = !wantsToCreateNewProject"
-    >
+    <button class="create_project_btn"
+      @click="wantsToCreateNewProject = !wantsToCreateNewProject">
       CREATE NEW PROJECT
     </button>
   </div>
@@ -41,25 +39,19 @@ const wantsToCreateNewProject = ref(false);
     <div v-if="wantsToCreateNewProject">
       <div class="modal__overlay" @click="wantsToCreateNewProject = false"></div>
       <div class="modal__content max-w-[450px]">
-        <div class="p-[26px] w-full h-full">
-          <div class="fs-4">Really want to create a new project?</div>
-          <div class="fs-7 py-[14px]">
-            Note that this will delete the previous project and all progress will be lost
+        <div class="p-[26px] w-full h-full text-center">
+          <div class="modal__header">Really want to create a new project?</div>
+          <div class="fs-8 py-[14px]">
+            Note that this will delete the previous project and all progress will be lost!
           </div>
           <div class="flex w-full gap-[6px]">
-            <button
-              class="create_new_project_btn"
-              @click="
-                createNewProject(config);
-                wantsToCreateNewProject = false;
-              "
-            >
+            <button class="modal__btn" @click="
+              createNewProject(config);
+              wantsToCreateNewProject = false;
+            ">
               Yes
             </button>
-            <button
-              class="create_new_project_btn"
-              @click="wantsToCreateNewProject = false"
-            >
+            <button class="modal__btn" @click="wantsToCreateNewProject = false">
               No
             </button>
           </div>

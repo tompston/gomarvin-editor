@@ -15,13 +15,9 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
 <template>
   <header class="flex-center border-1-3-bottom">
     <div class="max-width-1">
-      <div
-        class="py-2 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]"
-      >
+      <div class="py-2 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]">
         <div class="fw-400">
-          <router-link to="/" class="remove-decorations fw-600 fs-9"
-            >GOMARVIN</router-link
-          >
+          <router-link to="/" class="remove-decorations fw-700 fs-10">GOMARVIN</router-link>
         </div>
         <!--  -->
         <div class="hide-on-sm">
@@ -34,13 +30,7 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
                 <router-link to="/docs" class="remove-decorations">Docs</router-link>
               </div>
               <div class="hover-underline hover-pointer remove-decorations">
-                <a
-                  class="remove-decorations"
-                  :href="GH_REPO"
-                  rel="noreferrer"
-                  target="_blank"
-                  >Github</a
-                >
+                <a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
               </div>
               <ThemeSwitcher />
               <div class>{{ latest_gomarvin_version }}</div>
@@ -48,17 +38,9 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
           </div>
         </div>
 
-        <div
-          class="hidden pointer show-on-sm flex-center w-[20px] h-[20px]"
-          @click="navigationIsShown = !navigationIsShown"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 23 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div class="hidden pointer show-on-sm flex-center w-[20px] h-[20px]"
+          @click="navigationIsShown = !navigationIsShown">
+          <svg width="16" height="16" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1H23" stroke="var(--svg-fill)" stroke-width="2.5" />
             <path d="M0 9H23" stroke="var(--svg-fill)" stroke-width="2.5" />
             <path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
@@ -80,13 +62,7 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
               <router-link to="/docs" class="remove-decorations">Docs</router-link>
             </div>
             <div class="hover-underline hover-pointer remove-decorations">
-              <a
-                class="remove-decorations"
-                :href="GH_REPO"
-                rel="noreferrer"
-                target="_blank"
-                >Github</a
-              >
+              <a class="remove-decorations" :href="GH_REPO" rel="noreferrer" target="_blank">Github</a>
             </div>
             <div class>{{ latest_gomarvin_version }}</div>
           </div>

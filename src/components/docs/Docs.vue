@@ -55,7 +55,7 @@ const sections = {
         </div>
 
         <div class="docs--content">
-          <div class="fs-2 fw-700 mb-[30px] leading-none">Gomarvin explained</div>
+          <div class="fs-2 fw-600 mb-[20px] leading-none">Gomarvin explained</div>
 
           <div class="text-2 fw-400 mb-[110px] max-w-[640px] md:max-w-[100%]">
             <DocIntro />

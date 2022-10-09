@@ -73,7 +73,7 @@ watchEffect(() => {
                 </div>
                 <div class="navigation--option">
                   <button
-                    class="module__name_btn"
+                    class="module__name_btn "
                     @click="
                       createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown
                     "

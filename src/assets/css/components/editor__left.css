@@ -1,11 +1,13 @@
 .navigation--section {
     margin-bottom: 24px;
 }
+
 .navigation--header {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 6px;
 }
+
 .navigation--options {
     margin-top: 4px;
     display: flex;
@@ -15,20 +17,24 @@
     max-width: 100%;
     gap: 4px;
 }
+
 .navigation--option {
     overflow: auto;
 }
 
 .module__name_btn {
     color: var(--module-name-btn-txt-col);
-    font-size: var(--fs-8);
+    font-size: var(--fs-9);
     border-radius: 5px;
-    padding: 3px 12px;
+    padding: 3px 9px;
+    font-weight: 500;
 }
+
 .module__name_btn--selected {
     color: var(--selected-text-col-1);
     background: var(--selected-bg-col-1);
 }
+
 .add_new_module_btn {
     border: var(--border-1-2);
     border-radius: var(--border-rad-4);

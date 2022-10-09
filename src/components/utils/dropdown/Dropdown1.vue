@@ -6,14 +6,11 @@ defineEmits(["switch"]);
 <template>
   <transition name="fade--removed">
     <div v-if="is_shown">
-      <div class="dropdown__1_content">
+      <div class="dropdown__1_content shadow-6">
         <div class="dropdown__1_options">
           <div v-for="option in options" v-bind:key="option">
-            <div
-              @click="$emit('switch', option)"
-              class="method__option_btn disable-text-select"
-              :class="value == option ? 'method__option_btn--selected' : ''"
-            >
+            <div @click="$emit('switch', option)" class="method__option_btn disable-text-select"
+              :class="value == option ? 'method__option_btn--selected' : ''">
               {{ option }}
             </div>
           </div>
@@ -25,11 +22,11 @@ defineEmits(["switch"]);
 
 <style>
 /* -------- Dropdown 1  */
-.dropdown__1 {
+/* .dropdown__1 {
   position: relative;
   display: inline-block;
   width: 100%;
-}
+} */
 
 .dropdown__1_value {
   width: 100%;
@@ -62,7 +59,7 @@ defineEmits(["switch"]);
   height: 100%;
   display: flex;
   flex-flow: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .dropdown__1_option {
