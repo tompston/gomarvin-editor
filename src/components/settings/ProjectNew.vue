@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import * as gomarvin_config from "../../assets/ts/gomarvin/interfaces";
-import * as predefined from "../../assets/ts/gomarvin/predefined";
 import { init_project_info } from "../../assets/ts/editor/init";
 import ProjectSettingsGrid from "./ProjectSettingsGrid.vue";
 import { ref, reactive } from "vue";
@@ -28,8 +27,7 @@ const wantsToCreateNewProject = ref(false);
 
   <!--  -->
   <div class="flex-center w-full mt-[30px]">
-    <button class="create_project_btn"
-      @click="wantsToCreateNewProject = !wantsToCreateNewProject">
+    <button class="create_project_btn" @click="wantsToCreateNewProject = !wantsToCreateNewProject">
       CREATE NEW PROJECT
     </button>
   </div>

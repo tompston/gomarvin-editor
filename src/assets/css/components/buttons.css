@@ -7,11 +7,6 @@ button[disabled] {
   opacity: 0.3;
 }
 
-.debug__btn {
-  border: 1px solid white;
-  padding: 3px;
-}
-
 .endpoint__method_selected {
   background: #000;
   color: white;
@@ -85,10 +80,14 @@ button[disabled] {
   font-size: var(--fs-10);
   border: var(--border-1-2);
   border-radius: var(--border-rad-5);
-  padding: 8px 15px;
-  background: black;
-  color: rgb(255, 255, 255);
+  padding: 8px 12px;
   font-weight: 700;
+}
+
+.module__toolbar_option:hover {
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: var(--selected-bg-col-2);
+  /* color: var(--selected-txt-col-2); */
 }
 
 .module__toolbar_tool_btn {

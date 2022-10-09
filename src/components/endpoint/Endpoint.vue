@@ -16,6 +16,7 @@ defineProps<{
   existing_controllers: Array<string>;
   new_endpoint: boolean;
 }>();
+
 const detailsAreShown = ref(false);
 const endpoint_method_dropdown_is_shown = ref(false);
 const wantsToDeleteEndpoint = ref(false);
@@ -26,10 +27,6 @@ const wantsToDeleteEndpoint = ref(false);
  * @example   child_component  == <button @click="$emit('delete_event')">Send delete event</button>
  */
 defineEmits(["delete_event", "create_new_endpoint"]);
-
-function c(x: any) {
-  console.log(x);
-}
 
 const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fields });
 </script>

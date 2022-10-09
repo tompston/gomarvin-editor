@@ -38,14 +38,16 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
           </div>
         </div>
 
-        <div class="hidden pointer show-on-sm flex-center w-[20px] h-[20px]"
-          @click="navigationIsShown = !navigationIsShown">
-          <svg width="16" height="16" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 1H23" stroke="var(--svg-fill)" stroke-width="2.5" />
-            <path d="M0 9H23" stroke="var(--svg-fill)" stroke-width="2.5" />
-            <path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
-          </svg>
+        <div class="flex-center">
+          <div class="hidden pointer show-on-sm flex-center" @click="navigationIsShown = !navigationIsShown">
+            <svg width="16" height="16" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 1H23" stroke="var(--svg-fill)" stroke-width="2.5" />
+              <path d="M0 9H23" stroke="var(--svg-fill)" stroke-width="2.5" />
+              <path d="M0 18H23" stroke="var(--svg-fill)" stroke-width="2.5" />
+            </svg>
+          </div>
         </div>
+
       </div>
     </div>
   </header>

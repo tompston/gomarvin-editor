@@ -1,7 +1,8 @@
 @import './main.css';
 @import './media.css';
 @import './vars.css';
-@import './init.css';
+@import './root.css';
+
 @import './components/buttons.css';
 @import './components/debug.css';
 @import './components/docs.css';

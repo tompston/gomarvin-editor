@@ -5,7 +5,7 @@ import {
   getConfig,
   publicConfigExists,
 } from "../assets/ts/utils/utils";
-import { debug_mode, debug_grid_shown } from "../assets/ts/main";
+import { debug_grid_shown } from "../assets/ts/main";
 import { SETTINGS_TABS } from "../assets/ts/gomarvin/predefined";
 import * as gomarvin_config from "../assets/ts/gomarvin/interfaces";
 import * as editor from "../assets/ts/editor/editor";
@@ -30,7 +30,7 @@ function module_name(): string {
   return "";
 }
 
-function debug() {}
+function debug() { }
 
 onMounted(async () => {
   console.log(getConfig());
@@ -43,73 +43,53 @@ watchEffect(() => {
 </script>
 
 <template>
+  
   <Header />
 
   <div class="flex-center">
     <div class="max-width-1 pb-[100px]">
       <div class="editor">
-        <div class="editor__left">
+        <div class="">
           <div class="flex flex-col">
             <!-- Modules Navigation grid -->
             <div class="navigation--section">
               <div class="navigation--header">Modules</div>
               <div class="navigation--options">
-                <div
-                  v-for="module in config.modules"
-                  v-bind:key="module"
-                  class="navigation--option"
-                >
-                  <button
-                    @click="currentlySelectedModule = module.name"
-                    class="module__name_btn"
-                    :class="
-                      currentlySelectedModule == module.name
-                        ? 'module__name_btn--selected'
-                        : ''
-                    "
-                  >
+                <div v-for="module in config.modules" v-bind:key="module" class="navigation--option">
+                  <button @click="currentlySelectedModule = module.name" class="module__name_btn" :class="
+                    currentlySelectedModule == module.name
+                      ? 'module__name_btn--selected'
+                      : ''
+                  ">
                     {{ module.name }}
                   </button>
                 </div>
                 <div class="navigation--option">
-                  <button
-                    class="module__name_btn "
-                    @click="
-                      createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown
-                    "
-                  >
+                  <button class="module__name_btn " @click="
+                    createNewModuleDropdownIsShown = !createNewModuleDropdownIsShown
+                  ">
                     +
                   </button>
                 </div>
                 <div>
                   <div v-if="createNewModuleDropdownIsShown">
-                    <div
-                      class="flex flex-col my-[10px] max-w-[120px] create-new-module-grid"
-                    >
-                      <input
-                        type="text"
-                        class="mevi max-w-full"
-                        placeholder="Singular Module"
-                        v-model="newModuleName"
+                    <div class="flex flex-col my-[10px] max-w-[120px] create-new-module-grid">
+                      <input type="text" class="mevi max-w-full" placeholder="Singular Module" v-model="newModuleName"
                         @input="
                           newModuleName = utils.ConvertToValidValue(
                             $event,
                             utils.ValidModuleName
                           )
-                        "
-                      />
+                        " />
                       <div class="flex-center">
-                        <button
-                          @click="
-                            editor.createNewModule(config.modules, newModuleName),
-                              (newModuleName = ''),
-                              (createNewModuleDropdownIsShown = false)
-                          "
-                          class="fs-10 fw-700 flex-center w-full h-full mt-[6px] py-[6px] add_new_module_btn"
+                        <button @click="
+                          editor.createNewModule(config.modules, newModuleName),
+                            (newModuleName = ''),
+                            (createNewModuleDropdownIsShown = false)
+                        " class="fs-10 fw-700 flex-center w-full h-full mt-[6px] py-[6px] add_new_module_btn"
                           :disabled="
                             !editor.module_name_is_valid(config.modules, newModuleName)
-                          "
-                        >
+                          ">
                           ADD
                         </button>
                       </div>
@@ -124,15 +104,11 @@ watchEffect(() => {
               <div class="navigation--header">Settings</div>
               <div class="navigation--options">
                 <div v-for="SETTINGS_TAB in SETTINGS_TABS" v-bind:key="SETTINGS_TAB.id">
-                  <button
-                    @click="currentlySelectedModule = SETTINGS_TAB.id"
-                    class="module__name_btn"
-                    :class="
-                      currentlySelectedModule == SETTINGS_TAB.id
-                        ? 'module__name_btn--selected'
-                        : ''
-                    "
-                  >
+                  <button @click="currentlySelectedModule = SETTINGS_TAB.id" class="module__name_btn" :class="
+                    currentlySelectedModule == SETTINGS_TAB.id
+                      ? 'module__name_btn--selected'
+                      : ''
+                  ">
                     {{ SETTINGS_TAB.label }}
                   </button>
                 </div>
@@ -168,6 +144,7 @@ watchEffect(() => {
           <div class="debug__config_box">{{ config }}</div>
         </div>
       </div>
+
     </div>
   </div>
 </template>

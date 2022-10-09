@@ -64,7 +64,6 @@ function fakePause(time: number) {
 }
 
 .copied-to-clipboard-box {
-  /* border: 2px solid rgba(235, 235, 235, 0.2); */
   border-radius: var(--border-rad-5);
   padding: 7px 21px;
   font-weight: 700;

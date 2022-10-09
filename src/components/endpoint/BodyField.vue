@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import * as gomarvin_config from "../../assets/ts/gomarvin/interfaces";
 import * as editor from "../../assets/ts/editor/editor";
 import * as utils from "../../assets/ts/utils/utils";
 import { BodyFieldTypes } from "../../assets/ts/gomarvin/predefined";
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import DeleteSvg from "../utils/svg/DeleteSvg.vue";
 import InputErrBox from "../utils/InputErrBox.vue";
 import Dropdown1 from "../utils/dropdown/Dropdown1.vue";
@@ -69,15 +68,13 @@ const custom_body_field_type = ref("");
 .create__endpoint_btn {
   color: var(--selected-text-col-1);
   background: var(--selected-bg-col-1);
+  font-size: var(--fs-10);
+  font-weight: 600;
   border-radius: 5px;
 }
 
 .create__endpoint_btn:disabled {
   opacity: 0.4;
-}
-
-.delete_body_param {
-  transition: var(--transition-1);
 }
 
 .delete_body_param:hover {

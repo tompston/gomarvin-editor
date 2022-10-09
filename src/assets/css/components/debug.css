@@ -14,11 +14,18 @@
   gap: 4px;
   max-width: 440px;
 }
+
 .debug__label_value {
   grid-template-columns: 150px auto;
   gap: 10px;
 }
+
 .debug__config_box {
   max-height: 100px;
   overflow-y: scroll;
+}
+
+.debug__btn {
+  border: 1px solid white;
+  padding: 3px;
 }
