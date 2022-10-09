@@ -22,9 +22,11 @@ const custom_body_field_type = ref("");
 <template>
   <div class="endpoint_body_grid">
     <div>
-      <input type="text" placeholder="field_name" v-model="body_param.field" class="code w-full" @input="
-        body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)
-      " />
+      <input type="text" placeholder="field_name" v-model="body_param.field" autocomplete="off" autocorrect="off"
+        autocapitalize="off" spellcheck="false" class="code w-full" @input="
+          
+          body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)
+        " />
       <InputErrBox msg="Body field can't be empty!" v-if="body_param.field == '' && !new_endpoint" />
       <InputErrBox msg="Body field already exists!" v-if="
         (editor.duplicateStringExistsInArray(existing_body_params, body_param.field) &&
@@ -45,7 +47,7 @@ const custom_body_field_type = ref("");
     </div>
 
     <input type="text" class="code" v-model="body_param.validate" placeholder="validate field in go struct"
-      autocorrect="off" @input="
+      autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" @input="
         body_param.validate = utils.ConvertToValidValue($event, utils.ValidValidateField)
       " />
 

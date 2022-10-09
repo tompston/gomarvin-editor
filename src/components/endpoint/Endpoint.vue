@@ -110,10 +110,10 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
     </button>
   </div>
 
-  <div class="p-[2px] mt-[4px]" v-if="detailsAreShown">
+  <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
     <!-- Single Body field -->
     <div class="mb-[10px]">
-      <div class="grid grid-cols-[1fr_auto] mb-1 mt-[2px]">
+      <div class="grid grid-cols-[1fr_auto] mt-[2px]">
         <div class="endpoint_body_subheader">Body</div>
         <div v-if="!new_endpoint">
           <div class="flex w-full h-full">
@@ -128,7 +128,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
                   </button>
                 </div>
               </transition>
-              <button class="flex-center w-[26px] h-[26px] border-1-1 border-rad-5"
+              <button class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
                 @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint">
                 <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
               </button>

@@ -26,8 +26,7 @@
     color: var(--module-name-btn-txt-col);
     font-size: var(--fs-9);
     border-radius: 5px;
-    padding: 3px 9px;
-    font-weight: 500;
+    padding: 2px 9px;
 }
 
 .module__name_btn--selected {

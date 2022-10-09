@@ -22,11 +22,6 @@ defineEmits(["switch"]);
 
 <style>
 /* -------- Dropdown 1  */
-/* .dropdown__1 {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-} */
 
 .dropdown__1_value {
   width: 100%;

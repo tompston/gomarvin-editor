@@ -27,7 +27,7 @@ export const init_body_fields: Body = {
 export const init_project_info: ProjectInfo = {
   go_version: 1.17,
   name: 'my_server',
-  framework: Frameworks.gin,
+  framework: Frameworks.chi,
   port: 4444,
   api_prefix: '/api/v1',
   config_version: 0.1,

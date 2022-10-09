@@ -52,9 +52,7 @@
     padding: 7px 20px;
     font-size: var(--fs-9);
     border-radius: var(--border-rad-4);
-
     margin: 10px 0px;
-    /* box-shadow: var(--shadow-3); */
 }
 
 .docs-code-block {
@@ -64,29 +62,23 @@
     font-size: var(--fs-9);
     border-radius: var(--border-rad-4);
     margin: 10px 0px;
-    /* box-shadow: var(--shadow-3); */
 }
 
 /* code block */
 .docs pre {
     border: var(--border-1-2);
-
     width: auto !important;
     line-height: 1;
     background: rgb(255, 255, 255) !important;
     border-radius: var(--border-rad-3);
     padding: 3px 15px;
-
     white-space: pre-wrap;
-    /* overflow-x: scroll; */
 }
 
 .docs pre code {
     padding: 0px;
     background: rgb(255, 255, 255) !important;
-    /* background-color: var(--code-bg) !important; */
     color: rgb(59, 59, 59) !important;
-    /* overflow-x: scroll; */
 }
 
 .docs-comment {

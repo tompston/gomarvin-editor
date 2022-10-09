@@ -33,6 +33,7 @@ const sections = {
 </script>
 
 <style>
+
 </style>
 
 
@@ -127,7 +128,6 @@ const sections = {
 
             <h3 id="include_fetch" class="doc-subheader-1">include_fetch</h3>
 
-            <!-- <br /> -->
             <p>
               If set to true,
               <code>gomarvin.gen.ts</code>
@@ -183,7 +183,6 @@ const sections = {
               gomarvin -fetch-only="true"
             </div>
 
-            <!-- <br> -->
             <br>
 
             <h3 id="include_fetch-example" class="doc-subheader-1">Examples using generated fetch
@@ -245,9 +244,6 @@ async function FetchCommentById() {
 }</code>
                         </pre>
 
-
-            <!-- <br /> -->
-
             <br />
             <h3 id="include_sql" class="doc-subheader-1">include_sql</h3>
             <p>
@@ -289,10 +285,7 @@ async function FetchCommentById() {
                   from the module_name.sql file.
                 </ul>
               </li>
-              <!-- <li>
-                                Ideally
-                                <code>include_sql</code> is a thing you toggle to be true when you want to create the example files for new modules and then turn it off, so that the text files could be deleted.
-                            </li> -->
+
             </ul>
             <p>
               As sqlc uses sql files for codegen, we create placeholder
@@ -327,12 +320,6 @@ async function FetchCommentById() {
               <li>
                 Check for a newer version of the used backend framework. The current ones may not be up to date.
               </li>
-              <!-- <li>
-                <p>
-                  The project is in early stage, this means that there will be breaking changes
-                  later.
-                </p>
-              </li> -->
               <li>
                 Routers for the modules will be automatically imported and available only on the
                 first run
