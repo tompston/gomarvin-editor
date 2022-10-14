@@ -229,4 +229,15 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 .create__url_param_btn:hover {
   opacity: 0.8;
 }
+
+.endpoint_body_subheader {
+  /* disable text select */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  /*  */
+  font-size: var(--fs-8);
+  font-weight: 600;
+}
 </style>
