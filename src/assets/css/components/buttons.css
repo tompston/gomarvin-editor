@@ -47,17 +47,16 @@ button[disabled] {
   height: 100%;
   padding: 3px 0px;
   border: var(--border-1-2);
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: var(--fs-9);
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition-1);
 }
 
 .modal__btn:hover {
-  /* background: var(--selected-bg-col-2); */
-  background: rgb(26, 26, 26);
-  color: white;
   border: 1px solid rgba(255, 255, 255, 0);
+  color: var(--selected-text-col-1);
+  background: var(--selected-bg-col-1);
 }
 
 /*  */
@@ -86,8 +85,8 @@ button[disabled] {
 
 .module__toolbar_option:hover {
   border: 1px solid rgba(255, 255, 255, 0);
-  background-color: var(--selected-bg-col-2);
-  /* color: var(--selected-txt-col-2); */
+  color: var(--selected-text-col-1);
+  background: var(--selected-bg-col-1);
 }
 
 .module__toolbar_tool_btn {
