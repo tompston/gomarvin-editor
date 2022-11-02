@@ -48,9 +48,9 @@ const sections = {
 
 
         <div class="docs--nav hide-on-md">
-          <div class="pl-[12px] py-[20px] flex flex-col gap-[10px] fs-8 docs-sticky border-1-1">
+          <div class="p-[15px] flex flex-col gap-1 fs-9 docs-sticky border-1-1">
             <div v-for="section in sections">
-              <a :href="section.href">{{ section.label }}</a>
+              <a :href="section.href" class="docs-sticky-link">{{ section.label }}</a>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ const sections = {
             <p>
               The server is generated based on the config file. To create and edit that file, either use
               the
-              <router-link to="/" class="mr-4">Current Editor</router-link>or copy a predefined config
+              <router-link to="/" class="mr-1">Current Editor</router-link>or copy a predefined config
               file from
               gomarvin github repo
               <a href="https://github.com/tompston/gomarvin/tree/main/examples" rel="noreferrer" target="_blank"
@@ -95,7 +95,7 @@ const sections = {
                 </p>
               </li>
 
-              <li>Bugs caused by url params and routing should be fixed manually.</li>
+              <li>Bugs caused by url params and routing should be fixed manually. (Mostly a Gin problem)</li>
               <li>The currently generated codebase uses a global <code>database.DB</code> variable to create a
                 database connection. Some places say that this is not the best approach. So do your own research on
                 which method you want to use.</li>
@@ -103,11 +103,10 @@ const sections = {
             </ul>
 
             <div>
-              <p class="text-center my-30 fw-600 main-col-danger text-white py-[16px] px-10 border-rad-3">
+              <p class="text-center my-30 fw-600 main-col-danger text-white py-[16px] px-10 border-rad-3 sm:px-5">
                 If a file has
-                <code>.gen</code> in the name, that means it will be regenerated on
-                each run. So editing them is a bad idea if you want to save changes. So rename the
-                file to edit it.
+                <code class="!text-white !border-white">.gen</code> in the name, that means it will be regenerated on
+                each run. So editing them is a bad idea if you want to save changes. Rename the file and remove the upper comment to edit them.
               </p>
             </div>
 
@@ -180,15 +179,18 @@ const sections = {
             If you only need to generate the typescript file, run
 
             <div class="docs-quote">
-              gomarvin -fetch-only="true"
+              gomarvin -fetch-only="true" generate
             </div>
 
             <br>
 
             <h3 id="include_fetch-example" class="doc-subheader-1">Examples using generated fetch
               functions</h3>
-            <pre>
-                            <code>
+
+
+              <div class="grid grid-cols-1 overflow-auto">
+<pre>
+                <code class="!border-none">
 <span class="docs-comment">// import the generated file</span>
 import * as F from "../../../gomarvin.gen";
 <span class="docs-comment">// or import only the Comment module endpoints</span>
@@ -233,7 +235,7 @@ async function FetchWithAppendedUrlAndCustomOptions() {
   const res = await F.GetUserById(10, {
     options: { method: "DELETE" },
     append_url: "?name=jim",
-  });
+    });
   console.log(res);
 }
 
@@ -242,7 +244,8 @@ async function FetchCommentById() {
   const res = await CommentEndpoints.GetComment(20);
   console.log(res);
 }</code>
-                        </pre>
+            </pre>
+              </div>
 
             <br />
             <h3 id="include_sql" class="doc-subheader-1">include_sql</h3>

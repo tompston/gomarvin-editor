@@ -14,6 +14,11 @@
     gap: 24px;
 }
 
+.docs a {
+    color: #5d90f5;
+    font-weight: 600;
+}
+
 .docs h1 {
     font-size: var(--fs-4);
     line-height: 1.02;
@@ -31,7 +36,7 @@
 }
 
 .docs:first-child ul li {
-    margin-bottom: 11px;
+    margin-bottom: 5px;
 }
 
 .docs .doc-subheader-1 {
@@ -44,6 +49,16 @@
     /* Safari */
     position: sticky;
     top: 14px;
+
+}
+
+.docs-sticky-link {
+    color: var(--main-text-col) !important;
+    font-weight: 300 !important;
+}
+
+.docs-sticky-link:hover {
+    text-decoration: underline;
 }
 
 .docs-quote {
@@ -66,20 +81,21 @@
 
 /* code block */
 .docs pre {
-    border: var(--border-1-2);
+    /* border: var(--border-1-2); */
     width: auto !important;
     line-height: 1;
-    background: rgb(255, 255, 255) !important;
+    background-color: var(--code-bg) !important;
     border-radius: var(--border-rad-3);
     padding: 3px 15px;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
+    /* display: grid; */
 }
 
 .docs pre code {
     padding: 0px;
-    background: rgb(255, 255, 255) !important;
-    color: rgb(59, 59, 59) !important;
 }
+
+
 
 .docs-comment {
     opacity: 0.43;

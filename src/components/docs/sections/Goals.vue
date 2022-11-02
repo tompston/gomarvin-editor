@@ -11,7 +11,7 @@
         actual query. So you can use any ORM / no-ORM tool you want ( like SQLC, Ent, SQLBoiler,
         GORM, etc etc), as that is the part that will change based on the project. Once the project
         is generated the first time, only the
-        <code>controllers.gen.go</code> will be updated on the
+        <code>controllers.gen.go</code> and <code>body.gen.go</code> will be updated on the
         next runs. (+ more on options later)
     </p>
     <p>
@@ -24,10 +24,6 @@
     </p>
     <ul>
         <li>
-            <!-- The generated controllers are meant to be copied to a new file and customized to run the
-            functions that query the data. Thus, while we rely on the codegen to generate the
-            boilerpate, we are not dependent on it if we want to edit it. -->
-
             While we rely on the codegen to generate the
             boilerpate, we are not dependent on it if we want to edit it.
             To customize the generated code, rename <code>controllers.gen.go</code> files to
@@ -35,9 +31,10 @@
             in the new file. That way there won't be any overlap between the generated code and editable code.
             <ul>
                 <li>
-                    Need a custom field for the generated endpoint Body struct?
+                    Need a custom field for the generated endpoint Body struct? Either
                     <ul>
-                        <li>Edit in the copied file.</li>
+                        <li>Copy the struct from <code>body.gen.go</code>, edit it and use it in the controller</li>
+                        <li>Or rename the <code>body.gen.go</code> file and edit it there</li>
                     </ul>
                 </li>
                 <li>
@@ -82,7 +79,7 @@
 
     <h3 id="no-magic" class="doc-subheader-1">No Magic</h3>
     <p>Don't hide away anything that is generated. Everything can be inspected and understood, so that it would be
-        easier to tweak the functions for personal needs later.</p>
+        easier to tweak the functions for personal needs later. The project is as minimal as possible, so that refactoring most of it for your needs would pe easily doable.</p>
     <p>
         <br />
     </p>
