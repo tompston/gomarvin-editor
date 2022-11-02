@@ -293,7 +293,8 @@ async function FetchCommentById() {
             <p>
               As sqlc uses sql files for codegen, we create placeholder
               <code>.gen.txt</code> files in
-              the same dir. So copy and rename the files to preserve changes to them
+              the same dir. The generated README file has a command that shows how to 
+              rename all of them.
             </p>
 
             <div class="mt-[30px]"></div>
@@ -355,10 +356,10 @@ async function FetchCommentById() {
                 needed.
               </li>
               <li>
-                My first attempt at fixing this problem was
+                My first attempt at fixing this boilerplate problem was
                 <a href="https://github.com/tompston/gomakeme">gomakeme</a>. gomakeme was written
-                because i wanted to see how far i can push codegen that could make my life easier.
-                So this is a continuation of that. The motivation to do so is based on the problem
+                because I wanted to see how far I can push codegen that could make my life easier.
+                So this is an improved continuation of that. The motivation to do so is based on the problem
                 stated at the start. So the absolute goal of this is project is to minimize time
                 needed to do one of the main jobs of backends =
                 <code>run this query and return the data</code>.
