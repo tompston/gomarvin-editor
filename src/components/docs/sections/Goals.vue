@@ -49,6 +49,12 @@
                         <li>install it and change it</li>
                     </ul>
                 </li>
+                <li>
+                    Want to use methods for the generated controllers?
+                    <ul>
+                        <li>Write them and add them, as needed</li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li>
@@ -79,7 +85,8 @@
 
     <h3 id="no-magic" class="doc-subheader-1">No Magic</h3>
     <p>Don't hide away anything that is generated. Everything can be inspected and understood, so that it would be
-        easier to tweak the functions for personal needs later. The project is as minimal as possible, so that refactoring most of it for your needs would be easily doable.</p>
+        easier to tweak the functions for personal needs later. The project is as minimal as possible, so that
+        refactoring most of it for your needs would be easily doable.</p>
     <p>
         <br />
     </p>
