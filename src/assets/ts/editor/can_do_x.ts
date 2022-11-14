@@ -21,7 +21,8 @@ export function canCreateNewBodyField(
   if (
     stringExistsInArray(existing_body_fields, new_body_field) ||
     new_body_field.length <= 1 ||
-    new_body_field == ''
+    new_body_field == '' ||
+    new_body_field == 'this'
   ) {
     return false
   } else return true

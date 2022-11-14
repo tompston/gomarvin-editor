@@ -28,6 +28,7 @@ const custom_body_field_type = ref("");
           body_param.field = utils.ConvertToValidValue($event, utils.ValidBodyField)
         " />
       <InputErrBox msg="Body field can't be empty!" v-if="body_param.field == '' && !new_endpoint" />
+      <InputErrBox v-if="body_param.field == 'this'" msg="Body field can't be named - this!" />
       <InputErrBox msg="Body field already exists!" v-if="
         (editor.duplicateStringExistsInArray(existing_body_params, body_param.field) &&
           !new_endpoint &&

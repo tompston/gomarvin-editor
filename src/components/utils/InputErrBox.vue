@@ -21,7 +21,7 @@ defineProps<{ msg: string }>();
   background: rgb(160, 18, 18);
   border: 2px solid rgba(236, 236, 236, 0.2);
   color: white;
-  padding: 10px 10px;
+  padding: 12px 12px;
   border-radius: 8px;
   box-shadow: var(--shadow-4);
   width: 100%;
@@ -30,5 +30,7 @@ defineProps<{ msg: string }>();
   transition: all 500ms;
   margin-top: -98px;
   font-size: var(--fs-9);
+  font-weight: 500;
+  line-height: 1.1;
 }
 </style>
