@@ -91,6 +91,10 @@
     /* display: grid; */
 }
 
+.code-bg {
+    background-color: var(--code-bg) !important;
+}
+
 .docs pre code {
     padding: 0px;
 }

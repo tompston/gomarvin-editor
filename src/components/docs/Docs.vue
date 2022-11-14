@@ -188,60 +188,59 @@ const sections = {
               functions</h3>
 
 
-              <div class="grid grid-cols-1 overflow-auto">
+              <div class="grid grid-cols-1 overflow-auto code-bg border-rad-3">
 <pre>
                 <code class="!border-none">
-<span class="docs-comment">// import the generated file</span>
-import * as F from "../../../gomarvin.gen";
-<span class="docs-comment">// or import only the Comment module endpoints</span>
-import { CommentEndpoints } from "../../../gomarvin.gen";
+// import the generated file
+import * as F from "../../../chi_with_modules/public/gomarvin.gen" 
+// or just import a single fetch function
+import { GetUserById } from "../../../chi_with_modules/public/gomarvin.gen"
 
-<span class="docs-comment">// fetch a user by id</span>
-async function FetchGetUserByIdEndpoint() {
-  let res = await F.GetUserById(1);
-  let users = await res.json();
-  console.log(users);
+// either use the default client created from
+// the settings of the config file, or create a new one
+// (useful when switching environments)
+const defaultClient = F.defaultClient
+
+// api client when deployed
+const productionClient: F.Client = {
+  host_url: "http://example.com",
+  api_prefix: "/api/v1",
+  headers: {
+    "Content-type": "application/json;charset=UTF-8",
+  },
 }
 
-<span class="docs-comment">// create a new user</span>
-async function FetchCreateUserEndpoint() {
-  let res = await F.CreateUser({
-    username: "qweqwe",
-    email: "qwe@qwe.com",
-    age: 20,
-    password: "very-long-and-good-password",
-  });
+const DEV_MODE = true
 
-  let user = await res.json();
-  console.log(user);
+// switch to productionClient if DEV_MODE is false
+const client = DEV_MODE ? defaultClient : productionClient
+
+// fetch GetUserById endpoint
+async function FetchGetUsersById() {
+  const res = await F.GetUserById(client, 10);
+  console.log(res);
 }
 
-<span class="docs-comment">// append optional string to the existing endpoint url</span>
+// append optional string to the existing endpoint url
 async function FetchEndpointWithAppendedUrl() {
-  const res = await F.GetUserById(10, { append_url: "?name=jim" });
+  const res = await F.GetUserById(client, 10, { append_url: "?name=jim" });
   console.log(res);
 }
 
-<span class="docs-comment">// define custom options for the fetch request</span>
+// define custom options for the fetch request
 async function FetchEndpointWithCustomOptions() {
-  const res = await F.GetUserById(10, { options: { method: "POST" } });
+  const res = await F.GetUserById(client, 10, { options: { method: "POST" } });
   console.log(res);
 }
 
-<span class="docs-comment">// Use both optional values
+// Use both optional values
 // - append a string to the fetch url
-// - define a new options object used in the fetch request</span>
+// - define a new options object used in the fetch request
 async function FetchWithAppendedUrlAndCustomOptions() {
-  const res = await F.GetUserById(10, {
+  const res = await F.GetUserById(client, 10, {
     options: { method: "DELETE" },
     append_url: "?name=jim",
-    });
-  console.log(res);
-}
-
-<span class="docs-comment">// Fetch a single endpoint from the Comment module</span>
-async function FetchCommentById() {
-  const res = await CommentEndpoints.GetComment(20);
+  });
   console.log(res);
 }</code>
             </pre>

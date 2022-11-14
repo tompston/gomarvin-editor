@@ -23,6 +23,6 @@ onMounted(() => {
 
 <template>
   <button id="theme-switcher" ref="themeSwitch" @click="switchTheme()">
-    Switch Theme
+    Theme
   </button>
 </template>
