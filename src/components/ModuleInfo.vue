@@ -34,16 +34,14 @@ const new_endpoint_is_shown = ref(false)
         <div class="grid">
           <!-- Grid of endpoints -->
           <div v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)" v-bind:key="endpoint">
-            <Endpoint :new_endpoint_is_shown="new_endpoint_is_shown"
-              :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"
+            <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"
               :new_endpoint="false" @delete_event="editor.deleteValueFromArray(module.endpoints, endpoint)" />
           </div>
 
           <div>
             <div v-if="new_endpoint_is_shown">
-              <Endpoint :new_endpoint_is_shown="new_endpoint_is_shown"
-                :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="new_endpoint_fields"
-                :new_endpoint="true" @create_new_endpoint="
+              <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)"
+                :endpoint="new_endpoint_fields" :new_endpoint="true" @create_new_endpoint="
   editor.CreateEndpointAndResetInputFields(
     module.endpoints,
     new_endpoint_fields

@@ -53,7 +53,7 @@ const custom_body_field_type = ref("");
       " />
 
     <!-- if an existing endpoint, return element that allows to delete current body_param -->
-    <button v-if="!new_endpoint" class="flex-center text-col-6 delete_body_param border-rad-5"
+    <button v-if="!new_endpoint" class="flex-center text-col-6 delete_body_param border-rad-5 border-1-3"
       @click="editor.deleteValueFromArray(endpoint.body, body_param)">
       <DeleteSvg dims="14" fill="var(--svg-fill)" class="delete__svg" />
     </button>

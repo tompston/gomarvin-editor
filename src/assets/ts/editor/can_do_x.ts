@@ -8,10 +8,12 @@ export function canCreateNewEndpoint(
     stringExistsInArray(existing_controllers, new_controller_name) ||
     new_controller_name.length <= 2 ||
     new_controller_name == 'ControllerName' ||
-    new_controller_name == ''
+    new_controller_name == '' ||
+    new_controller_name == 'this'
   ) {
     return false
-  } else return true
+  }
+  return true
 }
 
 export function canCreateNewBodyField(
@@ -25,5 +27,6 @@ export function canCreateNewBodyField(
     new_body_field == 'this'
   ) {
     return false
-  } else return true
+  }
+  return true
 }

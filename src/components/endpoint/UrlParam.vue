@@ -19,7 +19,7 @@ const dropdownIsShown = ref(false);
     </button>
 
     <InputErrBox v-if="url_param.field == ''" msg="Url param can't be empty!" />
-    <InputErrBox v-if="url_param.field == 'this'" msg="Url param can't be named - this!" />
+    <InputErrBox v-if="url_param.field == 'this'" msg="Url params can't be named - this!" />
     <InputErrBox msg="url_param already exists!" v-if="
       editor.duplicateStringExistsInArray(
         editor.existing_url_params(endpoint.url_params),

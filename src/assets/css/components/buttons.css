@@ -80,6 +80,7 @@ button[disabled] {
   border: var(--border-1-2);
   border-radius: var(--border-rad-5);
   padding: 8px 12px;
+  opacity: 0.75;
   font-weight: 700;
 }
 
@@ -87,6 +88,7 @@ button[disabled] {
   border: 1px solid rgba(255, 255, 255, 0);
   color: var(--selected-text-col-1);
   background: var(--selected-bg-col-1);
+  opacity: 1;
 }
 
 .module__toolbar_tool_btn {

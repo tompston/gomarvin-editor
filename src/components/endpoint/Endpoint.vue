@@ -118,11 +118,11 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
         <div class="endpoint_body_subheader">Body</div>
         <div v-if="!new_endpoint">
           <div class="flex w-full h-full">
-            <div class="flex gap-[6px] flex-center">
+            <div class="flex gap-[8px] flex-center">
               <transition name="fade">
                 <div v-if="wantsToDeleteEndpoint">
                   <button @click="$emit('delete_event')"
-                    class="border-1-1 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn">
+                    class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn">
                     <div class="fs-10 fw-600">
                       Delete {{ endpoint.controller_name }} endpoint
                     </div>
