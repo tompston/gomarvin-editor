@@ -18,6 +18,9 @@ defineProps<{ config: any; currentlySelectedModule: string }>();
 const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
   ...editor.init_endpoint_fields,
 });
+
+const new_endpoint_is_shown = ref(false)
+
 </script>
 
 <template>
@@ -30,30 +33,31 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
 
         <div class="grid">
           <!-- Grid of endpoints -->
-          <div
-            v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)"
-            v-bind:key="endpoint"
-          >
-            <Endpoint
-              :existing_controllers="editor.existing_controllers(module.endpoints)"
-              :endpoint="endpoint"
-              :new_endpoint="false"
-              @delete_event="editor.deleteValueFromArray(module.endpoints, endpoint)"
-            />
+          <div v-for="endpoint in editor.endpoints_sorted_by_http_method(module.endpoints)" v-bind:key="endpoint">
+            <Endpoint :new_endpoint_is_shown="new_endpoint_is_shown"
+              :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="endpoint"
+              :new_endpoint="false" @delete_event="editor.deleteValueFromArray(module.endpoints, endpoint)" />
           </div>
 
           <div>
-            <Endpoint
-              :existing_controllers="editor.existing_controllers(module.endpoints)"
-              :endpoint="new_endpoint_fields"
-              :new_endpoint="true"
-              @create_new_endpoint="
-                editor.CreateEndpointAndResetInputFields(
-                  module.endpoints,
-                  new_endpoint_fields
-                )
-              "
-            />
+            <div v-if="new_endpoint_is_shown">
+              <Endpoint :new_endpoint_is_shown="new_endpoint_is_shown"
+                :existing_controllers="editor.existing_controllers(module.endpoints)" :endpoint="new_endpoint_fields"
+                :new_endpoint="true" @create_new_endpoint="
+  editor.CreateEndpointAndResetInputFields(
+    module.endpoints,
+    new_endpoint_fields
+  );
+new_endpoint_is_shown = false
+                " />
+            </div>
+
+            <div class="grid grid-cols-[1fr_auto] mt-2">
+              <div></div>
+              <button @click="new_endpoint_is_shown = !new_endpoint_is_shown" class="flex-center toggle_endpoint_btn">
+                {{ new_endpoint_is_shown ? "-" : "+" }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -79,3 +83,19 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
     </div>
   </div>
 </template>
+
+<style scoped>
+.toggle_endpoint_btn {
+  width: 30px;
+  height: 30px;
+  background-color: var(--selected-bg-col-2);
+  border-radius: var(--border-rad-5);
+  font-size: var(--fs-8);
+  opacity: 0.7;
+  margin-right: 5px;
+}
+
+.toggle_endpoint_btn:hover {
+  opacity: 1;
+}
+</style>
