@@ -58,7 +58,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
             )
           " />
         </div>
-        <InputErrBox msg="Controller name can't be named - this!" v-if="endpoint.controller_name == 'this'" />
+        <InputErrBox msg="Controller can't be named - this!" v-if="endpoint.controller_name == 'this'" />
         <InputErrBox msg="Controller name can't be empty!" v-if="endpoint.controller_name == ''" />
         <InputErrBox msg="Controller name already exists!" v-if="
           (editor.duplicateStringExistsInArray(
