@@ -86,14 +86,14 @@ new_endpoint_is_shown = false
 .toggle_endpoint_btn {
   width: 30px;
   height: 30px;
-  background-color: var(--selected-bg-col-2);
   border-radius: var(--border-rad-5);
+  border: var(--border-1-3);
   font-size: var(--fs-8);
-  opacity: 0.7;
   margin-right: 5px;
 }
 
 .toggle_endpoint_btn:hover {
   opacity: 1;
+  border: var(--border-1-1);
 }
 </style>
