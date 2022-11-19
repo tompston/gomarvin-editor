@@ -91,6 +91,6 @@ button[disabled] {
   opacity: 1;
 }
 
-.module__toolbar_tool_btn {
-  align-items: flex-start;
+.module_toolbar_btn:hover {
+  border: var(--border-1-1);
 }

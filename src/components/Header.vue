@@ -22,10 +22,10 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
         <!--  -->
         <div class="hide-on-sm">
           <div>
-            <div class="flex gap-[35px] opacity-70">
-              <div class="hover-underline hover-pointer">
+            <div class="flex gap-[30px] opacity-60">
+              <!-- <div class="hover-underline hover-pointer">
                 <router-link to="/" class="remove-decorations">Editor</router-link>
-              </div>
+              </div> -->
               <div class="hover-underline hover-pointer">
                 <router-link to="/docs" class="remove-decorations">Docs</router-link>
               </div>
