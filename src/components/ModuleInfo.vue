@@ -39,16 +39,19 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
           </div>
 
           <div>
-            <div v-if="new_endpoint_is_shown">
-              <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)"
-                :endpoint="new_endpoint_fields" :new_endpoint="true" @create_new_endpoint="
+
+            <transition name="expand">
+              <div v-if="new_endpoint_is_shown">
+                <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)"
+                  :endpoint="new_endpoint_fields" :new_endpoint="true" @create_new_endpoint="
   editor.CreateEndpointAndResetInputFields(
     module.endpoints,
     new_endpoint_fields,
   );
 new_endpoint_is_shown = false
-                " />
-            </div>
+                  " />
+              </div>
+            </transition>
 
             <div class="grid grid-cols-[1fr_auto] mt-2">
               <div></div>

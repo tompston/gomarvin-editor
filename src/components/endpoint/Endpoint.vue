@@ -111,102 +111,105 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
     </div>
   </div>
 
-  <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
-    <!-- Single Body field -->
-    <div class="mb-[10px]">
-      <div class="grid grid-cols-[1fr_auto] mt-[2px]">
-        <div class="endpoint_body_subheader">Body</div>
-        <div v-if="!new_endpoint">
-          <div class="flex w-full h-full">
-            <div class="flex gap-[8px] flex-center">
-              <transition name="fade">
-                <div v-if="wantsToDeleteEndpoint">
-                  <button @click="$emit('delete_event')"
-                    class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn">
-                    <div class="fs-10 fw-600">
-                      Delete {{ endpoint.controller_name }} endpoint
-                    </div>
-                  </button>
-                </div>
-              </transition>
-              <button class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
-                @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint">
-                <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
-              </button>
+  <transition name="expand">
+    <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
+      <!-- Single Body field -->
+      <div class="mb-[10px]">
+        <div class="grid grid-cols-[1fr_auto] mt-[2px]">
+          <div class="endpoint_body_subheader">Body</div>
+          <div v-if="!new_endpoint">
+            <div class="flex w-full h-full">
+              <div class="flex gap-[8px] flex-center">
+                <transition name="fade">
+                  <div v-if="wantsToDeleteEndpoint">
+                    <button @click="$emit('delete_event')"
+                      class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn">
+                      <div class="fs-10 fw-600">
+                        Delete {{ endpoint.controller_name }} endpoint
+                      </div>
+                    </button>
+                  </div>
+                </transition>
+                <button class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
+                  @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint">
+                  <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
-        <div>FIELD</div>
-        <div>TYPE</div>
-        <div class="flex gap-1.5">
-          <div>VALIDATE</div>
-          <a href="https://github.com/go-playground/validator" target="_blank" rel="noopener noreferrer" class="">
-            <div class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select">
-              ?
+        <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
+          <div>FIELD</div>
+          <div>TYPE</div>
+          <div class="flex gap-1.5">
+            <div>VALIDATE</div>
+            <a href="https://github.com/go-playground/validator" target="_blank" rel="noopener noreferrer" class="">
+              <div class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select">
+                ?
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="grid gap-[8px] endpoint__body">
+          <!-- Pass down the object that holds the values  -->
+          <div v-for="body_param in endpoint.body" :key="body_param">
+            <BodyField :existing_body_params="editor.existing_body_params(endpoint.body)" :body_param="body_param"
+              :new_endpoint="false" :endpoint="endpoint" />
+          </div>
+
+          <div>
+            <BodyField :existing_body_params="editor.existing_body_params(endpoint.body)" :body_param="new_body_field"
+              :new_endpoint="true" :endpoint="endpoint" @create_body_field="
+                editor.CreateBodyFieldAndResetInputFields(endpoint.body, new_body_field)
+              " />
+          </div>
+        </div>
+
+        <!-- Switch  Response Type For Endpoint -->
+        <div class="mt-4">
+          <div class="endpoint_body_subheader mb-2">Response Type</div>
+          <div class="flex flex-row gap-2">
+            <div class="settings__multiple_choices_grid_option" :class="
+              endpoint.response_type === predefined.ResponseTypes.default
+                ? 'currently_selected_multiple_choices_option'
+                : ''
+            " @click="endpoint.response_type = predefined.ResponseTypes.default">
+              Default
             </div>
-          </a>
-        </div>
-      </div>
-      <div class="grid gap-[8px] endpoint__body">
-        <!-- Pass down the object that holds the values  -->
-        <div v-for="body_param in endpoint.body" :key="body_param">
-          <BodyField :existing_body_params="editor.existing_body_params(endpoint.body)" :body_param="body_param"
-            :new_endpoint="false" :endpoint="endpoint" />
-        </div>
-
-        <div>
-          <BodyField :existing_body_params="editor.existing_body_params(endpoint.body)" :body_param="new_body_field"
-            :new_endpoint="true" :endpoint="endpoint" @create_body_field="
-              editor.CreateBodyFieldAndResetInputFields(endpoint.body, new_body_field)
-            " />
-        </div>
-      </div>
-
-      <!-- Switch  Response Type For Endpoint -->
-      <div class="mt-4">
-        <div class="endpoint_body_subheader mb-2">Response Type</div>
-        <div class="flex flex-row gap-2">
-          <div class="settings__multiple_choices_grid_option" :class="
-            endpoint.response_type === predefined.ResponseTypes.default
-              ? 'currently_selected_multiple_choices_option'
-              : ''
-          " @click="endpoint.response_type = predefined.ResponseTypes.default">
-            Default
-          </div>
-          <div class="settings__multiple_choices_grid_option" :class="
-            endpoint.response_type === predefined.ResponseTypes.with_pagination
-              ? 'currently_selected_multiple_choices_option'
-              : ''
-          " @click="endpoint.response_type = predefined.ResponseTypes.with_pagination">
-            With Pagination
+            <div class="settings__multiple_choices_grid_option" :class="
+              endpoint.response_type === predefined.ResponseTypes.with_pagination
+                ? 'currently_selected_multiple_choices_option'
+                : ''
+            " @click="endpoint.response_type = predefined.ResponseTypes.with_pagination">
+              With Pagination
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- DEBUG GRID -->
-      <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
-        <div>
-          <div>existing_body_params</div>
-          <div>{{ editor.existing_body_params(endpoint.body) }}</div>
-        </div>
-        <div>
-          <div>existing_url_params</div>
-          <div>{{ editor.existing_url_params(endpoint.url_params) }}</div>
-        </div>
-        <div>
-          <div>existing_controllers</div>
-          <div>{{ existing_controllers }}</div>
-        </div>
-        <div>
-          <div>endpoint</div>
-          <div>{{ endpoint }}</div>
+        <!-- DEBUG GRID -->
+        <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
+          <div>
+            <div>existing_body_params</div>
+            <div>{{ editor.existing_body_params(endpoint.body) }}</div>
+          </div>
+          <div>
+            <div>existing_url_params</div>
+            <div>{{ editor.existing_url_params(endpoint.url_params) }}</div>
+          </div>
+          <div>
+            <div>existing_controllers</div>
+            <div>{{ existing_controllers }}</div>
+          </div>
+          <div>
+            <div>endpoint</div>
+            <div>{{ endpoint }}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
+
 </template>
 
 <style>

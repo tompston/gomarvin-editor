@@ -1,14 +1,14 @@
 .endpoint_method_GET {
-    background: var(--http-method-get-bg);
+  background: var(--http-method-get-bg);
 }
 .endpoint_method_POST {
-    background: var(--http-method-post-bg);
+  background: var(--http-method-post-bg);
 }
 .endpoint_method_PUT {
-    background: var(--http-method-put-bg);
+  background: var(--http-method-put-bg);
 }
 .endpoint_method_DELETE {
-    background: var(--http-method-delete-bg);
+  background: var(--http-method-delete-bg);
 }
 
 /* -- Transition classes */
@@ -16,23 +16,35 @@
 /* <transition name="fade"></transition> */
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.1s ease-in;
+  transition: opacity 0.1s ease-in;
 }
 .fade-enter-from,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 /* <transition name="slide-fade"></transition> */
 .slide-fade-enter-active {
-    transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .slide-fade-leave-active {
-    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-    transform: translateX(20px);
-    opacity: 0;
+  transform: translateX(20px);
+  opacity: 0;
 }
 
+/* <transition name="expand"></transition> */
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.22s ease-in-out;
+  max-height: 240px;
+}
 
+.expand-enter-from,
+.expand-leave-to {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
