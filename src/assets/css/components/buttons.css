@@ -22,7 +22,7 @@ button[disabled] {
   align-items: center;
   justify-content: center;
   font-size: var(--fs-8);
-  margin: 5px;
+  /* margin: 5px; */
 }
 
 .endpoint__add_btn {

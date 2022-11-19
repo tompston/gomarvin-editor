@@ -104,11 +104,11 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
     </button>
 
-    <button v-if="new_endpoint" class="endpoint__expander endpoint__add_btn" :disabled="
-      !editor.canCreateNewEndpoint(existing_controllers, endpoint.controller_name)
-    " @click="$emit('create_new_endpoint')">
-      <div class="flex-center">+</div>
-    </button>
+    <div v-if="new_endpoint" class="endpoint__expander">
+      <button class="endpoint__add_btn w-7 h-7 flex-center" :disabled="
+        !editor.canCreateNewEndpoint(existing_controllers, endpoint.controller_name)
+      " @click="$emit('create_new_endpoint')">+</button>
+    </div>
   </div>
 
   <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
