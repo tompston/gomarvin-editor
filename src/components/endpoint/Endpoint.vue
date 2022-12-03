@@ -87,7 +87,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 
       <!--  -->
       <div v-if="!new_endpoint">
-        <div class="qwe">
+        <div class="">
           <button class="flex-center create__url_param_btn" @click="editor.createNewUrlParam(endpoint.url_params)">
             +
           </button>
@@ -111,7 +111,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
     </div>
   </div>
 
-  <transition name="expand">
+  <transition name="expand--removed">
     <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
       <!-- Single Body field -->
       <div class="mb-[10px]">

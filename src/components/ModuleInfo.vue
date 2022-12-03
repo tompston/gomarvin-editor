@@ -40,7 +40,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
 
           <div>
 
-            <transition name="expand">
+            <transition name="expand--removed">
               <div v-if="new_endpoint_is_shown">
                 <Endpoint :existing_controllers="editor.existing_controllers(module.endpoints)"
                   :endpoint="new_endpoint_fields" :new_endpoint="true" @create_new_endpoint="
