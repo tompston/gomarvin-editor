@@ -48,7 +48,7 @@ export const ResponseTypes = {
 
 /** Not tested locally. Don't know if there will be erros with some older go versions */
 export const GoVersions = [1.15, 1.16, 1.17, 1.18, 1.19]
-export const GomarvinVersions = ['v0.1.x', 'v0.2.x', 'v0.3.x', 'v0.4.x', 'v0.5.x']
+export const GomarvinVersions = ['v0.1.x', 'v0.2.x', 'v0.3.x', 'v0.4.x', 'v0.5.x', 'v0.6.x']
 export const latest_gomarvin_version = GomarvinVersions[GomarvinVersions.length - 1]
 export const latest_go_version = GoVersions[GoVersions.length - 1]
 
