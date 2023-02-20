@@ -13,9 +13,9 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
 </script>
 
 <template>
-  <header class="flex-center border-1-3-bottom">
+  <header class="flex-center border-1-3-bottom--">
     <div class="max-width-1">
-      <div class="py-2 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]">
+      <div class="py-3.5 grid grid-cols-[1fr_auto] disable-text-select fs-8 sm:grid-rows-[1fr_auto]">
         <div class="fw-400">
           <router-link to="/" class="remove-decorations fw-700 fs-10">GOMARVIN</router-link>
         </div>
@@ -51,6 +51,14 @@ onUnmounted(() => window.removeEventListener("resize", onWidthChange));
       </div>
     </div>
   </header>
+
+  <div class="flex-center">
+    <div class="max-width-1">
+      <!-- <hr class="hr-1-3 border-1-3-bottom"> -->
+      <div class="border-1-3-bottom"></div>
+    </div>
+
+  </div>
 
   <div v-if="navigationIsShown && windowWidth < 750">
     <div class="flex-center">
