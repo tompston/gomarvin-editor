@@ -25,6 +25,7 @@
 .module__name_btn {
     color: var(--module-name-btn-txt-col);
     font-size: var(--fs-9);
+    font-weight: 500;
     border-radius: 5px;
     padding: 2px 9px;
 }

@@ -13,6 +13,11 @@ const db_dropdown_is_shown = ref(false);
 const gomarvin_v_dropdown_is_shown = ref(false);
 const go_v_dropdown_is_shown = ref(false);
 const framework_dropdown_is_shown = ref(false);
+
+// function GoVersions(v: number[]): number[] {
+//   return v.map(num => parseFloat(num.toFixed(2)))
+// }
+
 </script>
 
 <template>
@@ -111,7 +116,7 @@ const framework_dropdown_is_shown = ref(false);
         <Dropdown1 :is_shown="gomarvin_v_dropdown_is_shown" :options="predefined.GomarvinVersions"
           :value="project_info.gomarvin_version" @switch="
             (project_info.gomarvin_version = $event),
-              (gomarvin_v_dropdown_is_shown = false)
+            (gomarvin_v_dropdown_is_shown = false)
           " />
       </div>
     </div>
