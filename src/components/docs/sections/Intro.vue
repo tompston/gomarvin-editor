@@ -26,7 +26,7 @@
 
     <div class="mt-[20px]"></div>
     <h2 id="-install-steps-can-be-found-here-https-github-com-tompston-gomarvin-install-">
-      <div class="flex-center gap-[6px] mt-[100px] mb-[60px] flex-col">
+      <div class="flex-center gap-[6px] mt-[100px] mb-[60px] flex-row">
         Install steps can be found
         <a href="https://github.com/tompston/gomarvin#install" target="_blank" rel="noopener noreferrer"
           class="link__1">here</a>
