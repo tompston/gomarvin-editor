@@ -32,9 +32,7 @@ const sections = {
 
 </script>
 
-<style>
-
-</style>
+<style></style>
 
 
 
@@ -106,7 +104,8 @@ const sections = {
               <p class="text-center my-30 fw-600 main-col-danger text-white py-[16px] px-10 border-rad-3 sm:px-5">
                 If a file has
                 <code class="!text-white !border-white">.gen</code> in the name, that means it will be regenerated on
-                each run. So editing them is a bad idea if you want to save changes. Rename the file and remove the upper comment to edit them.
+                each run. So editing them is a bad idea if you want to save changes. Rename the file and remove the upper
+                comment to edit them.
               </p>
             </div>
 
@@ -179,72 +178,81 @@ const sections = {
             If you only need to generate the typescript file, run
 
             <div class="docs-quote">
-              gomarvin -fetch-only="true" generate
+              gomarvin -fetch-only=true generate
             </div>
 
             <br>
+
+            <div class="fs-8 fw-700">gut</div>
+            You can also optionally generate a new file called <code>typescript.gen.go</code>
+            in modules dir which holds functions that convert the possible response types to
+            typescript interface.
+
+            <div class="docs-quote">
+              gomarvin -gut=true generate
+            </div>
 
             <h3 id="include_fetch-example" class="doc-subheader-1">Examples using generated fetch
               functions</h3>
 
 
-              <div class="grid grid-cols-1 overflow-auto code-bg border-rad-3">
-<pre>
-                <code class="!border-none">
-// import the generated file
-import * as F from "../../../chi_with_modules/public/gomarvin.gen" 
-// or just import a single fetch function
-import { GetUserById } from "../../../chi_with_modules/public/gomarvin.gen"
+            <div class="grid grid-cols-1 overflow-auto code-bg border-rad-3">
+              <pre>
+                  <code class="!border-none">
+  // import the generated file
+  import * as gomarvin from "../../../chi_with_modules/public/gomarvin.gen" 
+  // or just import a single fetch function
+  import { GetUserById } from "../../../chi_with_modules/public/gomarvin.gen"
 
-// either use the default client created from
-// the settings of the config file, or create a new one
-// (useful when switching environments)
-const defaultClient = F.defaultClient
+  // either use the default client created from
+  // the settings of the config file, or create a new one
+  // (useful when switching environments)
+  const defaultClient = gomarvin.defaultClient
 
-// api client when deployed
-const productionClient: F.Client = {
-  host_url: "http://example.com",
-  api_prefix: "/api/v1",
-  headers: {
-    "Content-type": "application/json;charset=UTF-8",
-  },
-}
+  // api client when deployed
+  const productionClient: gomarvin.Client = {
+    host_url: "http://example.com",
+    api_prefix: "/api/v1",
+    headers: {
+      "Content-type": "application/json;charset=UTF-8",
+    },
+  }
 
-const DEV_MODE = true
+  const DEV_MODE = true
 
-// switch to productionClient if DEV_MODE is false
-const client = DEV_MODE ? defaultClient : productionClient
+  // switch to productionClient if DEV_MODE is false
+  const client = DEV_MODE ? defaultClient : productionClient
 
-// fetch GetUserById endpoint
-async function FetchGetUsersById() {
-  const res = await F.GetUserById(client, 10);
-  console.log(res);
-}
+  // fetch GetUserById endpoint
+  async function FetchGetUsersById() {
+    const res = await gomarvin.GetUserById(client, 10);
+    console.log(res);
+  }
 
-// append optional string to the existing endpoint url
-async function FetchEndpointWithAppendedUrl() {
-  const res = await F.GetUserById(client, 10, { append_url: "?name=jim" });
-  console.log(res);
-}
+  // append optional string to the existing endpoint url
+  async function FetchEndpointWithAppendedUrl() {
+    const res = await gomarvin.GetUserById(client, 10, { append_url: "?name=jim" });
+    console.log(res);
+  }
 
-// define custom options for the fetch request
-async function FetchEndpointWithCustomOptions() {
-  const res = await F.GetUserById(client, 10, { options: { method: "POST" } });
-  console.log(res);
-}
+  // define custom options for the fetch request
+  async function FetchEndpointWithCustomOptions() {
+    const res = await gomarvin.GetUserById(client, 10, { options: { method: "POST" } });
+    console.log(res);
+  }
 
-// Use both optional values
-// - append a string to the fetch url
-// - define a new options object used in the fetch request
-async function FetchWithAppendedUrlAndCustomOptions() {
-  const res = await F.GetUserById(client, 10, {
-    options: { method: "DELETE" },
-    append_url: "?name=jim",
-  });
-  console.log(res);
-}</code>
-            </pre>
-              </div>
+  // Use both optional values
+  // - append a string to the fetch url
+  // - define a new options object used in the fetch request
+  async function FetchWithAppendedUrlAndCustomOptions() {
+    const res = await gomarvin.GetUserById(client, 10, {
+      options: { method: "DELETE" },
+      append_url: "?name=jim",
+    });
+    console.log(res);
+  }</code>
+              </pre>
+            </div>
 
             <br />
             <h3 id="include_sql" class="doc-subheader-1">include_sql</h3>
@@ -292,7 +300,7 @@ async function FetchWithAppendedUrlAndCustomOptions() {
             <p>
               As sqlc uses sql files for codegen, we create placeholder
               <code>.gen.txt</code> files in
-              the same dir. The generated README file has a command that shows how to 
+              the same dir. The generated README file has a command that shows how to
               rename all of them.
             </p>
 
