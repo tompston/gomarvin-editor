@@ -101,65 +101,65 @@ const framework_dropdown_is_shown = ref(false);
     </div>
 
     <!-- Switchable db_type -->
-  <div class="settings__project_info_value_label_grid">
-    <div class="settings__project_info_label">db_type</div>
-    <div class="settings__project_info_value">
-      <div class="settings__project_info_input" @click="db_dropdown_is_shown = !db_dropdown_is_shown">
-        {{ project_info.db_type }}
+    <div class="settings__project_info_value_label_grid">
+      <div class="settings__project_info_label">db_type</div>
+      <div class="settings__project_info_value">
+        <div class="settings__project_info_input" @click="db_dropdown_is_shown = !db_dropdown_is_shown">
+          {{ project_info.db_type }}
+        </div>
+        <Dropdown1 :is_shown="db_dropdown_is_shown" :options="predefined.DbTypes" :value="project_info.db_type"
+          @switch="(project_info.db_type = $event), (db_dropdown_is_shown = false)" />
       </div>
-      <Dropdown1 :is_shown="db_dropdown_is_shown" :options="predefined.DbTypes" :value="project_info.db_type"
-        @switch="(project_info.db_type = $event), (db_dropdown_is_shown = false)" />
+    </div>
+
+  <!-- Switchable gomarvin_version -->
+  <div class="settings__project_info_value_label_grid">
+    <div class="settings__project_info_label">gomarvin_version</div>
+    <div class="settings__project_info_value">
+      <div class="settings__project_info_input" @click="gomarvin_v_dropdown_is_shown = !gomarvin_v_dropdown_is_shown">
+        {{ project_info.gomarvin_version }}
+      </div>
+      <Dropdown1 :is_shown="gomarvin_v_dropdown_is_shown" :options="predefined.GomarvinVersions"
+        :value="project_info.gomarvin_version" @switch="
+          (project_info.gomarvin_version = $event),
+          (gomarvin_v_dropdown_is_shown = false)
+        " />
     </div>
   </div>
 
-    <!-- Switchable gomarvin_version -->
-    <div class="settings__project_info_value_label_grid">
-      <div class="settings__project_info_label">gomarvin_version</div>
-      <div class="settings__project_info_value">
-        <div class="settings__project_info_input" @click="gomarvin_v_dropdown_is_shown = !gomarvin_v_dropdown_is_shown">
-          {{ project_info.gomarvin_version }}
-        </div>
-        <Dropdown1 :is_shown="gomarvin_v_dropdown_is_shown" :options="predefined.GomarvinVersions"
-          :value="project_info.gomarvin_version" @switch="
-            (project_info.gomarvin_version = $event),
-            (gomarvin_v_dropdown_is_shown = false)
-          " />
-      </div>
-    </div>
-
-    <!-- <div class="settings__project_info_value_label_grid">
-        <div class="settings__project_info_label">go_version</div>
-        <div class="settings__project_info_value">
-          <div class="settings__project_info_input" @click="go_v_dropdown_is_shown = !go_v_dropdown_is_shown">
-            {{ project_info.go_version }}
-          </div>
-          <Dropdown1 :is_shown="go_v_dropdown_is_shown" :options="predefined.GoVersions"
-            :value="parseFloat(project_info.go_version)"
-            @switch="(project_info.go_version = parseFloat($event)), (go_v_dropdown_is_shown = false)" />
-        </div>
-      </div> -->
     <div class="settings__project_info_value_label_grid">
       <div class="settings__project_info_label">go_version</div>
-      <div class="settings__project_info_value">
-        <input class="settings__project_info_input" placeholder="1.19" type="text" v-model="project_info.go_version"
-          @input="
-            project_info.go_version = parseFloat(utils.ConvertToValidValue(
-              $event,
-              utils.ValidConfigVersion
-            ))
-          " />
-        <InputErrBox msg="go_version version can't be empty!" v-if="project_info.go_version == ''" />
-        <InputErrBox msg="go_version version should be a float!" v-if="
-          !editor.isFloat(project_info.go_version) ||
-          project_info.go_version.length <= 2
-        " />
+    <div class="settings__project_info_value">
+      <div class="settings__project_info_input" @click="go_v_dropdown_is_shown = !go_v_dropdown_is_shown">
+        {{ project_info.go_version }}
+        </div>
+        <Dropdown1 :is_shown="go_v_dropdown_is_shown" :options="predefined.GoVersions" :value="(project_info.go_version)"
+          @switch="(project_info.go_version = $event), (go_v_dropdown_is_shown = false)" />
       </div>
     </div>
+    <!-- <div class="settings__project_info_value_label_grid">
+            <div class="settings__project_info_label">go_version</div>
+            <div class="settings__project_info_value">
+              <input class="settings__project_info_input" placeholder="1.19" type="text" v-model="project_info.go_version"
+                @input="
+                  project_info.go_version = parseFloat(utils.ConvertToValidValue(
+                    $event,
+                    utils.ValidConfigVersion
+                  ))
+                " />
+              <InputErrBox msg="go_version version can't be empty!" v-if="project_info.go_version == ''" />
+              <InputErrBox msg="go_version version should be a float!" v-if="
+                !editor.isFloat(project_info.go_version) ||
+                project_info.go_version.length <= 2
+              " />
+            </div>
+          </div> -->
   </div>
-
-  <div class="opacity-40 italic fw-600 fs-9 mt-4">
-    Paste in the go_version, if the input breaks. I'll fix this later
-  </div>
+  
+  <!-- 
+    <div class="opacity-40 italic fw-600 fs-9 mt-4">
+      Paste in the go_version, if the input breaks. I'll fix this later
+    </div> -->
 
   <!-- Optional params that will change the generated project after the first run -->
   <div class="mt-[16px]">
