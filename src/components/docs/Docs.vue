@@ -88,16 +88,16 @@ const sections = {
                 <p>
                   Do not edit functions that are used by generated controllers, like
                   <code>res.Response()</code> and
-                  <code>validate.ValidateStruct()</code>. If you want
+                  <code>validate.Struct()</code>. If you want
                   to customize them, copy the controllers to a new file and edit them manually.
                 </p>
               </li>
 
               <li>Bugs caused by url params and routing should be fixed manually. (Mostly a Gin problem)</li>
-              <li>The currently generated codebase uses a global <code>database.DB</code> variable to create a
-                database connection. Some places say that this is not the best approach. So do your own research on
+              <li>The currently generated codebase uses a global <code>database.dbConn</code> variable which
+                is exported by calling <code>database.DbConn()</code> to get the database connection.
+                Some places say that this is not the best approach. So do your own research on
                 which method you want to use.</li>
-
             </ul>
 
             <div>
@@ -192,66 +192,11 @@ const sections = {
               gomarvin -gut=true generate
             </div>
 
-            <h3 id="include_fetch-example" class="doc-subheader-1">Examples using generated fetch
-              functions</h3>
+            <div class="fs-8 fw-700">Typescript client examples</div>
 
-
-            <div class="grid grid-cols-1 overflow-auto code-bg border-rad-3">
-              <pre>
-                  <code class="!border-none">
-  // import the generated file
-  import * as gomarvin from "../../../chi_with_modules/public/gomarvin.gen" 
-  // or just import a single fetch function
-  import { GetUserById } from "../../../chi_with_modules/public/gomarvin.gen"
-
-  // either use the default client created from
-  // the settings of the config file, or create a new one
-  // (useful when switching environments)
-  const defaultClient = gomarvin.defaultClient
-
-  // api client when deployed
-  const productionClient: gomarvin.Client = {
-    host_url: "http://example.com",
-    api_prefix: "/api/v1",
-    headers: {
-      "Content-type": "application/json;charset=UTF-8",
-    },
-  }
-
-  const DEV_MODE = true
-
-  // switch to productionClient if DEV_MODE is false
-  const client = DEV_MODE ? defaultClient : productionClient
-
-  // fetch GetUserById endpoint
-  async function FetchGetUsersById() {
-    const res = await gomarvin.GetUserById(client, 10);
-    console.log(res);
-  }
-
-  // append optional string to the existing endpoint url
-  async function FetchEndpointWithAppendedUrl() {
-    const res = await gomarvin.GetUserById(client, 10, { append_url: "?name=jim" });
-    console.log(res);
-  }
-
-  // define custom options for the fetch request
-  async function FetchEndpointWithCustomOptions() {
-    const res = await gomarvin.GetUserById(client, 10, { options: { method: "POST" } });
-    console.log(res);
-  }
-
-  // Use both optional values
-  // - append a string to the fetch url
-  // - define a new options object used in the fetch request
-  async function FetchWithAppendedUrlAndCustomOptions() {
-    const res = await gomarvin.GetUserById(client, 10, {
-      options: { method: "DELETE" },
-      append_url: "?name=jim",
-    });
-    console.log(res);
-  }</code>
-              </pre>
+            <div>
+              Examples which show how to use the generated fetch functions can be found in the
+              <a href="https://github.com/tompston/gomarvin#generated-typescript-fetch-functions-usage-example" target="_blank" rel="noopener noreferrer">official readme</a>.
             </div>
 
             <br />

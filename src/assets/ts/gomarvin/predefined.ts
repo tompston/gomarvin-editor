@@ -19,6 +19,7 @@ export const BodyFieldTypes = {
   FLOAT64: 'float64',
   FLOAT32: 'float32',
   TIME: 'time.Time',
+  ANY: 'any',
   BOOLEAN: 'bool',
   UINT: 'uint',
   UINT64: 'uint64',
