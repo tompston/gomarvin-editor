@@ -44,7 +44,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--mevi-w), var(--mevi-w)));
   gap: 6px;
-  padding: 10px 0px;
+  padding: 12px 0px;
   width: 100%;
 }
 
