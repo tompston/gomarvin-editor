@@ -1,6 +1,6 @@
 import { HttpMethods, UrlFieldTypes, ResponseTypes } from '../gomarvin/predefined'
 import { Endpoint, Module } from '../gomarvin/interfaces'
-import { existing_controllers, stringExistsInArray } from './editor'
+import { existing_controllers, stringExistsInArray } from './index'
 
 export function addCrudEndpoints(module: Module) {
   let already_existing_endpoints = module.endpoints
@@ -61,7 +61,8 @@ export function addCrudEndpoints(module: Module) {
   for (let i = 0; i < crud_endpoints.length; i++) {
     let new_controller_name = crud_endpoints[i].controller_name
 
-    // if the predefined controller name doesn't exist in the array of the current controllers, append it.
+    // if the predefined controller name doesn't exist in the array of 
+    // the current controllers, append it.
     if (!stringExistsInArray(taken_controllers, new_controller_name)) {
       already_existing_endpoints.push(crud_endpoints[i])
     }

@@ -1,34 +1,35 @@
 <script setup lang="ts">
-import * as gomarvin_config from '../../assets/ts/gomarvin/interfaces'
-import * as predefined from '../../assets/ts/gomarvin/predefined'
-import * as editor from '../../assets/ts/editor/editor'
-import * as utils from '../../assets/ts/utils/utils'
-import { debug_mode } from '../../assets/ts/main'
-import { ref, reactive } from 'vue'
-import DeleteSvg from '../utils/svg/DeleteSvg.vue'
-import InputErrBox from '../utils/InputErrBox.vue'
-import Dropdown1 from '../utils/dropdown/Dropdown1.vue'
-import BodyField from './BodyField.vue'
-import UrlParam from './UrlParam.vue'
+import * as gomarvin_config from '../../assets/ts/gomarvin/interfaces';
+import * as predefined from '../../assets/ts/gomarvin/predefined';
+import * as editor from '../../assets/ts/editor';
+import * as utils from '../../assets/ts/utils';
+import { debug_mode } from '../../assets/ts/main';
+import { ref, reactive } from 'vue';
+import DeleteSvg from '../utils/svg/DeleteSvg.vue';
+import InputErrBox from '../utils/InputErrBox.vue';
+import Dropdown1 from '../utils/dropdown/Dropdown1.vue';
+import BodyField from './BodyField.vue';
+import UrlParam from './UrlParam.vue';
+import Fetch from './Fetch.vue';
 
 defineProps<{
-  endpoint: gomarvin_config.Endpoint
-  existing_controllers: Array<string>
-  new_endpoint: boolean
-}>()
+  endpoint: gomarvin_config.Endpoint;
+  existing_controllers: Array<string>;
+  new_endpoint: boolean;
+}>();
 
-const detailsAreShown = ref(false)
-const endpoint_method_dropdown_is_shown = ref(false)
-const wantsToDeleteEndpoint = ref(false)
+const detailsAreShown = ref(false);
+const endpoint_method_dropdown_is_shown = ref(false);
+const wantsToDeleteEndpoint = ref(false);
 
 /**
  * here the array holds the string of the name of the event that will be used in the parent component and child compoent
  * @example   parent component == <Endpoint :endpoint="endpoint" @delete_event="c(endpoint)"/>
  * @example   child_component  == <button @click="$emit('delete_event')">Send delete event</button>
  */
-defineEmits(['delete_event', 'create_new_endpoint'])
+defineEmits(['delete_event', 'create_new_endpoint']);
 
-const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fields })
+const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fields });
 </script>
 
 <template>
@@ -49,7 +50,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
           :options="predefined.HttpMethods"
           :value="endpoint.method"
           @switch="
-            ;(endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
+            (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
           "
         />
       </div>
@@ -109,7 +110,11 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
       </div>
 
       <!-- Endpoint URL param -->
-      <div v-for="url_param in endpoint.url_params" v-bind:key="url_param" class="h-full">
+      <div
+        v-for="(url_param, index) in endpoint.url_params"
+        v-bind:key="index"
+        class="h-full"
+      >
         <UrlParam
           :url_param="url_param"
           :new_endpoint="new_endpoint"
@@ -266,9 +271,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
           </div>
         </div>
 
-        <!-- <div class="mt-4 code">
-          {{ endpoint }}
-        </div> -->
+        <Fetch :endpoint="endpoint" />
 
         <!-- DEBUG GRID -->
         <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">

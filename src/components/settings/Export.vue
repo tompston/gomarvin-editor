@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as utils from "../../assets/ts/utils/utils";
+import * as utils from "../../assets/ts/utils"
 import { ref } from "vue";
 
 defineProps<{ config: any; header: string }>();

@@ -1,4 +1,4 @@
-import { module_name_is_valid } from './editor'
+import { module_name_is_valid } from './index'
 import { init_body_fields, init_endpoint_fields } from './init'
 import * as gomarvin_config from '../gomarvin/interfaces'
 import * as predefined from '../gomarvin/predefined'

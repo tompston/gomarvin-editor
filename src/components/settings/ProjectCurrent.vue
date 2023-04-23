@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import ProjectSettingsGrid from "./ProjectSettingsGrid.vue";
-defineProps<{ config: any; header: any }>();
+import ProjectSettingsGrid from './ProjectSettingsGrid.vue'
+defineProps<{ config: any; header: any }>()
+
+// const config = reactive({ config })
 </script>
 
 <template>

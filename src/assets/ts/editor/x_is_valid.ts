@@ -1,6 +1,6 @@
 import { Endpoint, Module, Body, UrlParam } from '../gomarvin/interfaces'
 import { existing_module_names } from './already_exists'
-import { stringExistsInArray } from './editor'
+import { stringExistsInArray } from './index'
 
 /** If the new module name exists in array of already existing modules or is empty or less than 2 chars return false */
 export function module_name_is_valid(modules: Module[], new_module_name: string): boolean {

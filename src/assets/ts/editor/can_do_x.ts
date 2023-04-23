@@ -1,4 +1,4 @@
-import { stringExistsInArray } from './editor'
+import { stringExistsInArray } from '.'
 
 export function canCreateNewEndpoint(
   existing_controllers: string[],
