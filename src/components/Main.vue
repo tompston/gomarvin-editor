@@ -1,45 +1,39 @@
 <script setup lang="ts">
-import { ref, reactive, watchEffect, onMounted } from 'vue'
-import {
-  saveConfigToLocalStorage,
-  getConfig,
-  publicConfigExists,
-} from '../assets/ts/utils'
-import { debug_grid_shown } from '../assets/ts/main'
-import { SETTINGS_TABS } from '../assets/ts/gomarvin/predefined'
-import * as gomarvin_config from '../assets/ts/gomarvin/interfaces'
-import * as editor from '../assets/ts/editor'
-import * as utils from '../assets/ts/utils'
-import Header from './Header.vue'
-import ModuleInfo from './ModuleInfo.vue'
+import { ref, reactive, watchEffect, onMounted } from 'vue';
+import { debug_grid_shown } from '../assets/ts/main';
+import * as gomarvin from '../assets/ts/gomarvin';
+import * as editor from '../assets/ts/editor';
+import * as utils from '../assets/ts/utils';
+import ModuleInfo from './ModuleInfo.vue';
+import Header from './Header.vue';
 
-let stored_config = getConfig()
-const config = reactive(stored_config)
-const createNewModuleDropdownIsShown = ref(false)
-const currentlySelectedModule = ref(module_name())
-const newModuleName = ref('')
-const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
+let stored_config = utils.getConfig();
+const config = reactive(stored_config);
+const createNewModuleDropdownIsShown = ref(false);
+const currentlySelectedModule = ref(module_name());
+const newModuleName = ref('');
+const new_endpoint_fields: gomarvin.Endpoint = reactive({
   ...editor.init_endpoint_fields,
-})
+});
 
 function module_name(): string {
-  let existing_modules = editor.existing_module_names(config.modules)
+  let existing_modules = editor.existing_module_names(config.modules);
   if (existing_modules.length != 0) {
-    return existing_modules[0]
+    return existing_modules[0];
   }
-  return ''
+  return '';
 }
 
 function debug() {}
 
 onMounted(async () => {
-  console.log(getConfig())
-})
+  console.log(utils.getConfig());
+});
 
 //  Save config to localstorage when it is changed
 watchEffect(() => {
-  saveConfigToLocalStorage(config)
-})
+  utils.saveConfigToLocalStorage(config);
+});
 </script>
 
 <template>
@@ -123,7 +117,10 @@ watchEffect(() => {
             <div class="navigation--section">
               <div class="navigation--header">Settings</div>
               <div class="navigation--options">
-                <div v-for="SETTINGS_TAB in SETTINGS_TABS" v-bind:key="SETTINGS_TAB.id">
+                <div
+                  v-for="SETTINGS_TAB in gomarvin.SETTINGS_TABS"
+                  v-bind:key="SETTINGS_TAB.id"
+                >
                   <button
                     @click="currentlySelectedModule = SETTINGS_TAB.id"
                     class="module__name_btn"

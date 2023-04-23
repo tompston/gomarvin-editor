@@ -1,31 +1,28 @@
 <script setup lang="ts">
-import * as gomarvin_config from '../assets/ts/gomarvin/interfaces'
-import * as editor from '../assets/ts/editor'
-import { debug_mode } from '../assets/ts/main'
-import { ref, reactive } from 'vue'
-
-// components
-import SettingsTabs from './settings/SettingsTabs.vue'
-import ModuleToolbar from './ModuleToolbar.vue'
-import Endpoint from './endpoint/Endpoint.vue'
+import SettingsTabs from './settings/SettingsTabs.vue';
+import * as gomarvin from '../assets/ts/gomarvin';
+import ModuleToolbar from './ModuleToolbar.vue';
+import Endpoint from './endpoint/Endpoint.vue';
+import { debug_mode } from '../assets/ts/main';
+import * as editor from '../assets/ts/editor';
+import { ref, reactive } from 'vue';
 
 defineProps<{
-  config: any
-  currentlySelectedModule: string
-}>()
+  config: gomarvin.Config;
+  currentlySelectedModule: string;
+}>();
 
-const new_endpoint_is_shown = ref(false)
-const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
+const new_endpoint_is_shown = ref(false);
+const new_endpoint_fields: gomarvin.Endpoint = reactive({
   ...editor.init_endpoint_fields,
-})
+});
 </script>
 
 <template>
   <div class="mb-[70px] editor__right">
     <!-- Module tabs -->
-    <div v-for="module in config.modules" v-bind:key="module">
+    <div v-for="module in config.modules" v-bind:key="module.name">
       <div class="current-module-tab" v-if="currentlySelectedModule == module.name">
-        <!-- Endpoinnt Toolbar row -->
         <ModuleToolbar :module="module" :config="config" />
 
         <div class="grid">
@@ -43,7 +40,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
           </div>
 
           <div>
-            <transition name="expand--removed">
+            <transition name="expand---">
               <div v-if="new_endpoint_is_shown">
                 <Endpoint
                   :existing_controllers="editor.existing_controllers(module.endpoints)"
@@ -54,7 +51,7 @@ const new_endpoint_fields: gomarvin_config.Endpoint = reactive({
                       module.endpoints,
                       new_endpoint_fields,
                     );
-                    new_endpoint_is_shown = false
+                    new_endpoint_is_shown = false;
                   "
                 />
               </div>

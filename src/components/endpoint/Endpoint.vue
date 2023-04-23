@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import * as gomarvin_config from '../../assets/ts/gomarvin/interfaces';
-import * as predefined from '../../assets/ts/gomarvin/predefined';
+import Dropdown1 from '../utils/dropdown/Dropdown1.vue';
+import * as gomarvin from '../../assets/ts/gomarvin';
+import InputErrBox from '../utils/InputErrBox.vue';
+import DeleteSvg from '../utils/svg/DeleteSvg.vue';
+import { debug_mode } from '../../assets/ts/main';
 import * as editor from '../../assets/ts/editor';
 import * as utils from '../../assets/ts/utils';
-import { debug_mode } from '../../assets/ts/main';
-import { ref, reactive } from 'vue';
-import DeleteSvg from '../utils/svg/DeleteSvg.vue';
-import InputErrBox from '../utils/InputErrBox.vue';
-import Dropdown1 from '../utils/dropdown/Dropdown1.vue';
 import BodyField from './BodyField.vue';
 import UrlParam from './UrlParam.vue';
+import { ref, reactive } from 'vue';
 import Fetch from './Fetch.vue';
 
 defineProps<{
-  endpoint: gomarvin_config.Endpoint;
+  endpoint: gomarvin.Endpoint;
   existing_controllers: Array<string>;
   new_endpoint: boolean;
 }>();
@@ -29,7 +28,7 @@ const wantsToDeleteEndpoint = ref(false);
  */
 defineEmits(['delete_event', 'create_new_endpoint']);
 
-const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fields });
+const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
 </script>
 
 <template>
@@ -47,7 +46,7 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
 
         <Dropdown1
           :is_shown="endpoint_method_dropdown_is_shown"
-          :options="predefined.HttpMethods"
+          :options="gomarvin.HttpMethods"
           :value="endpoint.method"
           @switch="
             (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
@@ -249,22 +248,22 @@ const new_body_field: gomarvin_config.Body = reactive({ ...editor.init_body_fiel
             <div
               class="settings__multiple_choices_grid_option"
               :class="
-                endpoint.response_type === predefined.ResponseTypes.default
+                endpoint.response_type === gomarvin.ResponseTypes.default
                   ? 'currently_selected_multiple_choices_option'
                   : ''
               "
-              @click="endpoint.response_type = predefined.ResponseTypes.default"
+              @click="endpoint.response_type = gomarvin.ResponseTypes.default"
             >
               Default
             </div>
             <div
               class="settings__multiple_choices_grid_option"
               :class="
-                endpoint.response_type === predefined.ResponseTypes.with_pagination
+                endpoint.response_type === gomarvin.ResponseTypes.with_pagination
                   ? 'currently_selected_multiple_choices_option'
                   : ''
               "
-              @click="endpoint.response_type = predefined.ResponseTypes.with_pagination"
+              @click="endpoint.response_type = gomarvin.ResponseTypes.with_pagination"
             >
               With Pagination
             </div>

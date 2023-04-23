@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import * as editor from '../assets/ts/editor';
+import * as gomarvin from '../assets/ts/gomarvin';
 import ToolSvg from './utils/svg/ToolSvg.vue';
 import { ref } from 'vue';
 
-defineProps<{ config: any; module: any }>();
+defineProps<{
+  config: gomarvin.Config;
+  module: gomarvin.Module;
+}>();
 
 const edit_options_are_shown = ref(false);
 const wants_to_delete_module = ref(false);

@@ -1,11 +1,16 @@
 <script setup lang="ts">
+import * as gomarvin from '../../assets/ts/gomarvin';
+import DeleteSvg from '../utils/svg/DeleteSvg.vue';
 import InputErrBox from '../utils/InputErrBox.vue';
-import { UrlFieldTypes } from '../../assets/ts/gomarvin/predefined';
 import * as editor from '../../assets/ts/editor';
 import * as utils from '../../assets/ts/utils';
-import DeleteSvg from '../utils/svg/DeleteSvg.vue';
 import { ref } from 'vue';
-defineProps<{ url_param: any; new_endpoint: boolean; endpoint: any }>();
+
+defineProps<{
+  url_param: any;
+  new_endpoint: boolean;
+  endpoint: gomarvin.Endpoint;
+}>();
 
 const dropdownIsShown = ref(false);
 </script>
@@ -43,11 +48,11 @@ const dropdownIsShown = ref(false);
   </div>
 
   <!-- Dropdown1 with additional delete btn -->
-  <transition name="fade--removed">
+  <transition name="fade---">
     <div v-if="dropdownIsShown">
       <div class="dropdown__1_content">
         <div class="dropdown__1_options">
-          <div v-for="option in UrlFieldTypes" v-bind:key="option">
+          <div v-for="option in gomarvin.UrlFieldTypes" v-bind:key="option">
             <div
               @click="
                 url_param.type = option;

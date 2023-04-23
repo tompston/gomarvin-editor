@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import * as editor from '../../assets/ts/editor';
-import * as utils from '../../assets/ts/utils';
-import { BodyFieldTypes } from '../../assets/ts/gomarvin/predefined';
-import { ref } from 'vue';
+import Dropdown1 from '../utils/dropdown/Dropdown1.vue';
+import * as gomarvin from '../../assets/ts/gomarvin';
 import DeleteSvg from '../utils/svg/DeleteSvg.vue';
 import InputErrBox from '../utils/InputErrBox.vue';
-import Dropdown1 from '../utils/dropdown/Dropdown1.vue';
+import * as editor from '../../assets/ts/editor';
+import * as utils from '../../assets/ts/utils';
+import { ref } from 'vue';
 
 defineProps<{
-  endpoint: any;
-  body_param: any;
-  new_endpoint: boolean;
+  endpoint: gomarvin.Endpoint;
   existing_body_params: any;
+  new_endpoint: boolean;
+  body_param: any;
 }>();
 defineEmits(['create_body_field']);
 
 const body_fieldtype_dropdown_is_shown = ref(false);
-const custom_body_field_type = ref('');
 </script>
 
 <template>
@@ -65,7 +64,7 @@ const custom_body_field_type = ref('');
       </div>
       <Dropdown1
         :is_shown="body_fieldtype_dropdown_is_shown"
-        :options="BodyFieldTypes"
+        :options="gomarvin.BodyFieldTypes"
         :value="body_param.type"
         @switch="(body_param.type = $event), (body_fieldtype_dropdown_is_shown = false)"
       />
