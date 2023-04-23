@@ -91,50 +91,51 @@ watchEffect(() => {
   <div>
     <div class="fs-7 fw-700 opacity-85">Headers</div>
 
-    <div class="">
-      <div class="headers_table bg-light-select-1--- text-[10px] fw-700 p-2--- py-1.5">
+    <div>
+      <div class="headers_table text-[10px] fw-700 py-1.5">
         <div class="opacity-60">KEY</div>
         <div class="opacity-60">VALUE</div>
         <div></div>
       </div>
 
-      <li
-        v-for="(value, key) in config.headers"
-        :key="key"
-        class="headers_table text-[12px] border-1-3-bottom py-[5px] py-3---"
-      >
-        <div class="flex items-center justify-left">{{ key }}</div>
-        <input
-          type="text"
-          class="flex items-center justify-left headers_table__input"
-          v-model="config.headers[key]"
-        />
-        <button
-          @click="deleteHeader(key)"
-          class="bg-red-600 hover:bg-red-700 headers_btn"
+      <div class="grid gap-2---">
+        <div
+          v-for="(value, key) in config.headers"
+          :key="key"
+          class="headers_table border-1-3-bottom"
         >
-          Delete
-        </button>
-      </li>
-
-      <div class="headers_table">
-        <input
-          type="text"
-          id="header-key"
-          v-model="headerKey"
-          placeholder="key"
-          class=""
-        />
-        <input
-          type="text"
-          id="header-value"
-          v-model="headerValue"
-          placeholder="value"
-          class="headers_table__input"
-        />
-        <button @click="addHeader" class="headers_btn bg-green-500 hover:bg-green-700">
-          Add
-        </button>
+          <div class="flex items-center justify-left">{{ key }}</div>
+          <input
+            type="text"
+            class="flex items-center justify-left headers_table__input"
+            v-model="config.headers[key]"
+          />
+          <button
+            @click="deleteHeader(key)"
+            class="bg-red-600 hover:bg-red-700 headers_btn"
+          >
+            Delete
+          </button>
+        </div>
+        <div class="headers_table">
+          <input
+            type="text"
+            id="header-key"
+            v-model="headerKey"
+            placeholder="key"
+            class=""
+          />
+          <input
+            type="text"
+            id="header-value"
+            v-model="headerValue"
+            placeholder="value"
+            class="headers_table__input"
+          />
+          <button @click="addHeader" class="headers_btn bg-green-500 hover:bg-green-700">
+            Add
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -150,6 +151,10 @@ watchEffect(() => {
   display: grid;
   grid-template-columns: 170px 1fr auto;
   gap: 10px;
+  font-size: 12px;
+  /* padding-top: 5px; */
+  /* padding-bottom: 5px; */
+  margin-bottom: 10px;
 }
 
 .headers_table__input {
