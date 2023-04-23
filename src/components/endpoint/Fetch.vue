@@ -14,21 +14,28 @@ const urlParamsValues = ref(urlParams.value.map(() => ''));
 const bodyParamsValues = ref(bodyParams.value.map(() => ''));
 
 const client: gomarvin.Client = utils.getClient();
-// console.log(client);
+console.log(client);
 
 async function handleSubmit() {
-  const base = `${client.host_url}${client.api_prefix}`;
-  // const url = new URL(props.endpoint.url, window.location.origin);
-  const url = new URL(props.endpoint.url, base);
+  // const base = `${client.host_url}${client.api_prefix}`;
+  // // const url = new URL(props.endpoint.url, window.location.origin);
+  // const url = new URL(props.endpoint.url, base);
+
+  let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
+  console.log(url)
+
 
   // urlParams.value.forEach((param, index) => {
   //   url.searchParams.append(param.field, urlParamsValues.value[index]);
   // });
 
-  url.pathname;
+  // urlParams.value.forEach((param, index) => {
+  //   url.pathname = url.pathname + '/' + urlParamsValues.value[index];
+  //   // url.pathname.append(param.field, urlParamsValues.value[index]);
+  // });
 
   urlParams.value.forEach((param, index) => {
-    url.pathname = url.pathname + '/' + urlParamsValues.value[index];
+    url = url + '/' + urlParamsValues.value[index];
     // url.pathname.append(param.field, urlParamsValues.value[index]);
   });
 

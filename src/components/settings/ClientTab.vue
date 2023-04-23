@@ -4,13 +4,14 @@ import * as gomarvin from '../../assets/ts/gomarvin';
 import * as utils from '../../assets/ts/utils';
 
 let stored_config = utils.getClient();
-const config = reactive(stored_config);
+const config: gomarvin.Client = reactive(stored_config);
 
 const headerKey = ref('');
 const headerValue = ref('');
 
 function addHeader() {
   if (headerKey.value && headerValue.value) {
+    // @ts-ignore
     config.headers[headerKey.value] = headerValue.value;
     headerKey.value = '';
     headerValue.value = '';
@@ -25,6 +26,7 @@ function addHeader() {
 // }
 
 function deleteHeader(key: string | number) {
+  // @ts-ignore
   delete config.headers[key];
 }
 
@@ -43,7 +45,7 @@ watchEffect(() => {
           <input
             type="text"
             class="headers_table__input py-1"
-            v-model="config.url"
+            v-model="config.host_url"
             placeholder="url"
           />
         </div>
