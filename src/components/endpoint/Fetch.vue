@@ -171,8 +171,8 @@ async function handleSubmit() {
 
 .fetch_label {
   background-color: var(--bg-light-select-1);
-  /* border-radius: var(--border-rad-5); */
   /* background-color: var(--bg-light-select-1); */
+  /* border-radius: var(--border-rad-5); */
   padding: 6px 12px;
   font-weight: 600;
   font-size: 11px;

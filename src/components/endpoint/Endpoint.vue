@@ -5,6 +5,7 @@ import InputErrBox from '../utils/InputErrBox.vue';
 import DeleteSvg from '../utils/svg/DeleteSvg.vue';
 import { debug_mode } from '../../assets/ts/main';
 import * as editor from '../../assets/ts/editor';
+import EndpointPanel from './EndpointPanel.vue';
 import * as utils from '../../assets/ts/utils';
 import BodyField from './BodyField.vue';
 import UrlParam from './UrlParam.vue';
@@ -198,48 +199,50 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
           </div>
         </div>
 
-        <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
-          <div>FIELD</div>
-          <div>TYPE</div>
-          <div class="flex gap-1.5">
-            <div>VALIDATE</div>
-            <a
-              href="https://github.com/go-playground/validator"
-              target="_blank"
-              rel="noopener noreferrer"
-              class=""
-            >
-              <div
-                class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"
+        <EndpointPanel header="BODY">
+          <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
+            <div>FIELD</div>
+            <div>TYPE</div>
+            <div class="flex gap-1.5">
+              <div>VALIDATE</div>
+              <a
+                href="https://github.com/go-playground/validator"
+                target="_blank"
+                rel="noopener noreferrer"
+                class=""
               >
-                ?
-              </div>
-            </a>
+                <div
+                  class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"
+                >
+                  ?
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="grid gap-[8px] endpoint__body">
-          <!-- Pass down the object that holds the values  -->
-          <div v-for="body_param in endpoint.body" :key="body_param">
-            <BodyField
-              :existing_body_params="editor.existing_body_params(endpoint.body)"
-              :body_param="body_param"
-              :new_endpoint="false"
-              :endpoint="endpoint"
-            />
-          </div>
+          <div class="grid gap-[8px] endpoint__body">
+            <!-- Pass down the object that holds the values  -->
+            <div v-for="body_param in endpoint.body" :key="body_param">
+              <BodyField
+                :existing_body_params="editor.existing_body_params(endpoint.body)"
+                :body_param="body_param"
+                :new_endpoint="false"
+                :endpoint="endpoint"
+              />
+            </div>
 
-          <div>
-            <BodyField
-              :existing_body_params="editor.existing_body_params(endpoint.body)"
-              :body_param="new_body_field"
-              :new_endpoint="true"
-              :endpoint="endpoint"
-              @create_body_field="
-                editor.CreateBodyFieldAndResetInputFields(endpoint.body, new_body_field)
-              "
-            />
+            <div>
+              <BodyField
+                :existing_body_params="editor.existing_body_params(endpoint.body)"
+                :body_param="new_body_field"
+                :new_endpoint="true"
+                :endpoint="endpoint"
+                @create_body_field="
+                  editor.CreateBodyFieldAndResetInputFields(endpoint.body, new_body_field)
+                "
+              />
+            </div>
           </div>
-        </div>
+        </EndpointPanel>
 
         <!-- Fetch request panel -->
         <Fetch :endpoint="endpoint" />
@@ -272,8 +275,6 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
             </div>
           </div>
         </div>
-
-        
 
         <!-- DEBUG GRID -->
         <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
