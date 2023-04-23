@@ -22,6 +22,7 @@ console.log(client);
 const is_fetching = ref(false);
 const is_error = ref(false);
 const endpoint_response = ref<any>();
+const error_message = ref('');
 
 async function handleSubmit() {
   let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
@@ -38,6 +39,10 @@ async function handleSubmit() {
       return acc;
     }, {}),
   );
+
+  if (appended_url.value === '') {
+    appended_url.value = ' ';
+  }
 
   is_fetching.value = true;
   is_error.value = false;
@@ -108,7 +113,7 @@ async function handleSubmit() {
                   </div>
                 </div>
               </div>
-              <!-- <div class="fetch_input_box">
+              <div class="fetch_input_box">
                 <label for="urlParam_appended_url" class="fetch_label">
                   optional values
                 </label>
@@ -124,7 +129,7 @@ async function handleSubmit() {
                     />
                   </div>
                 </div>
-              </div> -->
+              </div>
             </div>
             <div>
               <div class="flex gap-3">
@@ -134,7 +139,7 @@ async function handleSubmit() {
 
                 <button
                   type="submit"
-                  class="border-1-1 py-2 px-4 text-[11px] fw-700 border-rad-5"
+                  class="border-1-2 py-2 px-4 text-[11px] fw-700 border-rad-5"
                 >
                   SUBMIT
                 </button>
@@ -143,20 +148,21 @@ async function handleSubmit() {
           </div>
         </div>
 
-        <!-- <div class="flex">
+        <div class="flex gap-2">
           <div v-for="(bodyParam, index) in bodyParams" :key="index">
-            <label :for="bodyParam.field" class="fetch_label"
-              >body {{ bodyParam.field }}</label
-            >
-            <input
-              class="bg-transparent border-1-1 p-2"
-              :id="bodyParam.field"
-              :type="bodyParam.type"
-              v-model="bodyParamsValues[index]"
-              :required="bodyParam.validate === 'required'"
-            />
+            <div class="flex flex-col">
+              <label :for="bodyParam.field" class="fetch_label">{{
+                bodyParam.field
+              }}</label>
+              <input
+                class="bg-transparent border-1-2---"
+                :id="bodyParam.field"
+                v-model="bodyParamsValues[index]"
+                :required="bodyParam.validate === 'required'"
+              />
+            </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </form>
 

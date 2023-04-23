@@ -34,103 +34,110 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
 
 <template>
   <div class="endpoint">
-    <div class="endpoint__info">
-      <!-- Endpoint method -->
-      <div class="">
-        <button
-          class="endpoint__method_selected flex-center disable-text-select"
-          :class="'endpoint_method_' + endpoint.method"
-          @click="endpoint_method_dropdown_is_shown = !endpoint_method_dropdown_is_shown"
-        >
-          {{ endpoint.method }}
-        </button>
+    <div class="grid grid-cols-1 overflow-auto">
+      <div class="endpoint__info">
+        <!-- Endpoint method -->
+        <div class="">
+          <button
+            class="endpoint__method_selected flex-center disable-text-select"
+            :class="'endpoint_method_' + endpoint.method"
+            @click="
+              endpoint_method_dropdown_is_shown = !endpoint_method_dropdown_is_shown
+            "
+          >
+            {{ endpoint.method }}
+          </button>
 
-        <Dropdown1
-          :is_shown="endpoint_method_dropdown_is_shown"
-          :options="gomarvin.HttpMethods"
-          :value="endpoint.method"
-          @switch="
-            (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
-          "
-        />
-      </div>
-
-      <!-- CONTROLLER NAME -->
-      <div class="h-full">
-        <div>
-          <input
-            type="text"
-            class="mevi"
-            placeholder="controller_name"
-            v-model="endpoint.controller_name"
-            @input="
-              endpoint.controller_name = utils.ConvertToValidValue(
-                $event,
-                utils.ValidControllerName,
-              )
+          <Dropdown1
+            :is_shown="endpoint_method_dropdown_is_shown"
+            :options="gomarvin.HttpMethods"
+            :value="endpoint.method"
+            @switch="
+              (endpoint.method = $event), (endpoint_method_dropdown_is_shown = false)
             "
           />
         </div>
-        <InputErrBox
-          msg="Controller can't be named - this!"
-          v-if="endpoint.controller_name == 'this'"
-        />
-        <InputErrBox
-          msg="Controller name can't be empty!"
-          v-if="endpoint.controller_name == ''"
-        />
-        <InputErrBox
-          msg="Controller name already exists!"
-          v-if="
-            (editor.duplicateStringExistsInArray(
-              existing_controllers,
-              endpoint.controller_name,
-            ) &&
-              !new_endpoint) ||
-            (editor.stringExistsInArray(existing_controllers, endpoint.controller_name) &&
-              new_endpoint)
-          "
-        />
-      </div>
 
-      <!-- URL -->
-      <div class="h-full">
-        <div>
-          <input
-            type="text"
-            class="mevi"
-            v-model="endpoint.url"
-            @input="endpoint.url = utils.ConvertToValidValue($event, utils.ValidUrl)"
+        <!-- CONTROLLER NAME -->
+        <div class="h-full">
+          <div>
+            <input
+              type="text"
+              class="mevi"
+              placeholder="controller_name"
+              v-model="endpoint.controller_name"
+              @input="
+                endpoint.controller_name = utils.ConvertToValidValue(
+                  $event,
+                  utils.ValidControllerName,
+                )
+              "
+            />
+          </div>
+          <InputErrBox
+            msg="Controller can't be named - this!"
+            v-if="endpoint.controller_name == 'this'"
           />
           <InputErrBox
-            v-if="utils.lastCharIsInvalidValue(endpoint.url, '/')"
-            msg="Url can't end with / !"
+            msg="Controller name can't be empty!"
+            v-if="endpoint.controller_name == ''"
+          />
+          <InputErrBox
+            msg="Controller name already exists!"
+            v-if="
+              (editor.duplicateStringExistsInArray(
+                existing_controllers,
+                endpoint.controller_name,
+              ) &&
+                !new_endpoint) ||
+              (editor.stringExistsInArray(
+                existing_controllers,
+                endpoint.controller_name,
+              ) &&
+                new_endpoint)
+            "
           />
         </div>
-      </div>
 
-      <!-- Endpoint URL param -->
-      <div
-        v-for="(url_param, index) in endpoint.url_params"
-        v-bind:key="index"
-        class="h-full"
-      >
-        <UrlParam
-          :url_param="url_param"
-          :new_endpoint="new_endpoint"
-          :endpoint="endpoint"
-        />
-      </div>
+        <!-- URL -->
+        <div class="h-full">
+          <div>
+            <input
+              type="text"
+              class="mevi"
+              v-model="endpoint.url"
+              @input="endpoint.url = utils.ConvertToValidValue($event, utils.ValidUrl)"
+            />
+            <InputErrBox
+              v-if="utils.lastCharIsInvalidValue(endpoint.url, '/')"
+              msg="Url can't end with / !"
+            />
+          </div>
+        </div>
 
-      <!--  -->
-      <div v-if="!new_endpoint">
-        <div class="">
-          <button
-            class="flex-center create__url_param_btn"
-            @click="editor.createNewUrlParam(endpoint.url_params)"
-          >
-            +
-          </button>
+        <!-- Endpoint URL param -->
+        <div
+          v-for="(url_param, index) in endpoint.url_params"
+          v-bind:key="index"
+          class="h-full"
+        >
+          <UrlParam
+            :url_param="url_param"
+            :new_endpoint="new_endpoint"
+            :endpoint="endpoint"
+          />
+        </div>
+
+        <!--  -->
+        <div v-if="!new_endpoint">
+          <div class="">
+            <button
+              class="flex-center create__url_param_btn"
+              @click="editor.createNewUrlParam(endpoint.url_params)"
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -170,7 +177,7 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
   <transition name="expand">
     <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
       <!-- Single Body field -->
-      <div class="mb-[10px] grid gap-4">
+      <div class="mb-[10px] grid gap-6">
         <EndpointPanel header="Body">
           <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
             <div>FIELD</div>
