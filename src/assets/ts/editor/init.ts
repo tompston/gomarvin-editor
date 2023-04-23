@@ -1,4 +1,11 @@
-import { Endpoint, Body, ProjectInfo, Config, Module } from '../gomarvin/interfaces'
+import {
+  Endpoint,
+  Body,
+  ProjectInfo,
+  Config,
+  Module,
+  Client,
+} from '../gomarvin/interfaces';
 import {
   HttpMethods,
   BodyFieldTypes,
@@ -6,8 +13,8 @@ import {
   DbTypes,
   latest_gomarvin_version,
   latest_go_version,
-  ResponseTypes
-} from '../gomarvin/predefined'
+  ResponseTypes,
+} from '../gomarvin/predefined';
 
 export const init_endpoint_fields: Endpoint = {
   url: '/',
@@ -16,13 +23,13 @@ export const init_endpoint_fields: Endpoint = {
   controller_name: 'ControllerName',
   url_params: [],
   body: [],
-}
+};
 
 export const init_body_fields: Body = {
   field: '',
   type: BodyFieldTypes.STRING,
   validate: 'required',
-}
+};
 
 export const init_project_info: ProjectInfo = {
   go_version: 1.17,
@@ -35,7 +42,7 @@ export const init_project_info: ProjectInfo = {
   include_sql: false,
   include_fetch: false,
   gomarvin_version: latest_gomarvin_version,
-}
+};
 
 export const init_module: Module = {
   name: 'User',
@@ -104,8 +111,16 @@ export const init_module: Module = {
       body: [],
     },
   ],
-}
+};
 export const init_project: Config = {
   project_info: init_project_info,
   modules: [init_module],
-}
+};
+
+export const init_client: Client = {
+  host_url: 'http://localhost:4444',
+  api_prefix: '/api/v1',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};

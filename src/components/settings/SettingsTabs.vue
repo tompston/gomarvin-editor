@@ -4,6 +4,7 @@ import SettingsNewProjectTab from '../../components/settings/ProjectNew.vue';
 import SettingsImportConfigTab from '../../components/settings/Import.vue';
 import { SETTINGS_TABS } from '../../assets/ts/gomarvin/predefined';
 import Export from '../../components/settings/Export.vue';
+import ClientTab from './ClientTab.vue';
 
 defineProps<{
   config: any;
@@ -23,5 +24,8 @@ defineProps<{
   </div>
   <div v-if="currentlySelectedModule == SETTINGS_TABS.EXPORT_CONFIG_TAB.id">
     <Export :config="config" header="Export Config" />
+  </div>
+  <div v-if="currentlySelectedModule == SETTINGS_TABS.CLIENT_CONFIG_TAB.id">
+    <ClientTab />
   </div>
 </template>

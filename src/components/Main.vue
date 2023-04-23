@@ -32,7 +32,7 @@ onMounted(async () => {
 
 //  Save config to localstorage when it is changed
 watchEffect(() => {
-  utils.saveConfigToLocalStorage(config);
+  utils.saveConfigToLocalStorage(utils.localStorageCongigKey ,config);
 });
 </script>
 

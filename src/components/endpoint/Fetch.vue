@@ -6,23 +6,9 @@ const props = defineProps<{
   endpoint: gomarvin_config.Endpoint;
 }>();
 
-function convertEnpointToFetchRequest(e: gomarvin_config.Endpoint) {
-  const url = e.url;
-
-  const url_params = e.url_params;
-  if (url_params.length != 0) {
-  }
-
-  return fetch(e.url, {
-    method: e.method,
-  });
-}
-
 const appended_url = ref<string>('');
-
 const urlParams = ref(props.endpoint.url_params);
 const bodyParams = ref(props.endpoint.body);
-
 const urlParamsValues = ref(urlParams.value.map(() => ''));
 const bodyParamsValues = ref(bodyParams.value.map(() => ''));
 
