@@ -9,6 +9,8 @@
 .mevi {
   transition: var(--transition-1);
   font-size: var(--fs-9);
+  font-size: var(--fs-10);
+  font-weight: 300;
 }
 
 .endpoint__method_selected,

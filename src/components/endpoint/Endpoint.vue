@@ -241,6 +241,9 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
           </div>
         </div>
 
+        <!-- Fetch request panel -->
+        <Fetch :endpoint="endpoint" />
+
         <!-- Switch  Response Type For Endpoint -->
         <div class="mt-4">
           <div class="endpoint_body_subheader mb-2">Response Type</div>
@@ -270,7 +273,7 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
           </div>
         </div>
 
-        <Fetch :endpoint="endpoint" />
+        
 
         <!-- DEBUG GRID -->
         <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
