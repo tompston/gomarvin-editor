@@ -34,15 +34,16 @@ watchEffect(() => {
 </script>
 
 <template>
+  <div class="code">
+    {{ config }}
+  </div>
+
   <div>host_url</div>
   <div>{{ config.host_url }}</div>
   <input type="text" v-model="config.host_url" class="client_input" />
 
   <div>api_prefix</div>
   <div>{{ config.api_prefix }}</div>
-
-  <div>headers</div>
-  <div class="code">{{ config.headers }}</div>
 
   <div>
     <label for="header-key">Header Key:</label>
@@ -92,7 +93,7 @@ watchEffect(() => {
     <div class="fs-7 fw-700 opacity-85">Headers</div>
 
     <div>
-      <div class="headers_table text-[10px] fw-700 py-1.5">
+      <div class="headers_table text-[8px] fw-700">
         <div class="opacity-60">KEY</div>
         <div class="opacity-60">VALUE</div>
         <div></div>
@@ -152,9 +153,8 @@ watchEffect(() => {
   grid-template-columns: 170px 1fr auto;
   gap: 10px;
   font-size: 12px;
-  /* padding-top: 5px; */
-  /* padding-bottom: 5px; */
-  margin-bottom: 10px;
+  padding: 10px 0px;
+  margin: 3x 0px;
 }
 
 .headers_table__input {
