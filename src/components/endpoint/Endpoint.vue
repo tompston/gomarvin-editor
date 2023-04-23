@@ -167,39 +167,11 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
     </div>
   </div>
 
-  <transition name="expand--removed">
+  <transition name="expand">
     <div class="p-[2px] mt-[4px] mb-[8px]" v-if="detailsAreShown">
       <!-- Single Body field -->
-      <div class="mb-[10px]">
-        <div class="grid grid-cols-[1fr_auto] mt-[2px]">
-          <div class="endpoint_body_subheader">Body</div>
-          <div v-if="!new_endpoint">
-            <div class="flex w-full h-full">
-              <div class="flex gap-[8px] flex-center">
-                <transition name="fade">
-                  <div v-if="wantsToDeleteEndpoint">
-                    <button
-                      @click="$emit('delete_event')"
-                      class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn"
-                    >
-                      <div class="fs-10 fw-600">
-                        Delete {{ endpoint.controller_name }} endpoint
-                      </div>
-                    </button>
-                  </div>
-                </transition>
-                <button
-                  class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
-                  @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint"
-                >
-                  <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <EndpointPanel header="BODY">
+      <div class="mb-[10px] grid gap-4">
+        <EndpointPanel header="Body">
           <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
             <div>FIELD</div>
             <div>TYPE</div>
@@ -245,33 +217,65 @@ const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
         </EndpointPanel>
 
         <!-- Fetch request panel -->
-        <Fetch :endpoint="endpoint" />
+        <EndpointPanel header="Fetch">
+          <Fetch :endpoint="endpoint" />
+        </EndpointPanel>
 
         <!-- Switch  Response Type For Endpoint -->
-        <div class="mt-4">
-          <div class="endpoint_body_subheader mb-2">Response Type</div>
-          <div class="flex flex-row gap-2">
-            <div
-              class="settings__multiple_choices_grid_option"
-              :class="
-                endpoint.response_type === gomarvin.ResponseTypes.default
-                  ? 'currently_selected_multiple_choices_option'
-                  : ''
-              "
-              @click="endpoint.response_type = gomarvin.ResponseTypes.default"
-            >
-              Default
+        <EndpointPanel header="Response Type">
+          <div class="mb-2">
+            <!-- <div class="endpoint_body_subheader mb-2">Response Type</div> -->
+            <div class="flex flex-row gap-2">
+              <div
+                class="settings__multiple_choices_grid_option"
+                :class="
+                  endpoint.response_type === gomarvin.ResponseTypes.default
+                    ? 'currently_selected_multiple_choices_option'
+                    : ''
+                "
+                @click="endpoint.response_type = gomarvin.ResponseTypes.default"
+              >
+                Default
+              </div>
+              <div
+                class="settings__multiple_choices_grid_option"
+                :class="
+                  endpoint.response_type === gomarvin.ResponseTypes.with_pagination
+                    ? 'currently_selected_multiple_choices_option'
+                    : ''
+                "
+                @click="endpoint.response_type = gomarvin.ResponseTypes.with_pagination"
+              >
+                With Pagination
+              </div>
             </div>
-            <div
-              class="settings__multiple_choices_grid_option"
-              :class="
-                endpoint.response_type === gomarvin.ResponseTypes.with_pagination
-                  ? 'currently_selected_multiple_choices_option'
-                  : ''
-              "
-              @click="endpoint.response_type = gomarvin.ResponseTypes.with_pagination"
-            >
-              With Pagination
+          </div>
+        </EndpointPanel>
+
+        <div class="grid grid-cols-[1fr_auto] mt-[2px]">
+          <div class="endpoint_body_subheader"></div>
+          <div v-if="!new_endpoint">
+            <div class="flex w-full h-full">
+              <div class="flex gap-[8px] flex-center">
+                <transition name="fade">
+                  <div v-if="wantsToDeleteEndpoint">
+                    <button
+                      @click="$emit('delete_event')"
+                      class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn"
+                    >
+                      <div class="fs-10 fw-600">
+                        Delete {{ endpoint.controller_name }} endpoint
+                      </div>
+                    </button>
+                  </div>
+                </transition>
+                <button
+                  class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
+                  @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint"
+                >
+                  <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -58,60 +58,74 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="code--- py-23 p-4 mt-4 border-1-3">
+  <div class="">
     <!-- {{ endpoint }} -->
-
-    <!-- <div class="mt-4"></div> -->
-
-    <!-- <form @submit.prevent="handleSubmit">
-      <div v-for="(urlParam, index) in urlParams" :key="index">
-        <label :for="urlParam.field"
-          >url_param {{ urlParam.field }} ({{ urlParam.type }})</label
-        >
-        <input
-          class="bg-transparent border-1-1 p-2"
-          :id="urlParam.field"
-          :type="urlParam.type"
-          v-model="urlParamsValues[index]"
-        />
-      </div>
-
-      <div v-for="(bodyParam, index) in bodyParams" :key="index">
-        <label :for="bodyParam.field"
-          >body {{ bodyParam.field }} ({{ bodyParam.type }})</label
-        >
-        <input
-          class="bg-transparent border-1-1 p-2"
-          :id="bodyParam.field"
-          :type="bodyParam.type"
-          v-model="bodyParamsValues[index]"
-          :required="bodyParam.validate === 'required'"
-        />
-      </div>
-
-      <button type="submit" class="bg-green-800 py-2 px-5">Submit</button>
-    </form> -->
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-[1fr_auto]">
       <div class="">
-        <div class="flex">
-          <div
-            v-for="(urlParam, index) in urlParams"
-            :key="index"
-            class="fetch_input_box"
-          >
-            <label :for="urlParam.field" class="fetch_label">{{ urlParam.field }}</label>
-            <input
-              class="fetch_input"
-              :id="urlParam.field"
-              :type="urlParam.type"
-              v-model="urlParamsValues[index]"
-              required="true"
-            />
+        <div class="grid">
+          <!-- url -->
+          <div class="grid grid-cols-[1fr_auto_auto]">
+            <div class="flex flex-wrap">
+              <div class="fetch_input_box">
+                <label for="endpoint-url-path" class="fetch_label">url</label>
+                <div class="" id="endpoint-url-path">
+                  {{ endpoint.url }}
+                </div>
+              </div>
+              <!-- url path params -->
+              <div
+                v-for="(urlParam, index) in urlParams"
+                :key="index"
+                class="fetch_input_box"
+              >
+                <label :for="urlParam.field" class="fetch_label">{{
+                  urlParam.field
+                }}</label>
+                <div>
+                  <div>
+                    /
+                    <input
+                      class="bg-transparent"
+                      :id="urlParam.field"
+                      :type="urlParam.type"
+                      :placeholder="urlParam.field"
+                      v-model="urlParamsValues[index]"
+                      required="true"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="fetch_input_box">
+                <label for="urlParam_appended_url" class="fetch_label">
+                  optional values
+                </label>
+                <div>
+                  <div>
+                    <input
+                      class="bg-transparent"
+                      id="urlParam_appended_url"
+                      type="text"
+                      placeholder="?name=tom"
+                      v-model="appended_url"
+                      required=false
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="border-1-3 py-2 px-5 fs-10 fw-700 border-rad-5"
+              >
+                SUBMIT
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="fetch_body">
+        <div class="flex">
           <div v-for="(bodyParam, index) in bodyParams" :key="index">
             <label :for="bodyParam.field" class="fetch_label"
               >body {{ bodyParam.field }}</label
@@ -126,13 +140,6 @@ async function handleSubmit() {
           </div>
         </div>
       </div>
-
-      <button
-        type="submit"
-        class="bg-slate-900--- text-white--- border-1-3 py-2 px-5 fs-10 fw-700 border-rad-5"
-      >
-        SUBMIT
-      </button>
     </form>
   </div>
 </template>
@@ -140,19 +147,9 @@ async function handleSubmit() {
 <style>
 .fetch_input_box {
   /* border-radius: var(--border-rad-5); */
-  border: var(--border-1-3);
+  /* border: var(--border-1-3); */
   flex-direction: column;
   display: flex;
-}
-
-.fetch_input {
-  /* border-radius: var(--border-rad-5); */
-  background-color: transparent;
-  padding-left: 14px;
-  width: 100%;
-  /* box-sizing: border-box; */
-  /* border: 1px solid #ccc; */
-  /* border: var(--border-1-3); */
 }
 
 .fetch_label {
@@ -162,9 +159,5 @@ async function handleSubmit() {
   padding: 6px 12px;
   font-weight: 600;
   font-size: 11px;
-}
-
-.fetch_body {
-  margin-top: 20px;
 }
 </style>
