@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import * as editor from '../assets/ts/editor';
 import * as gomarvin from '../assets/ts/gomarvin';
 import ToolSvg from './utils/svg/ToolSvg.vue';
+import * as editor from '../assets/ts/editor';
 import { ref } from 'vue';
 
 defineProps<{

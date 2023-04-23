@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const GH_REPO = 'https://github.com/tompston/gomarvin';
 import ThemeSwitcher from './utils/ThemeSwitcher.vue';
 import { ref, onMounted, onUnmounted } from 'vue';
 import * as gomarvin from '../assets/ts/gomarvin';
+
+
 const navigationIsShown = ref(false);
+const GH_REPO = 'https://github.com/tompston/gomarvin';
 
 // https://stackoverflow.com/questions/47219272/how-can-i-use-window-size-in-vue-how-do-i-detect-the-soft-keyboard
 let windowWidth = ref(window.innerWidth);
