@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import LoadingSpinner from '../utils/svg/LoadingSpinner.vue';
 import * as gomarvin from '../../assets/ts/gomarvin';
-import * as utils from '../../assets/ts/utils';
 import FetchResponse from './FetchResponse.vue';
+import * as utils from '../../assets/ts/utils';
+import { ref } from 'vue';
 
 const props = defineProps<{
   endpoint: gomarvin.Endpoint;
@@ -23,25 +24,11 @@ const is_error = ref(false);
 const endpoint_response = ref<any>();
 
 async function handleSubmit() {
-  // const base = `${client.host_url}${client.api_prefix}`;
-  // // const url = new URL(props.endpoint.url, window.location.origin);
-  // const url = new URL(props.endpoint.url, base);
-
   let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
   console.log(url);
 
-  // urlParams.value.forEach((param, index) => {
-  //   url.searchParams.append(param.field, urlParamsValues.value[index]);
-  // });
-
-  // urlParams.value.forEach((param, index) => {
-  //   url.pathname = url.pathname + '/' + urlParamsValues.value[index];
-  //   // url.pathname.append(param.field, urlParamsValues.value[index]);
-  // });
-
   urlParams.value.forEach((param, index) => {
     url = url + '/' + urlParamsValues.value[index];
-    // url.pathname.append(param.field, urlParamsValues.value[index]);
   });
 
   const computed_body = JSON.stringify(
@@ -52,11 +39,14 @@ async function handleSubmit() {
     }, {}),
   );
 
+  is_fetching.value = true;
+  is_error.value = false;
   const response = await fetch(url.toString(), {
     method: props.endpoint.method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    headers: client.headers,
     // body: JSON.stringify(
     //   bodyParams.value.reduce((acc, param, index) => {
     //     // @ts-ignore
@@ -67,10 +57,13 @@ async function handleSubmit() {
   });
 
   if (response.ok) {
+    is_fetching.value = false;
     const data = await response.json();
-    endpoint_response.value = data
+    endpoint_response.value = data;
     console.log(data);
   } else {
+    is_fetching.value = false;
+    is_error.value = true;
     console.error('Error:', response.statusText);
   }
 }
@@ -84,14 +77,14 @@ async function handleSubmit() {
       <div class="">
         <div class="grid">
           <!-- url -->
-          <div class="grid grid-cols-[1fr_auto_auto]">
-            <div class="flex flex-wrap">
-              <div class="fetch_input_box">
+          <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2">
+            <div class="flex gap-2">
+              <!-- <div class="fetch_input_box">
                 <label for="endpoint-url-path" class="fetch_label">url</label>
                 <div class="" id="endpoint-url-path">
                   {{ endpoint.url }}
                 </div>
-              </div>
+              </div> -->
               <!-- url path params -->
               <div
                 v-for="(urlParam, index) in urlParams"
@@ -101,9 +94,9 @@ async function handleSubmit() {
                 <label :for="urlParam.field" class="fetch_label">{{
                   urlParam.field
                 }}</label>
-                <div>
-                  <div>
-                    /
+                <div class="flex flex-wrap">
+                  <div class="flex gap-2">
+                    <div>/</div>
                     <input
                       class="bg-transparent"
                       :id="urlParam.field"
@@ -134,17 +127,23 @@ async function handleSubmit() {
               </div> -->
             </div>
             <div>
-              <button
-                type="submit"
-                class="border-1-3 py-2 px-5 fs-10 fw-700 border-rad-5"
-              >
-                SUBMIT
-              </button>
+              <div class="flex gap-3">
+                <div v-if="is_fetching" class="flex-center opacity-60">
+                  <LoadingSpinner />
+                </div>
+
+                <button
+                  type="submit"
+                  class="border-1-1 py-2 px-4 text-[11px] fw-700 border-rad-5"
+                >
+                  SUBMIT
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="flex">
+        <!-- <div class="flex">
           <div v-for="(bodyParam, index) in bodyParams" :key="index">
             <label :for="bodyParam.field" class="fetch_label"
               >body {{ bodyParam.field }}</label
@@ -157,7 +156,7 @@ async function handleSubmit() {
               :required="bodyParam.validate === 'required'"
             />
           </div>
-        </div>
+        </div> -->
       </div>
     </form>
 
