@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import * as gomarvin_config from '../../assets/ts/gomarvin/interfaces';
+import * as gomarvin from '../../assets/ts/gomarvin';
+import * as utils from '../../assets/ts/utils';
 
 const props = defineProps<{
-  endpoint: gomarvin_config.Endpoint;
+  endpoint: gomarvin.Endpoint;
 }>();
 
 const appended_url = ref<string>('');
@@ -12,8 +13,13 @@ const bodyParams = ref(props.endpoint.body);
 const urlParamsValues = ref(urlParams.value.map(() => ''));
 const bodyParamsValues = ref(bodyParams.value.map(() => ''));
 
+const client: gomarvin.Client = utils.getClient();
+// console.log(client);
+
 async function handleSubmit() {
-  const url = new URL(props.endpoint.url, window.location.origin);
+  const base = `${client.host_url}${client.api_prefix}`;
+  // const url = new URL(props.endpoint.url, window.location.origin);
+  const url = new URL(props.endpoint.url, base);
 
   // urlParams.value.forEach((param, index) => {
   //   url.searchParams.append(param.field, urlParamsValues.value[index]);
@@ -96,7 +102,7 @@ async function handleSubmit() {
                   </div>
                 </div>
               </div>
-              <div class="fetch_input_box">
+              <!-- <div class="fetch_input_box">
                 <label for="urlParam_appended_url" class="fetch_label">
                   optional values
                 </label>
@@ -108,11 +114,11 @@ async function handleSubmit() {
                       type="text"
                       placeholder="?name=tom"
                       v-model="appended_url"
-                      required=false
+                      required="false"
                     />
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div>
               <button
