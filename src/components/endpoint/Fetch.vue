@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import * as gomarvin from '../../assets/ts/gomarvin';
 import * as utils from '../../assets/ts/utils';
+import FetchResponse from './FetchResponse.vue';
 
 const props = defineProps<{
   endpoint: gomarvin.Endpoint;
@@ -16,14 +17,18 @@ const bodyParamsValues = ref(bodyParams.value.map(() => ''));
 const client: gomarvin.Client = utils.getClient();
 console.log(client);
 
+//
+const is_fetching = ref(false);
+const is_error = ref(false);
+const endpoint_response = ref<any>();
+
 async function handleSubmit() {
   // const base = `${client.host_url}${client.api_prefix}`;
   // // const url = new URL(props.endpoint.url, window.location.origin);
   // const url = new URL(props.endpoint.url, base);
 
   let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
-  console.log(url)
-
+  console.log(url);
 
   // urlParams.value.forEach((param, index) => {
   //   url.searchParams.append(param.field, urlParamsValues.value[index]);
@@ -63,6 +68,7 @@ async function handleSubmit() {
 
   if (response.ok) {
     const data = await response.json();
+    endpoint_response.value = data
     console.log(data);
   } else {
     console.error('Error:', response.statusText);
@@ -154,6 +160,8 @@ async function handleSubmit() {
         </div>
       </div>
     </form>
+
+    <FetchResponse :data="endpoint_response" />
   </div>
 </template>
 

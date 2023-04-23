@@ -25,7 +25,7 @@ function addHeader() {
 //   }
 // }
 
-function deleteHeader(key: string | number) {
+function deleteHeader(key: string | number | symbol | symbol) {
   // @ts-ignore
   delete config.headers[key];
 }
