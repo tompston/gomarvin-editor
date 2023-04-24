@@ -158,6 +158,7 @@ async function handleSubmit() {
                 class="bg-transparent border-1-2---"
                 :id="bodyParam.field"
                 v-model="bodyParamsValues[index]"
+                :placeholder="bodyParam.type"
                 :required="bodyParam.validate === 'required'"
               />
             </div>
