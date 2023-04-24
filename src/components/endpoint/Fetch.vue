@@ -79,7 +79,7 @@ async function handleSubmit() {
     <!-- {{ endpoint }} -->
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-[1fr_auto]">
-      <div class="">
+      <div class="grid gap-2">
         <div class="grid">
           <!-- url -->
           <div class="header___3">Url</div>
@@ -210,6 +210,6 @@ async function handleSubmit() {
 .header___3 {
   font-size: var(--fs-9);
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 </style>
