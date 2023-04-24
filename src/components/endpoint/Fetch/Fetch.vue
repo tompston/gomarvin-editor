@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import LoadingSpinner from '../utils/svg/LoadingSpinner.vue';
-import * as gomarvin from '../../assets/ts/gomarvin';
+import LoadingSpinner from '../../utils/svg/LoadingSpinner.vue';
+import * as gomarvin from '../../../assets/ts/gomarvin';
 import FetchResponse from './FetchResponse.vue';
-import * as utils from '../../assets/ts/utils';
+import * as utils from '../../../assets/ts/utils';
 import { ref } from 'vue';
 
 const props = defineProps<{

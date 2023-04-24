@@ -10,7 +10,7 @@ import * as utils from '../../assets/ts/utils';
 import BodyField from './BodyField.vue';
 import UrlParam from './UrlParam.vue';
 import { ref, reactive } from 'vue';
-import Fetch from './Fetch.vue';
+import Fetch from './Fetch/Fetch.vue';
 
 defineProps<{
   endpoint: gomarvin.Endpoint;
