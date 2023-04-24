@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 const props = defineProps<{
-  data: any[];
+  data: any;
 }>();
 
 function isObject(value: any): boolean {
@@ -18,7 +18,7 @@ function nestedObjectToString(nestedObject: object): string {
 
 <template>
   <div class="grid grid-cols-1 overflow-auto">
-    <div class="container mx-auto--- max-h-[370px]">
+    <div class="container max-h-[370px]">
       <table v-if="data" class="min-w-full mt-4">
         <thead>
           <tr>
@@ -27,8 +27,7 @@ function nestedObjectToString(nestedObject: object): string {
               :key="key"
               class="pl-6 py-2 bg-light-select-1 text-left text-[10px] fw-700 uppercase tracking-wider sticky top-0"
             >
-            <span class="opacity-70">{{ key }}</span>
-              
+              <span class="opacity-70">{{ key }}</span>
             </th>
           </tr>
         </thead>
@@ -45,7 +44,6 @@ function nestedObjectToString(nestedObject: object): string {
               <template v-else>
                 {{ value }}
               </template>
-              <!-- {{ value }} -->
             </td>
           </tr>
         </tbody>

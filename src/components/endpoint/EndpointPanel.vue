@@ -11,11 +11,11 @@ defineProps<{
         {{ header }}
       </span>
     </div> -->
-    <div class="fw-700 fs-9">
+    <!-- <div class="fw-700 fs-9">
       <span class="opacity-80---">
         {{ header }}
       </span>
-    </div>
+    </div> -->
 
     <div>
       <slot />

@@ -1,41 +1,41 @@
 .navigation--section {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .navigation--header {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .navigation--options {
-    margin-top: 4px;
-    display: flex;
-    flex-flow: column;
-    flex-wrap: nowrap;
-    overflow: auto;
-    max-width: 100%;
-    gap: 4px;
+  margin-top: 4px;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  overflow: auto;
+  max-width: 100%;
+  gap: 4px;
 }
 
 .navigation--option {
-    overflow: auto;
+  overflow: auto;
 }
 
 .module__name_btn {
-    color: var(--module-name-btn-txt-col);
-    font-size: var(--fs-9);
-    font-weight: 400;
-    border-radius: 5px;
-    padding: 2px 9px;
+  color: var(--module-name-btn-txt-col);
+  font-size: var(--fs-9);
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 2px 9px;
 }
 
 .module__name_btn--selected {
-    color: var(--selected-text-col-1);
-    background: var(--selected-bg-col-1);
+  color: var(--selected-text-col-1);
+  background: var(--selected-bg-col-1);
 }
 
 .add_new_module_btn {
-    border: var(--border-1-2);
-    border-radius: var(--border-rad-4);
+  border: var(--border-1-2);
+  border-radius: var(--border-rad-4);
 }

@@ -16,7 +16,7 @@ const urlParamsValues = ref(urlParams.value.map(() => ''));
 const bodyParamsValues = ref(bodyParams.value.map(() => ''));
 
 const client: gomarvin.Client = utils.getClient();
-console.log(client);
+// console.log(client);
 
 //
 const is_fetching = ref(false);
@@ -82,6 +82,7 @@ async function handleSubmit() {
       <div class="">
         <div class="grid">
           <!-- url -->
+          <div class="header___3">Url</div>
           <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2">
             <div class="flex gap-2">
               <!-- <div class="fetch_input_box">
@@ -91,6 +92,18 @@ async function handleSubmit() {
                 </div>
               </div> -->
               <!-- url path params -->
+
+              <!-- <div class="fetch_input_box">
+                <label for="fetch_url_full" class="fetch_label"> url </label>
+                <div class="flex flex-wrap--- flex-center">
+                  <div class="flex gap-2">
+                    <div class="max-w-[200px]--- overflow-auto fs-10---">
+                      {{ client.host_url }}{{ client.api_prefix }}{{ endpoint.url }}
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
               <div
                 v-for="(urlParam, index) in urlParams"
                 :key="index"
@@ -125,7 +138,6 @@ async function handleSubmit() {
                       type="text"
                       placeholder="?name=tom"
                       v-model="appended_url"
-                      required="false"
                     />
                   </div>
                 </div>
@@ -148,19 +160,24 @@ async function handleSubmit() {
           </div>
         </div>
 
-        <div class="flex gap-2">
-          <div v-for="(bodyParam, index) in bodyParams" :key="index">
-            <div class="flex flex-col">
-              <label :for="bodyParam.field" class="fetch_label">{{
-                bodyParam.field
-              }}</label>
-              <input
-                class="bg-transparent border-1-2---"
-                :id="bodyParam.field"
-                v-model="bodyParamsValues[index]"
-                :placeholder="bodyParam.type"
-                :required="bodyParam.validate === 'required'"
-              />
+        <div v-if="endpoint.body.length != 0">
+          <div class="header___3">Body</div>
+          <div class="grid grid-cols-1 overflow-auto">
+            <div class="flex gap-2">
+              <div v-for="(bodyParam, index) in bodyParams" :key="index">
+                <div class="flex flex-col">
+                  <label :for="bodyParam.field" class="fetch_label">{{
+                    bodyParam.field
+                  }}</label>
+                  <input
+                    class="bg-transparent border-1-2---"
+                    :id="bodyParam.field"
+                    v-model="bodyParamsValues[index]"
+                    :placeholder="bodyParam.type"
+                    :required="bodyParam.validate === 'required'"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -171,20 +188,28 @@ async function handleSubmit() {
   </div>
 </template>
 
-<style>
+<style scoped>
 .fetch_input_box {
   /* border-radius: var(--border-rad-5); */
-  /* border: var(--border-1-3); */
+  border: var(--border-1-2);
   flex-direction: column;
   display: flex;
+  /* max-width: 220px; */
 }
 
 .fetch_label {
   background-color: var(--bg-light-select-1);
   /* background-color: var(--bg-light-select-1); */
   /* border-radius: var(--border-rad-5); */
-  padding: 6px 12px;
+  /* padding: 6px 12px; */
+  padding: 6px 0px 6px 15px;
   font-weight: 600;
   font-size: 11px;
+}
+
+.header___3 {
+  font-size: var(--fs-9);
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 </style>
