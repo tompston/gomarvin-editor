@@ -17,7 +17,12 @@ function nestedObjectToString(nestedObject: object): string {
 
 function getData(inputData: Array<object> | object): Array<object> | object {
   if (Array.isArray(inputData)) return inputData;
-  if (isObject(inputData) && inputData.hasOwnProperty('status') && inputData.hasOwnProperty('data')) {
+  if (
+    isObject(inputData) &&
+    inputData.hasOwnProperty('status') &&
+    inputData.hasOwnProperty('data')
+  ) {
+    // @ts-ignore
     return Array.isArray(inputData.data) ? inputData.data : [inputData.data];
   }
   return [inputData];
@@ -26,6 +31,7 @@ function getData(inputData: Array<object> | object): Array<object> | object {
 // const data = ref(Array.isArray(props.data) ? props.data : [props.data]);
 
 const data = ref(getData(props.data));
+// @ts-ignore
 const headers = ref(Object.keys(data.value[0]));
 </script>
 

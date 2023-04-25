@@ -69,6 +69,7 @@ async function handleSubmit() {
       is_fetching.value = false;
       is_error.value = true;
       console.error('Error:', response.statusText);
+      error_message.value = `STATUS CODE ${response.status}`;
     }
   } catch (error) {
     is_fetching.value = false;
