@@ -84,7 +84,7 @@ async function handleSubmit() {
   <div class="">
     <!-- {{ endpoint }} -->
 
-    <div>computed_body:: {{ computed_body }}</div>
+    <!-- <div>computed_body:: {{ computed_body }}</div> -->
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-[1fr_auto]">
       <div class="grid gap-2">
