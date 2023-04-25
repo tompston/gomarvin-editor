@@ -7,8 +7,12 @@ import * as utils from '../assets/ts/utils';
 import ModuleInfo from './ModuleInfo.vue';
 import Header from './Header.vue';
 
-let stored_config = utils.getConfig();
-const config = reactive<any>(stored_config);
+const props = defineProps({
+  config: Object,
+});
+
+// let stored_config = utils.getConfig();
+const config = reactive<any>(props.config);
 const createNewModuleDropdownIsShown = ref(false);
 const currentlySelectedModule = ref(module_name());
 const newModuleName = ref('');
@@ -26,9 +30,9 @@ function module_name(): string {
 
 function debug() {}
 
-onMounted(async () => {
-  console.log(utils.getConfig());
-});
+// onMounted(async () => {
+//   console.log(utils.getConfig());
+// });
 
 //  Save config to localstorage when it is changed
 watchEffect(() => {

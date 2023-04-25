@@ -1,5 +1,8 @@
 import { init_project, init_client } from '../editor/init';
 
+// @ts-ignore
+// import public_config from '../../../../public/gomarvin.json';
+
 export const localStorageCongigKey = 'gomarvin';
 export const localStorageClientKey = 'client';
 export const json_config_name = 'gomarvin.json';
@@ -36,38 +39,33 @@ export function parseConfig(x: any) {
   return JSON.parse(x);
 }
 
-/** Fetch the gomarin config file that is
- * in the same dir that holds index.html.
- * If it does not exist, return false.
- */
-export async function fetchPublicConfig() {
-  const res = await fetch('/gomarvin.json');
-  return res;
-}
-
-export async function publicConfigExists(): Promise<boolean> {
-  let res = await fetchPublicConfig();
-  if (res.ok) {
-    return true;
-  }
-  return false;
-}
-
 /**
  * function that checks for thing onMount only
  * - if config exists in local storage, return it
  * - if it does not exist in local storage, return a predefined project
  */
-export  function getConfig() {
-  // const res = await fetch('/gomarvin.json');
-  // if (res.ok) {
-  //   const config = await res.json();
-  //   return config;
-  // }
+export function getConfig() {
   if (localStorageConfigExists(localStorageCongigKey)) {
     return parseConfig(LocalStorageConfig(localStorageCongigKey));
   } else {
     return init_project;
+  }
+}
+
+export async function getConfigFile() {
+  const response = await fetch('/gomarvin.json');
+  if (!response.ok) {
+    if (localStorageConfigExists(localStorageCongigKey)) {
+      console.log('config from local storage');
+      return parseConfig(LocalStorageConfig(localStorageCongigKey));
+    } else {
+      console.log('using predefined config');
+      return init_project;
+    }
+  } else {
+    console.log('using config from the public folder');
+    const data = await response.json();
+    return data;
   }
 }
 
