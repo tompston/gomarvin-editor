@@ -8,9 +8,9 @@ import * as editor from '../../assets/ts/editor';
 import EndpointPanel from './EndpointPanel.vue';
 import * as utils from '../../assets/ts/utils';
 import BodyField from './BodyField.vue';
+import Fetch from './Fetch/Fetch.vue';
 import UrlParam from './UrlParam.vue';
 import { ref, reactive } from 'vue';
-import Fetch from './Fetch/Fetch.vue';
 
 defineProps<{
   endpoint: gomarvin.Endpoint;
@@ -22,20 +22,12 @@ const detailsAreShown = ref(false);
 const endpoint_method_dropdown_is_shown = ref(false);
 const wantsToDeleteEndpoint = ref(false);
 
-/**
- * here the array holds the string of the name of the event that will be used in the parent component and child compoent
- * @example   parent component == <Endpoint :endpoint="endpoint" @delete_event="c(endpoint)"/>
- * @example   child_component  == <button @click="$emit('delete_event')">Send delete event</button>
- */
 defineEmits(['delete_event', 'create_new_endpoint']);
 
 const new_body_field: gomarvin.Body = reactive({ ...editor.init_body_fields });
 
-type possible_tabs = 'Fetch' | 'Body' | 'Response Type' | 'Delete';
-
 const tabs = ['Fetch', 'Body', 'Response Type', 'Delete'];
-
-const currently_selected_tab = ref<possible_tabs>('Fetch');
+const currently_selected_tab = ref<string>(tabs[0]);
 </script>
 
 <template>
@@ -180,166 +172,160 @@ const currently_selected_tab = ref<possible_tabs>('Fetch');
     </div>
   </div>
 
-  <transition name="expand---">
-    <div>
-      <div class="p-[2px] mt-[12px] mb-[8px] min-h-[330px]" v-if="detailsAreShown">
-        <div class="flex gap-2 mb-5">
-          <div v-for="tab in tabs">
-            <button
-              :class="{
-                'module__name_btn--selected': currently_selected_tab === tab,
-                'bg-light-select-1---': currently_selected_tab !== tab,
-              }"
-              class="py-[3px] px-2.5 text-[10px] fw-700 border-rad-5 border-1-3 uppercase"
-              @click="currently_selected_tab = tab"
-            >
-              {{ tab }}
-            </button>
-          </div>
+  <transition name="fade">
+    <div class="p-[2px] mt-[12px] mb-[8px] min-h-[330px]" v-if="detailsAreShown">
+      <div class="flex gap-2 mb-5">
+        <div v-for="tab in tabs">
+          <button
+            :class="{
+              'module__name_btn--selected': currently_selected_tab === tab,
+              'bg-light-select-1---': currently_selected_tab !== tab,
+            }"
+            class="py-[3px] px-2.5 text-[10px] fw-700 border-rad-5 border-1-3 uppercase"
+            @click="currently_selected_tab = tab"
+          >
+            {{ tab }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Single Body field -->
+      <div class="mb-[10px] grid gap-6">
+        <div v-if="currently_selected_tab === 'Body'">
+          <EndpointPanel header="Body">
+            <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
+              <div>FIELD</div>
+              <div>TYPE</div>
+              <div class="flex gap-1.5">
+                <div>VALIDATE</div>
+                <a
+                  href="https://github.com/go-playground/validator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class=""
+                >
+                  <div
+                    class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"
+                  >
+                    ?
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="grid gap-[8px] endpoint__body">
+              <!-- Pass down the object that holds the values  -->
+              <div v-for="body_param in endpoint.body" :key="body_param">
+                <BodyField
+                  :existing_body_params="editor.existing_body_params(endpoint.body)"
+                  :body_param="body_param"
+                  :new_endpoint="false"
+                  :endpoint="endpoint"
+                />
+              </div>
+
+              <div>
+                <BodyField
+                  :existing_body_params="editor.existing_body_params(endpoint.body)"
+                  :body_param="new_body_field"
+                  :new_endpoint="true"
+                  :endpoint="endpoint"
+                  @create_body_field="
+                    editor.CreateBodyFieldAndResetInputFields(
+                      endpoint.body,
+                      new_body_field,
+                    )
+                  "
+                />
+              </div>
+            </div>
+          </EndpointPanel>
         </div>
 
-        <!-- Single Body field -->
-        <div class="mb-[10px] grid gap-6">
-          <div v-if="currently_selected_tab === 'Body'">
-            <EndpointPanel header="Body">
-              <div class="endpoint_body_grid fs-10 fw-700 opacity-50 mb-1">
-                <div>FIELD</div>
-                <div>TYPE</div>
-                <div class="flex gap-1.5">
-                  <div>VALIDATE</div>
-                  <a
-                    href="https://github.com/go-playground/validator"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class=""
-                  >
-                    <div
-                      class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"
+        <div v-if="currently_selected_tab === 'Fetch'">
+          <EndpointPanel header="Fetch">
+            <Fetch :endpoint="endpoint" />
+          </EndpointPanel>
+        </div>
+
+        <div v-if="currently_selected_tab === 'Response Type'">
+          <EndpointPanel header="Response Type">
+            <div class="mb-2">
+              <div class="flex flex-row gap-2">
+                <div
+                  class="settings__multiple_choices_grid_option"
+                  :class="
+                    endpoint.response_type === gomarvin.ResponseTypes.default
+                      ? 'currently_selected_multiple_choices_option'
+                      : ''
+                  "
+                  @click="endpoint.response_type = gomarvin.ResponseTypes.default"
+                >
+                  Default
+                </div>
+                <div
+                  class="settings__multiple_choices_grid_option"
+                  :class="
+                    endpoint.response_type === gomarvin.ResponseTypes.with_pagination
+                      ? 'currently_selected_multiple_choices_option'
+                      : ''
+                  "
+                  @click="endpoint.response_type = gomarvin.ResponseTypes.with_pagination"
+                >
+                  With Pagination
+                </div>
+              </div>
+            </div>
+          </EndpointPanel>
+        </div>
+
+        <div v-if="currently_selected_tab === 'Delete'">
+          <EndpointPanel header="Delete">
+            <div class="grid grid-cols-[1fr_auto] mt-[2px]">
+              <div v-if="!new_endpoint">
+                <div class="flex w-full h-full">
+                  <div class="flex gap-[8px] flex-center">
+                    <button
+                      class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
+                      @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint"
                     >
-                      ?
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="grid gap-[8px] endpoint__body">
-                <!-- Pass down the object that holds the values  -->
-                <div v-for="body_param in endpoint.body" :key="body_param">
-                  <BodyField
-                    :existing_body_params="editor.existing_body_params(endpoint.body)"
-                    :body_param="body_param"
-                    :new_endpoint="false"
-                    :endpoint="endpoint"
-                  />
-                </div>
-
-                <div>
-                  <BodyField
-                    :existing_body_params="editor.existing_body_params(endpoint.body)"
-                    :body_param="new_body_field"
-                    :new_endpoint="true"
-                    :endpoint="endpoint"
-                    @create_body_field="
-                      editor.CreateBodyFieldAndResetInputFields(
-                        endpoint.body,
-                        new_body_field,
-                      )
-                    "
-                  />
-                </div>
-              </div>
-            </EndpointPanel>
-          </div>
-
-          <div v-if="currently_selected_tab === 'Fetch'">
-            <EndpointPanel header="Fetch">
-              <Fetch :endpoint="endpoint" />
-            </EndpointPanel>
-          </div>
-
-          <div v-if="currently_selected_tab === 'Response Type'">
-            <EndpointPanel header="Response Type">
-              <div class="mb-2">
-                <!-- <div class="endpoint_body_subheader mb-2">Response Type</div> -->
-                <div class="flex flex-row gap-2">
-                  <div
-                    class="settings__multiple_choices_grid_option"
-                    :class="
-                      endpoint.response_type === gomarvin.ResponseTypes.default
-                        ? 'currently_selected_multiple_choices_option'
-                        : ''
-                    "
-                    @click="endpoint.response_type = gomarvin.ResponseTypes.default"
-                  >
-                    Default
-                  </div>
-                  <div
-                    class="settings__multiple_choices_grid_option"
-                    :class="
-                      endpoint.response_type === gomarvin.ResponseTypes.with_pagination
-                        ? 'currently_selected_multiple_choices_option'
-                        : ''
-                    "
-                    @click="
-                      endpoint.response_type = gomarvin.ResponseTypes.with_pagination
-                    "
-                  >
-                    With Pagination
+                      <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
+                    </button>
+                    <transition name="fade">
+                      <div v-if="wantsToDeleteEndpoint">
+                        <button
+                          @click="$emit('delete_event')"
+                          class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn hover:bg-red-600"
+                        >
+                          <div class="fs-10 fw-600">
+                            Delete {{ endpoint.controller_name }} endpoint
+                          </div>
+                        </button>
+                      </div>
+                    </transition>
                   </div>
                 </div>
               </div>
-            </EndpointPanel>
-          </div>
+            </div>
+          </EndpointPanel>
+        </div>
 
-          <div v-if="currently_selected_tab === 'Delete'">
-            <EndpointPanel header="Delete">
-              <div class="grid grid-cols-[1fr_auto] mt-[2px]">
-                <!-- <div class="endpoint_body_subheader"></div> -->
-                <div v-if="!new_endpoint">
-                  <div class="flex w-full h-full">
-                    <div class="flex gap-[8px] flex-center">
-                      <button
-                        class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
-                        @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint"
-                      >
-                        <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
-                      </button>
-                      <transition name="fade">
-                        <div v-if="wantsToDeleteEndpoint">
-                          <button
-                            @click="$emit('delete_event')"
-                            class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn hover:bg-red-600"
-                          >
-                            <div class="fs-10 fw-600">
-                              Delete {{ endpoint.controller_name }} endpoint
-                            </div>
-                          </button>
-                        </div>
-                      </transition>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </EndpointPanel>
+        <!-- DEBUG GRID -->
+        <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
+          <div>
+            <div>existing_body_params</div>
+            <div>{{ editor.existing_body_params(endpoint.body) }}</div>
           </div>
-
-          <!-- DEBUG GRID -->
-          <div class="code flex gap-[14px] flex-col mt-[20px]" v-if="debug_mode">
-            <div>
-              <div>existing_body_params</div>
-              <div>{{ editor.existing_body_params(endpoint.body) }}</div>
-            </div>
-            <div>
-              <div>existing_url_params</div>
-              <div>{{ editor.existing_url_params(endpoint.url_params) }}</div>
-            </div>
-            <div>
-              <div>existing_controllers</div>
-              <div>{{ existing_controllers }}</div>
-            </div>
-            <div>
-              <div>endpoint</div>
-              <div>{{ endpoint }}</div>
-            </div>
+          <div>
+            <div>existing_url_params</div>
+            <div>{{ editor.existing_url_params(endpoint.url_params) }}</div>
+          </div>
+          <div>
+            <div>existing_controllers</div>
+            <div>{{ existing_controllers }}</div>
+          </div>
+          <div>
+            <div>endpoint</div>
+            <div>{{ endpoint }}</div>
           </div>
         </div>
       </div>

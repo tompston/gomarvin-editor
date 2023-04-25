@@ -2,6 +2,7 @@
 @import './media.css';
 @import './vars.css';
 @import './root.css';
+@import './_custom.css';
 
 @import './components/buttons.css';
 @import './components/debug.css';

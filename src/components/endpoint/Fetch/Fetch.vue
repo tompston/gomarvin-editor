@@ -91,7 +91,7 @@ async function handleSubmit() {
         <div class="grid">
           <!-- url -->
           <div class="header___3">Url</div>
-          <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2">
+          <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2 gap-2">
             <div class="flex gap-2">
               <!-- <div class="fetch_input_box">
                 <label for="endpoint-url-path" class="fetch_label">url</label>
@@ -134,14 +134,14 @@ async function handleSubmit() {
                   </div>
                 </div>
               </div>
-              <div class="fetch_input_box">
+              <div class="fetch_input_box w-full">
                 <label for="urlParam_appended_url" class="fetch_label">
                   optional values
                 </label>
                 <div>
                   <div>
                     <input
-                      class="bg-transparent"
+                      class="bg-transparent w-full"
                       id="urlParam_appended_url"
                       type="text"
                       placeholder="?name=tom"
@@ -152,9 +152,11 @@ async function handleSubmit() {
               </div>
             </div>
             <div>
-              <div class="flex gap-3">
-                <div v-if="is_fetching && !is_error" class="flex-center opacity-60">
-                  <LoadingSpinner />
+              <div class="grid gap-3 grid-cols-[20px_1fr] min-w-[100px]">
+                <div class="flex-center">
+                  <div v-if="is_fetching && !is_error" class="flex-center opacity-60">
+                    <LoadingSpinner />
+                  </div>
                 </div>
 
                 <button
@@ -199,8 +201,8 @@ async function handleSubmit() {
 
     <div v-if="error_message != ''">
       <div class="flex-center mt-3">
-        <div class="bg-red-700 px-3 py-1.5 border-rad-5 fs-10 fw-700">
-          {{ error_message }}
+        <div class="bg-red-600 text-white px-3 py-1.5 border-rad-5 text-[11px] fw-700">
+          <span class="opacity-90---">{{ error_message }}</span>
         </div>
       </div>
     </div>

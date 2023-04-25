@@ -10,9 +10,10 @@ function isObject(value: any): boolean {
 }
 
 function nestedObjectToString(nestedObject: object): string {
-  return Object.entries(nestedObject)
-    .map(([key, value]) => `${key}: ${value}`)
-    .join(', ');
+  // return Object.entries(nestedObject)
+  //   .map(([key, value]) => `${key}: ${value}`)
+  //   .join(', ');
+  return JSON.stringify(nestedObject);
 }
 
 function getData(inputData: Array<object> | object): Array<object> | object {
@@ -53,7 +54,7 @@ const headers = ref(Object.keys(data.value[0]));
         <td
           v-for="(value, key) in row"
           :key="key"
-          class="pl-6 py-1 whitespace-nowrap text-[13px] w-auto--- max-w-[300px] overflow-auto"
+          class="pl-6 py-3 whitespace-nowrap text-[13px] w-auto--- max-w-[400px] overflow-scroll"
         >
           <template v-if="isObject(value)">
             {{ nestedObjectToString(value) }}
