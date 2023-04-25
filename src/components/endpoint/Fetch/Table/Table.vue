@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TableRow from './TableRow.vue';
-import { VNode, h, ref } from 'vue';
+import JsonRow from './JsonRow.vue';
+import { ref } from 'vue';
 
 const props = defineProps<{
   data: Array<object> | object;
@@ -8,35 +8,6 @@ const props = defineProps<{
 
 function isObject(value: any): boolean {
   return value && typeof value === 'object' && !Array.isArray(value);
-}
-
-function nestedObjectToString(nestedObject: object): string {
-  return JSON.stringify(nestedObject, null, 2);
-  // const nestedList = Object.entries(nestedObject)
-  //   .map(([key, value]) => `<li><strong>${key}:</strong> ${JSON.stringify(value)}</li>`)
-  //   .join('');
-  // return `<ul>${nestedList}</ul>`;
-}
-
-function renderNestedObject(
-  nestedObject: object,
-  indentLevel: number = 0,
-): Array<VNode<any>> {
-  const elements: Array<VNode<any>> = [];
-  const indent = '  '.repeat(indentLevel);
-
-  for (const [key, value] of Object.entries(nestedObject)) {
-    if (isObject(value)) {
-      elements.push(h('div', `${indent}${key}:`));
-      elements.push(...renderNestedObject(value, indentLevel + 1));
-    } else if (Array.isArray(value)) {
-      elements.push(h('div', `${indent}${key}: [${value.join(', ')}]`));
-    } else {
-      elements.push(h('div', `${indent}${key}: ${value}`));
-    }
-  }
-
-  return elements;
 }
 
 function getData(inputData: Array<object> | object): Array<object> | object {
@@ -80,9 +51,10 @@ const headers = ref(Object.keys(data.value[0]));
           class="pl-6 py-3 whitespace-nowrap text-[13px] w-auto--- max-w-[400px] overflow-scroll---"
         >
           <template v-if="isObject(value)">
-            <pre class="text-[11px]">
-{{ nestedObjectToString(value) }}
-            </pre>
+            <!-- <pre class="text-[11px]"
+              >{{ nestedObjectToString(value) }}
+            </pre> -->
+            <JsonRow :value="value" />
           </template>
           <template v-else>
             {{ value }}
