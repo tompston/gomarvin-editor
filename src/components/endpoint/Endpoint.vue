@@ -307,7 +307,7 @@ const currently_selected_tab = ref<possible_tabs>('Fetch');
                         <div v-if="wantsToDeleteEndpoint">
                           <button
                             @click="$emit('delete_event')"
-                            class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn"
+                            class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn hover:bg-red-600"
                           >
                             <div class="fs-10 fw-600">
                               Delete {{ endpoint.controller_name }} endpoint
@@ -350,7 +350,7 @@ const currently_selected_tab = ref<possible_tabs>('Fetch');
 <style>
 .delete_endpoint__btn:hover {
   transition: var(--transition-1);
-  background: rgb(244, 101, 101);
+  /* background: rgb(244, 101, 101); */
   color: white;
   border: 1px solid rgba(255, 255, 255, 0);
 }

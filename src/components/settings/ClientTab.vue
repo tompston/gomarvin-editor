@@ -39,7 +39,7 @@ watchEffect(() => {
   <div class="grid gap-5">
     <div class="">
       <div class="header__2">URL</div>
-      <div class="flex gap-3">
+      <div class="grid gap-3 grid-cols-2---">
         <div>
           <div class="fs-10 fw-700 opacity-60">HOST</div>
           <input
@@ -141,6 +141,8 @@ watchEffect(() => {
   border-radius: var(--border-rad-5);
   font-size: var(--fs-10);
   padding-left: 10px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .headers_btn {
