@@ -2,6 +2,7 @@
 import LoadingSpinner from '../../utils/svg/LoadingSpinner.vue';
 import * as gomarvin from '../../../assets/ts/gomarvin';
 import FetchResponse from './FetchResponse.vue';
+import Table from './Table/Table.vue';
 import * as utils from '../../../assets/ts/utils';
 import { ref } from 'vue';
 
@@ -184,7 +185,18 @@ async function handleSubmit() {
       </div>
     </form>
 
-    <FetchResponse :data="endpoint_response" />
+    <!-- <FetchResponse :data="endpoint_response" /> -->
+    <!-- <div v-if="endpoint_response">
+      <Table :data="endpoint_response" />
+    </div> -->
+
+    <div class="grid grid-cols-1 overflow-auto">
+      <div class="container max-h-[370px]">
+        <div v-if="endpoint_response">
+          <Table :data="endpoint_response" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

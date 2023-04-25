@@ -1,0 +1,54 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const props = defineProps<{
+  data: Array<object> | object;
+}>();
+
+function isObject(value: any): boolean {
+  return value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function nestedObjectToString(nestedObject: object): string {
+  return Object.entries(nestedObject)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join(', ');
+}
+
+const data = ref(Array.isArray(props.data) ? props.data : [props.data]);
+const headers = ref(Object.keys(data.value[0]));
+</script>
+
+<template>
+  <table v-if="data" class="min-w-full mt-4">
+    <thead>
+      <tr>
+        <th
+          v-for="header in headers"
+          :key="header"
+          class="pl-6 py-2 bg-light-select-1 text-left text-[10px] fw-700 uppercase tracking-wider sticky top-0"
+        >
+          <span class="opacity-70">{{ header }}</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(row, index) in data" :key="index" class="border-1-3-bottom">
+        <td
+          v-for="(value, key) in row"
+          :key="key"
+          class="pl-6 py-1 whitespace-nowrap text-[13px] w-auto--- max-w-[300px] overflow-auto"
+        >
+          <template v-if="isObject(value)">
+            {{ nestedObjectToString(value) }}
+          </template>
+          <template v-else>
+            {{ value }}
+          </template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+
+<style></style>
