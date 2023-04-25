@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import TableRow from './TableRow.vue';
+import { VNode, h, ref } from 'vue';
 
 const props = defineProps<{
   data: Array<object> | object;
@@ -10,10 +11,32 @@ function isObject(value: any): boolean {
 }
 
 function nestedObjectToString(nestedObject: object): string {
-  // return Object.entries(nestedObject)
-  //   .map(([key, value]) => `${key}: ${value}`)
-  //   .join(', ');
-  return JSON.stringify(nestedObject);
+  return JSON.stringify(nestedObject, null, 2);
+  // const nestedList = Object.entries(nestedObject)
+  //   .map(([key, value]) => `<li><strong>${key}:</strong> ${JSON.stringify(value)}</li>`)
+  //   .join('');
+  // return `<ul>${nestedList}</ul>`;
+}
+
+function renderNestedObject(
+  nestedObject: object,
+  indentLevel: number = 0,
+): Array<VNode<any>> {
+  const elements: Array<VNode<any>> = [];
+  const indent = '  '.repeat(indentLevel);
+
+  for (const [key, value] of Object.entries(nestedObject)) {
+    if (isObject(value)) {
+      elements.push(h('div', `${indent}${key}:`));
+      elements.push(...renderNestedObject(value, indentLevel + 1));
+    } else if (Array.isArray(value)) {
+      elements.push(h('div', `${indent}${key}: [${value.join(', ')}]`));
+    } else {
+      elements.push(h('div', `${indent}${key}: ${value}`));
+    }
+  }
+
+  return elements;
 }
 
 function getData(inputData: Array<object> | object): Array<object> | object {
@@ -54,10 +77,12 @@ const headers = ref(Object.keys(data.value[0]));
         <td
           v-for="(value, key) in row"
           :key="key"
-          class="pl-6 py-3 whitespace-nowrap text-[13px] w-auto--- max-w-[400px] overflow-scroll"
+          class="pl-6 py-3 whitespace-nowrap text-[13px] w-auto--- max-w-[400px] overflow-scroll---"
         >
           <template v-if="isObject(value)">
-            {{ nestedObjectToString(value) }}
+            <pre class="text-[11px]">
+{{ nestedObjectToString(value) }}
+            </pre>
           </template>
           <template v-else>
             {{ value }}
