@@ -11,9 +11,8 @@ const routes = [
     props: (route: any) => route.meta.props || {}, // Pass the props from the meta object
     // @ts-ignore
     async beforeEnter(to, from, next) {
-      const config = await getConfigFile(); // Fetch the async data
-      // console.log('config', config);
-      to.meta.props = { config }; // Store the async data in the meta object
+      const config = await getConfigFile();
+      to.meta.props = { config };
       next();
     },
   },
