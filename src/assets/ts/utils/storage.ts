@@ -53,11 +53,17 @@ export async function publicConfigExists(): Promise<boolean> {
   return false;
 }
 
-/** function that checks for thing onMount only
+/**
+ * function that checks for thing onMount only
  * - if config exists in local storage, return it
  * - if it does not exist in local storage, return a predefined project
  */
-export function getConfig() {
+export  function getConfig() {
+  // const res = await fetch('/gomarvin.json');
+  // if (res.ok) {
+  //   const config = await res.json();
+  //   return config;
+  // }
   if (localStorageConfigExists(localStorageCongigKey)) {
     return parseConfig(LocalStorageConfig(localStorageCongigKey));
   } else {

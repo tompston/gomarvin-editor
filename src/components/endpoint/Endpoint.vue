@@ -182,7 +182,7 @@ const currently_selected_tab = ref<possible_tabs>('Fetch');
 
   <transition name="expand---">
     <div>
-      <div class="p-[2px] mt-[12px] mb-[8px]" v-if="detailsAreShown">
+      <div class="p-[2px] mt-[12px] mb-[8px] min-h-[330px]" v-if="detailsAreShown">
         <div class="flex gap-2 mb-5">
           <div v-for="tab in tabs">
             <button

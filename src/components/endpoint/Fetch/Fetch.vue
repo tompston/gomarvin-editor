@@ -24,52 +24,57 @@ const is_error = ref(false);
 const endpoint_response = ref<any>();
 const error_message = ref('');
 
+const computed_body = JSON.stringify(
+  bodyParams.value.reduce((acc, param, index) => {
+    // @ts-ignore
+    acc[param.field] = bodyParamsValues.value[index];
+    return acc;
+  }, {}),
+);
+
 async function handleSubmit() {
-  let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
-  console.log(url);
+  try {
+    error_message.value = '';
+    let url = `${client.host_url}${client.api_prefix}${props.endpoint.url}`;
+    console.log(url);
 
-  urlParams.value.forEach((param, index) => {
-    url = url + '/' + urlParamsValues.value[index];
-  });
+    urlParams.value.forEach((param, index) => {
+      url = url + '/' + urlParamsValues.value[index];
+    });
 
-  const computed_body = JSON.stringify(
-    bodyParams.value.reduce((acc, param, index) => {
-      // @ts-ignore
-      acc[param.field] = bodyParamsValues.value[index];
-      return acc;
-    }, {}),
-  );
+    if (appended_url.value === '') {
+      appended_url.value = ' ';
+    }
 
-  if (appended_url.value === '') {
-    appended_url.value = ' ';
-  }
+    is_fetching.value = true;
+    is_error.value = false;
+    const response = await fetch(url.toString(), {
+      method: props.endpoint.method,
+      headers: client.headers,
+      // body: JSON.stringify(
+      //   bodyParams.value.reduce((acc, param, index) => {
+      //     // @ts-ignore
+      //     acc[param.field] = bodyParamsValues.value[index];
+      //     return acc;
+      //   }, {}),
+      // ),
+    });
 
-  is_fetching.value = true;
-  is_error.value = false;
-  const response = await fetch(url.toString(), {
-    method: props.endpoint.method,
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
-    headers: client.headers,
-    // body: JSON.stringify(
-    //   bodyParams.value.reduce((acc, param, index) => {
-    //     // @ts-ignore
-    //     acc[param.field] = bodyParamsValues.value[index];
-    //     return acc;
-    //   }, {}),
-    // ),
-  });
-
-  if (response.ok) {
-    is_fetching.value = false;
-    const data = await response.json();
-    endpoint_response.value = data;
-    console.log(data);
-  } else {
+    if (response.ok) {
+      is_fetching.value = false;
+      const data = await response.json();
+      endpoint_response.value = data;
+      console.log(data);
+    } else {
+      is_fetching.value = false;
+      is_error.value = true;
+      console.error('Error:', response.statusText);
+    }
+  } catch (error) {
     is_fetching.value = false;
     is_error.value = true;
-    console.error('Error:', response.statusText);
+    error_message.value = `${error}`;
+    console.error('Error:', error);
   }
 }
 </script>
@@ -77,6 +82,8 @@ async function handleSubmit() {
 <template>
   <div class="">
     <!-- {{ endpoint }} -->
+
+    <div>computed_body:: {{ computed_body }}</div>
 
     <form @submit.prevent="handleSubmit" class="grid grid-cols-[1fr_auto]">
       <div class="grid gap-2">
@@ -145,7 +152,7 @@ async function handleSubmit() {
             </div>
             <div>
               <div class="flex gap-3">
-                <div v-if="is_fetching" class="flex-center opacity-60">
+                <div v-if="is_fetching && !is_error" class="flex-center opacity-60">
                   <LoadingSpinner />
                 </div>
 
@@ -188,6 +195,14 @@ async function handleSubmit() {
     <!-- <div v-if="endpoint_response">
       <Table :data="endpoint_response" />
     </div> -->
+
+    <div v-if="error_message != ''">
+      <div class="flex-center mt-3">
+        <div class="bg-red-700 px-3 py-1.5 border-rad-5 fs-10 fw-700">
+          {{ error_message }}
+        </div>
+      </div>
+    </div>
 
     <div class="grid grid-cols-1 overflow-auto">
       <div class="container max-h-[370px]">
