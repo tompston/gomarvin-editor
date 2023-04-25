@@ -8,7 +8,7 @@ import ModuleInfo from './ModuleInfo.vue';
 import Header from './Header.vue';
 
 let stored_config = utils.getConfig();
-let config = reactive<any>(stored_config);
+const config = reactive<any>(stored_config);
 const createNewModuleDropdownIsShown = ref(false);
 const currentlySelectedModule = ref(module_name());
 const newModuleName = ref('');
