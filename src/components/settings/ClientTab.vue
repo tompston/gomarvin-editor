@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref, watchEffect } from 'vue';
 import * as gomarvin from '../../assets/ts/gomarvin';
+import InputErrBox from '../utils/InputErrBox.vue';
+import { reactive, ref, watchEffect } from 'vue';
 import * as utils from '../../assets/ts/utils';
 
 let stored_config = utils.getClient();
@@ -29,18 +30,23 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="grid gap-5">
+  <div class="grid gap-5 grid-cols-2 md:grid-cols-1">
     <div>
       <div class="header__2">URL</div>
+      <div class="fs-9 pt-1 pb-3 opacity-60">
+        Values in the URL fields cannot end with a slash!
+      </div>
       <div class="grid gap-3">
-        <div>
-          <div class="fs-10 fw-700 opacity-60 my-1">HOST</div>
-          <input
-            type="text"
-            class="headers_table__input py-1"
-            v-model="config.host_url"
-            placeholder="url"
-          />
+        <div class="h-full relative">
+          <div class="h-full">
+            <div class="fs-10 fw-700 opacity-60 my-1">HOST</div>
+            <input
+              type="text"
+              class="headers_table__input py-1"
+              v-model="config.host_url"
+              placeholder="url"
+            />
+          </div>
         </div>
         <div>
           <div class="fs-10 fw-700 opacity-60 my-1">API PREFIX</div>
@@ -120,8 +126,10 @@ watchEffect(() => {
   grid-template-columns: 170px 1fr auto;
   gap: 10px;
   font-size: 12px;
-  padding: 10px 0px;
-  margin: 3x 0px;
+  padding: 7px 0px;
+  /* margin: 3x 0px; */
+  margin-top: 5px;
+
 }
 
 .headers_table__input {
@@ -149,7 +157,8 @@ watchEffect(() => {
 }
 
 .header__2 {
-  font-size: var(--fs-8);
+  display: grid;
+  font-size: var(--fs-7);
   font-weight: 700;
   opacity: 0.85;
 }
