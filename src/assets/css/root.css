@@ -89,9 +89,10 @@
   --selection-text-col: rgb(255, 255, 255);
 
   /*  */
-  --http-method-get-bg: rgb(65, 113, 208);
+  /* --http-method-get-bg: rgb(65, 113, 208); */
+  --http-method-get-bg: rgb(48, 101, 209);
   --http-method-post-bg: #5cb556;
-  --http-method-put-bg: rgb(231, 196, 39);
+  --http-method-put-bg: rgb(229, 179, 43);
   --http-method-delete-bg: #e23e36;
 
   /* */

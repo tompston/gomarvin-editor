@@ -56,22 +56,20 @@ watchEffect(() => {
                   <div
                     v-for="module in config.modules"
                     v-bind:key="module"
-                    class="navigation--option"
+                    class="overflow-auto"
                   >
                     <button
                       @click="currentlySelectedModule = module.name"
                       class="module__name_btn"
                       :id="module.name"
                       :class="
-                        currentlySelectedModule == module.name
-                          ? 'selected-value-1'
-                          : ''
+                        currentlySelectedModule == module.name ? 'selected-value-1' : ''
                       "
                     >
                       {{ module.name }}
                     </button>
                   </div>
-                  <div class="navigation--option">
+                  <div class="overflow-auto">
                     <button
                       class="module__name_btn"
                       @click="
@@ -105,7 +103,7 @@ watchEffect(() => {
                                 (newModuleName = ''),
                                 (createNewModuleDropdownIsShown = false)
                             "
-                            class="fs-10 fw-700 flex-center w-full h-full mt-[6px] py-[6px] add_new_module_btn"
+                            class="fs-10 fw-700 flex-center w-full h-full mt-[6px] py-[6px] border-1-2 border-rad-4"
                             :disabled="
                               !editor.module_name_is_valid(config.modules, newModuleName)
                             "
@@ -178,3 +176,13 @@ watchEffect(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.module__name_btn {
+  color: var(--module-name-btn-txt-col);
+  font-size: var(--fs-9);
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 2px 9px;
+}
+</style>

@@ -18,24 +18,7 @@
   gap: 4px;
 }
 
-.navigation--option {
-  overflow: auto;
-}
-
-.module__name_btn {
-  color: var(--module-name-btn-txt-col);
-  font-size: var(--fs-9);
-  font-weight: 500;
-  border-radius: 5px;
-  padding: 2px 9px;
-}
-
 .selected-value-1 {
-  color: var(--selected-text-col-1);
-  background: var(--selected-bg-col-1);
-}
-
-.add_new_module_btn {
-  border: var(--border-1-2);
-  border-radius: var(--border-rad-4);
+  color: var(--selected-text-col-1) !important;
+  background: var(--selected-bg-col-1) !important;
 }

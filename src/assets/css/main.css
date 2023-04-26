@@ -13,8 +13,11 @@
   font-weight: 400;
 }
 
-.endpoint__method_selected,
 .mevi {
+  border-radius: var(--border-rad-main);
+}
+
+.border-rad-main {
   border-radius: var(--border-rad-main);
 }
 

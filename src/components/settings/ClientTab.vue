@@ -6,8 +6,8 @@ import * as utils from '../../assets/ts/utils';
 let stored_config = utils.getClient();
 const config: gomarvin.Client = reactive(stored_config);
 
-const headerKey = ref('');
-const headerValue = ref('');
+const headerKey = ref<string>('');
+const headerValue = ref<string>('');
 
 function addHeader() {
   if (headerKey.value && headerValue.value) {
@@ -17,13 +17,6 @@ function addHeader() {
     headerValue.value = '';
   }
 }
-
-// function removeHeader() {
-//   if (headerKey.value) {
-//     delete config.headers[headerKey.value];
-//     headerKey.value = '';
-//   }
-// }
 
 function deleteHeader(key: string | number | symbol | symbol) {
   // @ts-ignore
@@ -37,11 +30,11 @@ watchEffect(() => {
 
 <template>
   <div class="grid gap-5">
-    <div >
+    <div>
       <div class="header__2">URL</div>
       <div class="grid gap-3">
         <div>
-          <div class="fs-10 fw-700 opacity-60">HOST</div>
+          <div class="fs-10 fw-700 opacity-60 my-1">HOST</div>
           <input
             type="text"
             class="headers_table__input py-1"
@@ -50,7 +43,7 @@ watchEffect(() => {
           />
         </div>
         <div>
-          <div class="fs-10 fw-700 opacity-60">API PREFIX</div>
+          <div class="fs-10 fw-700 opacity-60 my-1">API PREFIX</div>
           <input
             type="text"
             class="headers_table__input py-1"
@@ -122,11 +115,6 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-.client_input {
-  background-color: transparent;
-  border: var(--border-1-3);
-}
-
 .headers_table {
   display: grid;
   grid-template-columns: 170px 1fr auto;

@@ -7,11 +7,6 @@
   font-size: var(--fs-9);
 }
 
-/* .docs p,
-.docs li {
-  opacity: 0.73;
-} */
-
 .docs {
   margin-top: 10px;
   display: grid;
