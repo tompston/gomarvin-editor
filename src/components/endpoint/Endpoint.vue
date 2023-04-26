@@ -211,8 +211,8 @@ const currently_selected_tab = ref<string>(tabs[0]);
               </div>
             </div>
             <div class="grid gap-[8px] endpoint__body">
-              <!-- Pass down the object that holds the values  -->
-              <div v-for="body_param in endpoint.body" :key="JSON.stringify(body_param)">
+              <!-- Dont fix the :key thing  -->
+              <div v-for="body_param in endpoint.body" :key="body_param">
                 <BodyField
                   :existing_body_params="editor.existing_body_params(endpoint.body)"
                   :body_param="body_param"

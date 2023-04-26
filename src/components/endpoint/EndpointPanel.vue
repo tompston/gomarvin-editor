@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <div >
-    <div class="grid grid-cols-1 overflow-auto">
+    <div class="grid grid-cols-1 overflow-x---">
       <slot />
     </div>
   </div>
