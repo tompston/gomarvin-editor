@@ -3,10 +3,10 @@
 // Credits
 // https://cssloaders.github.io/
 
-defineProps<{
-  dims: number;
-  // color: string;
-}>();
+// defineProps<{
+//   dims: number;
+//   // color: string;
+// }>();
 </script>
 
 <template>

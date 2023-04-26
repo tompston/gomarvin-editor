@@ -81,7 +81,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div >
+  <div>
     <!-- {{ endpoint }} -->
 
     <!-- <div>computed_body:: {{ computed_body }}</div> -->
@@ -91,27 +91,9 @@ async function handleSubmit() {
         <div class="grid">
           <!-- url -->
           <div class="header___3">Url</div>
+          <hr class="border mb-2" />
           <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2 gap-2">
             <div class="flex gap-2">
-              <!-- <div class="fetch_input_box">
-                <label for="endpoint-url-path" class="fetch_label">url</label>
-                <div  id="endpoint-url-path">
-                  {{ endpoint.url }}
-                </div>
-              </div> -->
-              <!-- url path params -->
-
-              <!-- <div class="fetch_input_box">
-                <label for="fetch_url_full" class="fetch_label"> url </label>
-                <div class="flex flex-wrap--- flex-center">
-                  <div class="flex gap-2">
-                    <div class="max-w-[200px]--- overflow-auto fs-10---">
-                      {{ client.host_url }}{{ client.api_prefix }}{{ endpoint.url }}
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div
                 v-for="(urlParam, index) in urlParams"
                 :key="index"
@@ -172,6 +154,7 @@ async function handleSubmit() {
 
         <div v-if="endpoint.body.length != 0">
           <div class="header___3">Body</div>
+          <hr class="border mb-2" />
           <div class="grid grid-cols-1 overflow-auto">
             <div class="flex gap-2">
               <div v-for="(bodyParam, index) in bodyParams" :key="index">
@@ -194,11 +177,6 @@ async function handleSubmit() {
       </div>
     </form>
 
-    <!-- <FetchResponse :data="endpoint_response" /> -->
-    <!-- <div v-if="endpoint_response">
-      <Table :data="endpoint_response" />
-    </div> -->
-
     <div v-if="error_message != ''">
       <div class="flex-center mt-3">
         <div class="bg-red-600 text-white px-3 py-1.5 border-rad-5 text-[11px] fw-700">
@@ -219,26 +197,23 @@ async function handleSubmit() {
 
 <style scoped>
 .fetch_input_box {
-  /* border-radius: var(--border-rad-5); */
-  border: var(--border-1-2);
   flex-direction: column;
   display: flex;
-  /* max-width: 220px; */
 }
 
 .fetch_label {
   background-color: var(--bg-light-select-1);
-  /* background-color: var(--bg-light-select-1); */
-  /* border-radius: var(--border-rad-5); */
-  /* padding: 6px 12px; */
-  padding: 6px 0px 6px 15px;
+  border-radius: var(--border-rad-5);
+  padding: 5px 0px 5px 14px;
   font-weight: 600;
   font-size: 11px;
+  display: flex;
 }
 
 .header___3 {
+  /* border-bottom: 1px solid white; */
   font-size: var(--fs-9);
-  font-weight: 700;
   margin-bottom: 8px;
+  font-weight: 700;
 }
 </style>

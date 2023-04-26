@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import JsonRow from './JsonRow.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps<{
   data: Array<object> | object;
@@ -23,13 +23,21 @@ function getData(inputData: Array<object> | object): Array<object> | object {
   return [inputData];
 }
 
-const data = ref(getData(props.data));
+// const data = ref(getData(props.data));
+// // @ts-ignore
+// const headers = ref(Object.keys(data.value[0]));
+
+const data = computed(() => getData(props.data));
 // @ts-ignore
-const headers = ref(Object.keys(data.value[0]));
+const headers = computed(() => Object.keys(data.value[0]));
 </script>
 
 <template>
-  <table v-if="data" class="min-w-full mt-4">
+  <!-- <div class="code">
+    {{ data  }}
+  </div> -->
+
+  <table class="min-w-full mt-4">
     <thead>
       <tr>
         <th
@@ -46,7 +54,7 @@ const headers = ref(Object.keys(data.value[0]));
         <td
           v-for="(value, key) in row"
           :key="key"
-          class="pl-5 py-2 whitespace-nowrap text-[13px] max-w-[400px]"
+          class="pl-5 py-2 whitespace-nowrap text-[13px] max-w-[400px] min-w-[120px]---"
         >
           <template v-if="isObject(value)">
             <JsonRow :value="value" />
