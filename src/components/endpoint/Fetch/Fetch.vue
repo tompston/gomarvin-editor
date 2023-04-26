@@ -91,7 +91,8 @@ async function handleSubmit() {
         <div class="grid">
           <!-- url -->
           <div class="header___3">Url</div>
-          <hr class="border mb-2" />
+          <!-- <hr class="border-b-1-2 mb-2" /> -->
+          <div class="border-b-1-1 mb-3" ></div>
           <div class="grid grid-cols-[1fr_auto_auto] overflow-auto mb-2 gap-2">
             <div class="flex gap-2">
               <div
@@ -143,7 +144,7 @@ async function handleSubmit() {
 
                 <button
                   type="submit"
-                  class="border-1-2 py-2 px-4 text-[11px] fw-700 border-rad-5"
+                  class="border-1-2 py-2 px-4 text-[11px] fw-700 border-rad-5 hover:border-current"
                 >
                   SUBMIT
                 </button>
@@ -154,7 +155,8 @@ async function handleSubmit() {
 
         <div v-if="endpoint.body.length != 0">
           <div class="header___3">Body</div>
-          <hr class="border mb-2" />
+          <!-- <hr class="hr-1-1 mb-2" /> -->
+          <div class="border-b-1-1 mb-3" ></div>
           <div class="grid grid-cols-1 overflow-auto">
             <div class="flex gap-2">
               <div v-for="(bodyParam, index) in bodyParams" :key="index">
