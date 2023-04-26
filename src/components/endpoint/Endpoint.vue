@@ -130,7 +130,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
         <div v-if="!new_endpoint">
           <div class="">
             <button
-              class="flex-center create__url_param_btn"
+              class="flex-center opacity-40 create__url_param_btn fs-9 border-rad-5 w-[20px] h-[20px] selected-bg-col-2 hover:opacity-80"
               @click="editor.createNewUrlParam(endpoint.url_params)"
             >
               +
@@ -214,7 +214,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
             </div>
             <div class="grid gap-[8px] endpoint__body">
               <!-- Pass down the object that holds the values  -->
-              <div v-for="body_param in endpoint.body" :key="body_param">
+              <div v-for="body_param in endpoint.body" :key="JSON.stringify(body_param)">
                 <BodyField
                   :existing_body_params="editor.existing_body_params(endpoint.body)"
                   :body_param="body_param"
@@ -294,7 +294,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
                       <div v-if="wantsToDeleteEndpoint">
                         <button
                           @click="$emit('delete_event')"
-                          class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn hover:bg-red-600"
+                          class="border-1-2 flex flex-center px-[12px] py-[3px] border-rad-5 delete_endpoint__btn hover:bg-red-600 transition-colors hover:text-white hover:border-white/0"
                         >
                           <div class="fs-10 fw-600">
                             Delete {{ endpoint.controller_name }} endpoint
@@ -332,24 +332,3 @@ const currently_selected_tab = ref<string>(tabs[0]);
     </div>
   </transition>
 </template>
-
-<style>
-.delete_endpoint__btn:hover {
-  transition: var(--transition-1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0);
-}
-
-.create__url_param_btn {
-  width: 20px;
-  height: 20px;
-  background-color: var(--selected-bg-col-2);
-  border-radius: var(--border-rad-5);
-  font-size: var(--fs-9);
-  opacity: 0.4;
-}
-
-.create__url_param_btn:hover {
-  opacity: 0.8;
-}
-</style>

@@ -63,10 +63,10 @@ button[disabled] {
 .settings__multiple_choices_grid_option {
   border-radius: var(--border-rad-5);
   background: var(--selected-bg-col-2);
-  font-size: var(--fs-9);
+  font-size: var(--fs-10);
   opacity: 0.75;
   font-weight: 500;
-  padding: 2px 15px;
+  padding: 3px 15px;
 }
 
 .currently_selected_multiple_choices_option {
