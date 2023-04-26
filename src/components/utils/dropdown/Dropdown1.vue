@@ -44,15 +44,13 @@ defineEmits(['switch']);
 }
 
 .dropdown__1_content {
-  /* background: rgb(255, 255, 255); */
   z-index: 20;
   background-color: var(--main-bg-col);
   border: var(--border-1-2);
-  /* box-shadow: var(--shadow-4); */
+  /* box-shadow: var(--shadow-5); */
   display: block;
   position: absolute;
   z-index: 1;
-  /* max-width: 100px; */
   min-width: 103px;
   max-height: 180px;
   overflow-y: auto;
@@ -69,11 +67,11 @@ defineEmits(['switch']);
   height: 100%;
   display: flex;
   flex-flow: column;
-  gap: 4px;
+  /* gap: 4px; */
 }
 
 .method__option_btn {
-  border: var(--border-1-3);
+  /* border: var(--border-1-3); */
   border-radius: var(--border-rad-5);
   padding: 5px 4px;
   font-weight: 500;
@@ -83,8 +81,7 @@ defineEmits(['switch']);
 }
 
 .method__option_btn:hover {
-  border: 1px solid rgba(107, 107, 107, 0.4);
-  border: var(--border-1-1);
+  background: var(--bg-light-select-2);
 }
 
 .method__option_btn--selected {

@@ -57,7 +57,7 @@ const body_fieldtype_dropdown_is_shown = ref(false);
 
     <div>
       <div
-        class="code dropdown__1_value"
+        class="code dropdown__1_value cursor-pointer disable-text-select"
         @click="body_fieldtype_dropdown_is_shown = !body_fieldtype_dropdown_is_shown"
       >
         {{ body_param.type }}
@@ -87,7 +87,7 @@ const body_fieldtype_dropdown_is_shown = ref(false);
     <!-- if an existing endpoint, return element that allows to delete current body_param -->
     <button
       v-if="!new_endpoint"
-      class="flex-center text-col-6 delete_body_param border-rad-5 border-1-3"
+      class="flex-center text-col-6 delete_body_param hover:bg-red-600 border-rad-5 border-1-3"
       @click="editor.deleteValueFromArray(endpoint.body, body_param)"
     >
       <DeleteSvg dims="14" fill="var(--svg-fill)" class="delete__svg" />
@@ -96,7 +96,7 @@ const body_fieldtype_dropdown_is_shown = ref(false);
     <!-- if a new endpoint, return element that allows to create current body_param -->
     <button
       v-if="new_endpoint"
-      class="flex-center create__endpoint_btn"
+      class="flex-center selected-value-1 fs-10 fw-600 border-rad-5 create__endpoint_btn disabled:opacity-40"
       :disabled="!editor.canCreateNewBodyField(existing_body_params, body_param.field)"
       @click="$emit('create_body_field')"
     >
@@ -106,22 +106,6 @@ const body_fieldtype_dropdown_is_shown = ref(false);
 </template>
 
 <style>
-.create__endpoint_btn {
-  color: var(--selected-text-col-1);
-  background: var(--selected-bg-col-1);
-  font-size: var(--fs-10);
-  font-weight: 600;
-  border-radius: 5px;
-}
-
-.create__endpoint_btn:disabled {
-  opacity: 0.4;
-}
-
-.delete_body_param:hover {
-  background: var(--main-col-danger);
-}
-
 .delete_body_param:hover .delete__svg path {
   stroke: #ffffff !important;
 }
