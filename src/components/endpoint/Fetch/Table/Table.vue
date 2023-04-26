@@ -48,12 +48,9 @@ const headers = ref(Object.keys(data.value[0]));
         <td
           v-for="(value, key) in row"
           :key="key"
-          class="pl-6 py-3 whitespace-nowrap text-[13px] w-auto--- max-w-[400px] overflow-scroll---"
+          class="pl-5 py-2 whitespace-nowrap text-[13px] max-w-[400px]"
         >
           <template v-if="isObject(value)">
-            <!-- <pre class="text-[11px]"
-              >{{ nestedObjectToString(value) }}
-            </pre> -->
             <JsonRow :value="value" />
           </template>
           <template v-else>

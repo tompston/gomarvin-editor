@@ -336,7 +336,6 @@ const currently_selected_tab = ref<string>(tabs[0]);
 <style>
 .delete_endpoint__btn:hover {
   transition: var(--transition-1);
-  /* background: rgb(244, 101, 101); */
   color: white;
   border: 1px solid rgba(255, 255, 255, 0);
 }
@@ -352,16 +351,5 @@ const currently_selected_tab = ref<string>(tabs[0]);
 
 .create__url_param_btn:hover {
   opacity: 0.8;
-}
-
-.endpoint_body_subheader {
-  /* disable text select */
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  user-select: none;
-  /*  */
-  font-size: var(--fs-8);
-  font-weight: 600;
 }
 </style>
