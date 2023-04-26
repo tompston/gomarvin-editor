@@ -54,7 +54,7 @@ export function getConfig() {
 
 export async function getConfigFile() {
   const response = await fetch('/gomarvin.json');
-  if (!response.ok) {
+  if (response.status === 200) {
     if (localStorageConfigExists(localStorageCongigKey)) {
       console.log('config from local storage');
       return parseConfig(LocalStorageConfig(localStorageCongigKey));
