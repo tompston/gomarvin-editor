@@ -109,9 +109,9 @@ watchEffect(() => {
     </div>
   </div>
 
-  <div class="cod mt-10">
+  <!-- <div class="cod mt-10">
     {{ config }}
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
