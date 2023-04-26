@@ -5,8 +5,8 @@ defineProps<{
 </script>
 
 <template>
-  <div class="border-1-2---">
-    <div>
+  <div >
+    <div class="grid grid-cols-1 overflow-auto">
       <slot />
     </div>
   </div>
