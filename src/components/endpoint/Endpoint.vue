@@ -35,7 +35,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
     <div class="grid grid-cols-1 overflow-y-auto---">
       <div class="endpoint__info">
         <!-- Endpoint method -->
-        <div class="">
+        <div >
           <button
             class="endpoint__method_selected flex-center disable-text-select"
             :class="'endpoint_method_' + endpoint.method"
@@ -128,7 +128,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
 
         <!--  -->
         <div v-if="!new_endpoint">
-          <div class="">
+          <div >
             <button
               class="flex-center opacity-40 create__url_param_btn fs-9 border-rad-5 w-[20px] h-[20px] selected-bg-col-2 hover:opacity-80"
               @click="editor.createNewUrlParam(endpoint.url_params)"
@@ -178,7 +178,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
         <div v-for="tab in tabs">
           <button
             :class="{
-              'module__name_btn--selected': currently_selected_tab === tab,
+              'selected-value-1': currently_selected_tab === tab,
               'bg-light-select-1---': currently_selected_tab !== tab,
             }"
             class="py-[3px] px-2.5 text-[10px] fw-700 border-rad-5 border-1-3 uppercase"
@@ -202,7 +202,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
                   href="https://github.com/go-playground/validator"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class=""
+                  
                 >
                   <div
                     class="text-[9px] round bg-black text-white w-3 h-3 flex-center disable-text-select"
@@ -288,7 +288,7 @@ const currently_selected_tab = ref<string>(tabs[0]);
                       class="flex-center w-[26px] h-[26px] border-1-2 border-rad-5"
                       @click="wantsToDeleteEndpoint = !wantsToDeleteEndpoint"
                     >
-                      <DeleteSvg dims="14" fill="var(--svg-fill)" class="" />
+                      <DeleteSvg dims="14" fill="var(--svg-fill)"  />
                     </button>
                     <transition name="fade">
                       <div v-if="wantsToDeleteEndpoint">

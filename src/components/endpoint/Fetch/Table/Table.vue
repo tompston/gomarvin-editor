@@ -23,8 +23,6 @@ function getData(inputData: Array<object> | object): Array<object> | object {
   return [inputData];
 }
 
-// const data = ref(Array.isArray(props.data) ? props.data : [props.data]);
-
 const data = ref(getData(props.data));
 // @ts-ignore
 const headers = ref(Object.keys(data.value[0]));
@@ -39,7 +37,7 @@ const headers = ref(Object.keys(data.value[0]));
           :key="header"
           class="pl-6 py-2 bg-light-select-1 text-left text-[10px] fw-700 uppercase tracking-wider sticky top-0"
         >
-          <span class="opacity-70">{{ header }}</span>
+          <span class="opacity-80">{{ header }}</span>
         </th>
       </tr>
     </thead>

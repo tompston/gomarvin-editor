@@ -30,7 +30,7 @@
   padding: 2px 9px;
 }
 
-.module__name_btn--selected {
+.selected-value-1 {
   color: var(--selected-text-col-1);
   background: var(--selected-bg-col-1);
 }

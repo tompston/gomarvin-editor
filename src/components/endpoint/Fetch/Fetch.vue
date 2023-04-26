@@ -81,7 +81,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="">
+  <div >
     <!-- {{ endpoint }} -->
 
     <!-- <div>computed_body:: {{ computed_body }}</div> -->
@@ -95,7 +95,7 @@ async function handleSubmit() {
             <div class="flex gap-2">
               <!-- <div class="fetch_input_box">
                 <label for="endpoint-url-path" class="fetch_label">url</label>
-                <div class="" id="endpoint-url-path">
+                <div  id="endpoint-url-path">
                   {{ endpoint.url }}
                 </div>
               </div> -->
@@ -202,7 +202,7 @@ async function handleSubmit() {
     <div v-if="error_message != ''">
       <div class="flex-center mt-3">
         <div class="bg-red-600 text-white px-3 py-1.5 border-rad-5 text-[11px] fw-700">
-          <span class="opacity-90---">{{ error_message }}</span>
+          <span>{{ error_message }}</span>
         </div>
       </div>
     </div>

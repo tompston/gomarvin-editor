@@ -15,7 +15,7 @@ const wants_to_delete_module = ref(false);
 
 <template>
   <div class="grid grid-cols-[1fr_auto] tab__header">
-    <div class="">{{ module.name }}</div>
+    <div>{{ module.name }}</div>
     <div class="flex">
       <transition name="fade">
         <div v-if="edit_options_are_shown">

@@ -37,9 +37,9 @@ watchEffect(() => {
 
 <template>
   <div class="grid gap-5">
-    <div class="">
+    <div >
       <div class="header__2">URL</div>
-      <div class="grid gap-3 grid-cols-2---">
+      <div class="grid gap-3">
         <div>
           <div class="fs-10 fw-700 opacity-60">HOST</div>
           <input
@@ -70,7 +70,7 @@ watchEffect(() => {
           <div></div>
         </div>
 
-        <div class="grid gap-2---">
+        <div class="grid">
           <div
             v-for="(value, key) in config.headers"
             :key="key"

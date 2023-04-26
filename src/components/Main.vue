@@ -47,7 +47,7 @@ watchEffect(() => {
     <div class="flex-center">
       <div class="max-width-1 pb-[100px]">
         <div class="editor">
-          <div class="">
+          <div>
             <div class="flex flex-col">
               <!-- Modules Navigation grid -->
               <div class="navigation--section">
@@ -61,9 +61,10 @@ watchEffect(() => {
                     <button
                       @click="currentlySelectedModule = module.name"
                       class="module__name_btn"
+                      :id="module.name"
                       :class="
                         currentlySelectedModule == module.name
-                          ? 'module__name_btn--selected'
+                          ? 'selected-value-1'
                           : ''
                       "
                     >
@@ -131,7 +132,7 @@ watchEffect(() => {
                       class="module__name_btn"
                       :class="
                         currentlySelectedModule == SETTINGS_TAB.id
-                          ? 'module__name_btn--selected'
+                          ? 'selected-value-1'
                           : ''
                       "
                     >
