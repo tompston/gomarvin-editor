@@ -50,6 +50,7 @@ export const ResponseTypes = {
 /** Not tested locally. Don't know if there will be erros with some older go versions */
 export const GoVersions = [1.2, 1.19, 1.18, 1.17, 1.16, 1.15];
 export const GomarvinVersions = [
+  'v0.10.x',
   'v0.9.x',
   'v0.8.x',
   'v0.7.x',

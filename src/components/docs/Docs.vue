@@ -174,15 +174,6 @@ const sections = {
             <br>
             </p>
 
-            <div class="fs-8 fw-700">fetch-only</div>
-            If you only need to generate the typescript file, run
-
-            <div class="docs-quote">
-              gomarvin -fetch-only=true generate
-            </div>
-
-            <br>
-
             <div class="fs-8 fw-700">gut</div>
             You can also optionally generate a new file called <code>typescript.gen.go</code>
             in modules dir which holds functions that convert the possible response types to

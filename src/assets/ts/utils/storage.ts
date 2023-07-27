@@ -53,19 +53,26 @@ export function getConfig() {
 }
 
 export async function getConfigFile() {
-  const response = await fetch('/gomarvin.json');
-  if (response.status === 200) {
-    if (localStorageConfigExists(localStorageCongigKey)) {
-      console.log('config from local storage');
-      return parseConfig(LocalStorageConfig(localStorageCongigKey));
-    } else {
-      console.log('using predefined config');
-      return init_project;
-    }
+  // const response = await fetch('/gomarvin.json');
+  // if (response.status === 200) {
+  //   if (localStorageConfigExists(localStorageCongigKey)) {
+  //     console.log('config from local storage');
+  //     return parseConfig(LocalStorageConfig(localStorageCongigKey));
+  //   } else {
+  //     console.log('using predefined config');
+  //     return init_project;
+  //   }
+  // } else {
+  //   console.log('using config from the public folder');
+  //   const data = await response.json();
+  //   return data;
+  // }
+  if (localStorageConfigExists(localStorageCongigKey)) {
+    console.log('config from local storage');
+    return parseConfig(LocalStorageConfig(localStorageCongigKey));
   } else {
-    console.log('using config from the public folder');
-    const data = await response.json();
-    return data;
+    console.log('using predefined config');
+    return init_project;
   }
 }
 
